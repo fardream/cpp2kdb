@@ -1,8 +1,8 @@
 # cpp2kdb
 
-Pure C++ Wrapper To KDB+ by KxSystems
+Pure C++ Wrapper To KDB+. KDB+ is a time series database from KxSystems.
 
-## Why a Pure C++ Wrapper to KDB+ by KxSystems
+## Why a Pure C++ Wrapper to KDB+
 
 Take a look at KxSystems' library for kdb ([here](https://github.com/KxSystems/kdb/blob/39b957030bf6a4608f2508ff29894d7fac32a0c2/c/c/k.h) is the `C/C++` header) - this is taking terseness and being cryptic to an extreme. For example [line 3](https://github.com/KxSystems/kdb/blob/39b957030bf6a4608f2508ff29894d7fac32a0c2/c/c/k.h#L3)
 
@@ -34,3 +34,23 @@ To prevent `k.h` from breaking other codes, this wrapper only includes `k.h` in 
 Most importantly, the `K` type, which is a pointer to `k0` struct, will be `void*`.
 
 [`accessors.h`](cpp2kdb/accessor.h) provides convenient accessor functions by calling functions in [`kdbwrapper.h`](cpp2kdb/kdbwrapper.h).
+
+## Building the code
+
+`bazel` and `gcc>8.0.0` are necessary to build the code. KDB+ libraries are pulled in by `bazel`.
+
+The example binary requires a running KDB+ instance on localhost at port 5000. After installing the binaries from KxSystems, run the following
+
+```shell
+q -p 5000
+```
+
+Now the example can be run by
+
+```shell
+bazel run //cpp2kdb:kdbwrapper_test
+```
+
+## Non-bazel build
+
+KDB libraries can be downloaded from [KxSystemx/kdb](https://github.com/kxsystems/kdb). The code requires `k.h`, which is in folder `c/c`. Put the path to `c/c` in the include path. It looks like `-pthread` is required for linker, but I am not sure if this is specific to my installation.
