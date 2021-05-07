@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Bazel directories
+/bazel-testlogs
+/bazel-bin
+/bazel-out
+/bazel-cpp2kdb
+
+.clang_complete
