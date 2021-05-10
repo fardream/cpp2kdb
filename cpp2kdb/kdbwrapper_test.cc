@@ -1,3 +1,7 @@
+// Copyright (C) 2021, Chao Xu
+//
+// Part of cpp2kdb, which is released under BSD license. See LICENSE or full
+// details.
 #include "cpp2kdb/kdbwrapper.h"
 
 #include <iostream>
@@ -16,6 +20,8 @@ void TestAtomValue(int connection) {
 
   std::cout << "Cast to int64_t, the value is "
             << *(static_cast<int64_t*>(cpp2kdb::GetValue(x))) << std::endl;
+
+  cpp2kdb::DecreaseReferenceCount(x);
 }
 void TestVectorValue(int connection) {
   std::string expression_for_vector = "1 2 3";
@@ -36,6 +42,7 @@ void TestVectorValue(int connection) {
     std::cout << values[i] << " ";
   }
   std::cout << std::endl;
+  cpp2kdb::DecreaseReferenceCount(v);
 }
 void TestSymbol(int connection) {
   std::string expression = "`IBM";
@@ -44,8 +51,10 @@ void TestSymbol(int connection) {
   std::cout << "Type ID is " << cpp2kdb::GetTypeId(v) << std::endl;
   std::cout << std::string(*static_cast<char**>(cpp2kdb::GetValue(v)))
             << std::endl;
+  cpp2kdb::DecreaseReferenceCount(v);
 }
 }  // namespace
+
 int main(int argc, char** argv) {
   // Open connection
   int connection = cpp2kdb::OpenConnection("127.0.0.1", 5000, "");
@@ -58,5 +67,7 @@ int main(int argc, char** argv) {
   TestAtomValue(connection);
   TestVectorValue(connection);
   TestSymbol(connection);
+
+  cpp2kdb::CloseConnection(connection);
   return 0;
 }

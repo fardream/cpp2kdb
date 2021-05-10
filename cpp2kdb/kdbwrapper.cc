@@ -1,3 +1,7 @@
+// Copyright (C) 2021, Chao Xu
+//
+// Part of cpp2kdb, which is released under BSD license. See LICENSE or full
+// details.
 #include "cpp2kdb/kdbwrapper.h"
 
 // Include k.h...
@@ -25,6 +29,11 @@ int OpenConnection(const char* host, int port, const char* username_password,
   return result;
 }
 
+void CloseConnection(int connection) {
+  //
+  return kclose(connection);
+}
+
 void* RunQueryOnConnection(int connection, const char* query) {
   // Call k.
   return k(connection, ConvertToNonConst(query), 0);
@@ -40,7 +49,7 @@ void* GetValue(void* x) {
   return static_cast<void*>(&(GetK(x)->s));
 }
 
-long GetNumberOfVectorElements(void* x) {
+long long GetNumberOfVectorElements(void* x) {  // NOLINT
   // n
   return GetK(x)->n;
 }
@@ -48,5 +57,14 @@ long GetNumberOfVectorElements(void* x) {
 void* GetVector(void* x) {
   // Vector is stored in the construct
   return static_cast<void*>(GetK(x)->G0);
+}
+
+void DecreaseReferenceCount(void* x) {
+  // Call r0
+  r0(GetK(x));
+}
+void* IncreaseReferenceCount(void* x) {
+  // Call r1.
+  return r1(GetK(x));
 }
 }  // namespace cpp2kdb

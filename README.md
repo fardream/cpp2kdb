@@ -33,7 +33,7 @@ To prevent `k.h` from breaking other codes, this wrapper only includes `k.h` in 
 
 Most importantly, the `K` type, which is a pointer to `k0` struct, will be `void*`.
 
-[`accessors.h`](cpp2kdb/accessor.h) provides convenient accessor functions by calling functions in [`kdbwrapper.h`](cpp2kdb/kdbwrapper.h).
+[`accessors.h`](cpp2kdb/accessors.h) provides convenient accessor functions by calling functions in [`kdbwrapper.h`](cpp2kdb/kdbwrapper.h).
 
 ## Building the code
 

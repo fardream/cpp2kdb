@@ -10,3 +10,16 @@ cc_library(
     hdrs = ["kdbwrapper.h"],
     deps = ["@kdb//:kdb_l64_unsecured"],
 )
+
+cc_library(
+    name = "accessors",
+    srcs = ["accessors.cc"],
+    hdrs = ["accessors.h"],
+    deps = [":kdbwrapper"],
+)
+
+cc_binary(
+    name = "accessors_test",
+    srcs = ["accessors_test.cc"],
+    deps = [":accessors"],
+)
