@@ -72,6 +72,9 @@ $(function() {
 <div class="title">accessors.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Convenient accessor functions using kdbwrappers.h.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
 <code>#include &quot;<a class="el" href="kdbwrapper_8h_source.html">cpp2kdb/kdbwrapper.h</a>&quot;</code><br />
 </div>
@@ -83,13 +86,16 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the 16 byte GUID type (or U) in KDB.  <a href="structcpp2kdb_1_1_q_guid.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id.html">cpp2kdb::QTypeId&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getting the Q Type Id of the given C++ Type.  <a href="classcpp2kdb_1_1_q_type_id.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01bool_01_4.html">cpp2kdb::QTypeId&lt; bool &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type ID for bool, which is boolean in q, KB=1.  <a href="classcpp2kdb_1_1_q_type_id_3_01bool_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01_q_guid_01_4.html">cpp2kdb::QTypeId&lt; QGuid &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type ID for <a class="el" href="structcpp2kdb_1_1_q_guid.html" title="Define the 16 byte GUID type (or U) in KDB.">QGuid</a>, which is guid in q, UU=2.  <a href="classcpp2kdb_1_1_q_type_id_3_01_q_guid_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01std_1_1uint8__t_01_4.html">cpp2kdb::QTypeId&lt; std::uint8_t &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type ID for std::uint8_t, which is byte in q, KG=4.  <a href="classcpp2kdb_1_1_q_type_id_3_01std_1_1uint8__t_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01short_01_4.html">cpp2kdb::QTypeId&lt; short &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type ID for short, which is short in q, KH=5.  <a href="classcpp2kdb_1_1_q_type_id_3_01short_01_4.html#details">More...</a><br /></td></tr>
@@ -104,6 +110,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type ID for float, which is real in q, KE=8.  <a href="classcpp2kdb_1_1_q_type_id_3_01float_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01double_01_4.html">cpp2kdb::QTypeId&lt; double &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type ID for double, which is float in q, KF=9.  <a href="classcpp2kdb_1_1_q_type_id_3_01double_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01char_01_4.html">cpp2kdb::QTypeId&lt; char &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type ID for char, which is char in q, KC=10.  <a href="classcpp2kdb_1_1_q_type_id_3_01char_01_4.html#details">More...</a><br /></td></tr>
@@ -116,7 +123,7 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Convenient accessor functions using kdbwrappers.h </p>
+<div class="textblock"><p>Convenient accessor functions using kdbwrappers.h. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

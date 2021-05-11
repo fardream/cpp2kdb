@@ -73,6 +73,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Wrapping functions for k.h.  
+<a href="#details">More...</a></p>
+
 <p><a href="kdbwrapper_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -84,29 +87,38 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a77c35ce713c1c7e46e4333120c5850ce"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a77c35ce713c1c7e46e4333120c5850ce">cpp2kdb::ConvertToNonConst</a> (const char *c)</td></tr>
+<tr class="memdesc:a77c35ce713c1c7e46e4333120c5850ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a const char* to char*.  <a href="namespacecpp2kdb.html#a77c35ce713c1c7e46e4333120c5850ce">More...</a><br /></td></tr>
 <tr class="separator:a77c35ce713c1c7e46e4333120c5850ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a07b26c43efe8b238deff428db80b94cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a07b26c43efe8b238deff428db80b94cc">cpp2kdb::OpenConnection</a> (const char *host, int port, const char *username_password=&quot;&quot;, int time_out=0, int capacity=0)</td></tr>
+<tr class="memdesc:a07b26c43efe8b238deff428db80b94cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a connection to KDB.  <a href="namespacecpp2kdb.html#a07b26c43efe8b238deff428db80b94cc">More...</a><br /></td></tr>
 <tr class="separator:a07b26c43efe8b238deff428db80b94cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af285c28c38d700bd80b0d33ba38d0f66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#af285c28c38d700bd80b0d33ba38d0f66">cpp2kdb::CloseConnection</a> (int connection)</td></tr>
+<tr class="memdesc:af285c28c38d700bd80b0d33ba38d0f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the connection to KDB.  <a href="namespacecpp2kdb.html#af285c28c38d700bd80b0d33ba38d0f66">More...</a><br /></td></tr>
 <tr class="separator:af285c28c38d700bd80b0d33ba38d0f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9280d36156868f0b2b1ea0adffd1674"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#aa9280d36156868f0b2b1ea0adffd1674">cpp2kdb::RunQueryOnConnection</a> (int connection, const char *query)</td></tr>
 <tr class="memdesc:aa9280d36156868f0b2b1ea0adffd1674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run query on a connection.  <a href="namespacecpp2kdb.html#aa9280d36156868f0b2b1ea0adffd1674">More...</a><br /></td></tr>
 <tr class="separator:aa9280d36156868f0b2b1ea0adffd1674"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b4b5296ebc2e32960ed5d2c67b8a535"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a8b4b5296ebc2e32960ed5d2c67b8a535">cpp2kdb::GetTypeId</a> (void *x)</td></tr>
+<tr class="memdesc:a8b4b5296ebc2e32960ed5d2c67b8a535"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtain type id of this K pointer.  <a href="namespacecpp2kdb.html#a8b4b5296ebc2e32960ed5d2c67b8a535">More...</a><br /></td></tr>
 <tr class="separator:a8b4b5296ebc2e32960ed5d2c67b8a535"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adcc90af0c0dce35c581df8724c476ab6"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#adcc90af0c0dce35c581df8724c476ab6">cpp2kdb::GetValue</a> (void *x)</td></tr>
+<tr class="memdesc:adcc90af0c0dce35c581df8724c476ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Pointer to the atom value.  <a href="namespacecpp2kdb.html#adcc90af0c0dce35c581df8724c476ab6">More...</a><br /></td></tr>
 <tr class="separator:adcc90af0c0dce35c581df8724c476ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae16449dead45aa90cce5f51f5fd192b9"><td class="memItemLeft" align="right" valign="top">long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ae16449dead45aa90cce5f51f5fd192b9">cpp2kdb::GetNumberOfVectorElements</a> (void *x)</td></tr>
+<tr class="memdesc:ae16449dead45aa90cce5f51f5fd192b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of elements in vector.  <a href="namespacecpp2kdb.html#ae16449dead45aa90cce5f51f5fd192b9">More...</a><br /></td></tr>
 <tr class="separator:ae16449dead45aa90cce5f51f5fd192b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5ed1828fc381f930064a2945612db86"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#aa5ed1828fc381f930064a2945612db86">cpp2kdb::GetVector</a> (void *x)</td></tr>
+<tr class="memdesc:aa5ed1828fc381f930064a2945612db86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pointer to the first elemnt of vector.  <a href="namespacecpp2kdb.html#aa5ed1828fc381f930064a2945612db86">More...</a><br /></td></tr>
 <tr class="separator:aa5ed1828fc381f930064a2945612db86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8f8fb781bde871a0539bc8c4c6670ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ac8f8fb781bde871a0539bc8c4c6670ea">cpp2kdb::DecreaseReferenceCount</a> (void *x)</td></tr>
+<tr class="memdesc:ac8f8fb781bde871a0539bc8c4c6670ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrease reference count by calling <code>r0</code> function.  <a href="namespacecpp2kdb.html#ac8f8fb781bde871a0539bc8c4c6670ea">More...</a><br /></td></tr>
 <tr class="separator:ac8f8fb781bde871a0539bc8c4c6670ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74acd4c283fb6046873454d63e7a08ea"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a74acd4c283fb6046873454d63e7a08ea">cpp2kdb::IncreaseReferenceCount</a> (void *x)</td></tr>
+<tr class="memdesc:a74acd4c283fb6046873454d63e7a08ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increase reference count by calling <code>r1</code> function.  <a href="namespacecpp2kdb.html#a74acd4c283fb6046873454d63e7a08ea">More...</a><br /></td></tr>
 <tr class="separator:a74acd4c283fb6046873454d63e7a08ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Wrapping functions for k.h</p>
+<div class="textblock"><p>Wrapping functions for k.h. </p>
 <p>Header file has no includes, and source file has no includes besides k.h. Wrapping functions defined in k.h </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
