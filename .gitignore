@@ -43,3 +43,4 @@
 # Doxygen
 /html
 /latex
+.DS_Store
