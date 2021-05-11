@@ -8,12 +8,30 @@
 #include <string>
 
 namespace {
+template <typename L, typename R>
+std::string IsSameType() {
+  return std::is_same_v<L, R> ? "Yes" : "No";
+}
+
 void TestTypes(int connection) {
-  std::cout << "Type of char is " << cpp2kdb::QTypeId<char>::type_id
+  std::cout << "Type of char is " << cpp2kdb::q_type_id<char> << std::endl;
+  std::cout << "Type of UID is "
+            << cpp2kdb::q_type_id<cpp2kdb::QGuid> << std::endl;
+  std::cout << "Type of byte is "
+            << cpp2kdb::q_type_id<std::uint8_t> << std::endl;
+  std::cout << "Type of string is "
+            << cpp2kdb::q_type_id<std::string> << std::endl;
+  std::cout << "Type ID 1 is mapped to bool? "
+            << IsSameType<cpp2kdb::CTypeForQTypeId<1>::CType, bool>()
             << std::endl;
-  std::cout << "Type of UID is " << cpp2kdb::QTypeId<cpp2kdb::QGuid>::type_id
+  std::cout << "Type ID 10 is mapped to bool? "
+            << IsSameType<cpp2kdb::CTypeForQTypeId<10>::CType, bool>()
             << std::endl;
-  std::cout << "Type of byte is " << cpp2kdb::QTypeId<std::uint8_t>::type_id
+  std::cout << "Type ID 10 is mapped to char? "
+            << IsSameType<cpp2kdb::CTypeForQTypeId<10>::CType, char>()
+            << std::endl;
+  std::cout << "Type ID 11 is mapped to std::string? "
+            << IsSameType<cpp2kdb::CTypeForQTypeId<11>::CType, std::string>()
             << std::endl;
 }
 }  // namespace
