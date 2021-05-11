@@ -1,9 +1,11 @@
 // Copyright (C) 2021, Chao Xu
 //
-// Part of cpp2kdb, which is released under BSD license. See LICENSE or full
+// Part of cpp2kdb, which is released under BSD license. See LICENSE for full
 // details.
 #ifndef CPP2KDB_ACCESSORS_H__
 #define CPP2KDB_ACCESSORS_H__
+/// \file cpp2kdb/accessors.h
+/// Convenient accessor functions using kdbwrappers.h
 
 #include <cstdint>
 
@@ -14,12 +16,15 @@ namespace cpp2kdb {
 
 /// Define the 16 byte GUID type (or U) in KDB.
 struct QGuid {
+  /// Value of the GUID. 4 4-byte int's should be 16 bytes.
   int value[4];
 };
 
 static_assert(sizeof(QGuid) == 16, "QGuid type should be 16");
 
 /// Getting the Q Type Id of the given C++ Type.
+/// This will return the vector type of the corresponding atom type.
+/// For example, for char in q, it will return 10 (instead of -10).
 template <typename T>
 class QTypeId {
  public:
@@ -33,6 +38,7 @@ class QTypeId {
 template <>
 class QTypeId<bool> {
  public:
+  /// Type boolean, KB=1
   constexpr static const int type_id = 1;
 };
 
@@ -40,6 +46,7 @@ class QTypeId<bool> {
 template <>
 class QTypeId<QGuid> {
  public:
+  /// Type GUID, UU=2
   constexpr static const int type_id = 2;
 };
 
@@ -48,6 +55,7 @@ class QTypeId<QGuid> {
 template <>
 class QTypeId<std::uint8_t> {
  public:
+  /// Type byte, KG=4
   constexpr static const int type_id = 4;
 };
 
@@ -55,6 +63,7 @@ class QTypeId<std::uint8_t> {
 template <>
 class QTypeId<short> {  // NOLINT
  public:
+  /// Type short, KH=5
   constexpr static const int type_id = 5;
 };
 
@@ -62,6 +71,7 @@ class QTypeId<short> {  // NOLINT
 template <>
 class QTypeId<int> {
  public:
+  /// Type int, KI=6
   constexpr static const int type_id = 6;
 };
 
@@ -69,6 +79,7 @@ class QTypeId<int> {
 template <>
 class QTypeId<std::int64_t> {
  public:
+  /// Type long, KJ=7
   constexpr static const int type_id = 7;
 };
 
@@ -76,6 +87,7 @@ class QTypeId<std::int64_t> {
 template <>
 class QTypeId<float> {
  public:
+  /// Type real, KE=8
   constexpr static const int type_id = 8;
 };
 
@@ -84,6 +96,7 @@ class QTypeId<float> {
 template <>
 class QTypeId<double> {
  public:
+  /// Type float, KF=9
   constexpr static const int type_id = 9;
 };
 
@@ -91,6 +104,7 @@ class QTypeId<double> {
 template <>
 class QTypeId<char> {
  public:
+  /// Type char, KC=10
   constexpr static const int type_id = 10;
 };
 }  // namespace cpp2kdb

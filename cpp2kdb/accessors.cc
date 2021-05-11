@@ -1,6 +1,6 @@
 // Copyright (C) 2021, Chao Xu
 //
-// Part of cpp2kdb, which is released under BSD license. See LICENSE or full
+// Part of cpp2kdb, which is released under BSD license. See LICENSE for full
 // details.
 #include "cpp2kdb/accessors.h"
 

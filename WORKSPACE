@@ -1,3 +1,7 @@
+# Copyright (C) 2021, Chao Xu
+#
+# Part of cpp2kdb, which is released under BSD license. See LICENSE for full
+# details.
 workspace(name = "cpp2kdb")
 
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")

@@ -1,9 +1,14 @@
 // Copyright (C) 2021, Chao Xu
 //
-// Part of cpp2kdb, which is released under BSD license. See LICENSE or full
+// Part of cpp2kdb, which is released under BSD license. See LICENSE for full
 // details.
 #ifndef CPP2KDB_KDBWRAPPER_H__
 #define CPP2KDB_KDBWRAPPER_H__
+/// \file cpp2kdb/kdbwrapper.h
+/// Wrapping functions for k.h
+///
+/// Header file has no includes, and source file has no includes besides k.h.
+/// Wrapping functions defined in k.h
 
 /// Wrappers for kx/kdb+'s k.h
 namespace cpp2kdb {
@@ -89,6 +94,6 @@ void DecreaseReferenceCount(void* x);
 ///
 /// There are many restrictions on how memory (or threading) is used in kdb.
 /// Check with their documentation for more details.
-void* DescreaseReferenceCount(void* x);
+void* IncreaseReferenceCount(void* x);
 }  // namespace cpp2kdb
 #endif  // CPP2KDB_KDBWRAPPER_H__

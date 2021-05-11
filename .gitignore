@@ -37,4 +37,9 @@
 /bazel-out
 /bazel-cpp2kdb
 
+# Clang
 .clang_complete
+
+# Doxygen
+/html
+/latex
