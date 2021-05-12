@@ -68,6 +68,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">accessors.h File Reference</div>  </div>
@@ -78,6 +79,8 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="kdbwrapper_8h_source.html">cpp2kdb/kdbwrapper.h</a>&quot;</code><br />
 </div>
 <p><a href="accessors_8h_source.html">Go to the source code of this file.</a></p>
@@ -184,6 +187,47 @@ Namespaces</h2></td></tr>
 <tr class="memdesc:namespacecpp2kdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrappers for kx/kdb+'s k.h. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a3dfd3005393c93095dfc43b468a0485d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a3dfd3005393c93095dfc43b468a0485d"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a3dfd3005393c93095dfc43b468a0485d">cpp2kdb::IsCTypeMappedToQTypeId</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a3dfd3005393c93095dfc43b468a0485d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if C Type T is mapped to input_q_type_id.  <a href="namespacecpp2kdb.html#a3dfd3005393c93095dfc43b468a0485d">More...</a><br /></td></tr>
+<tr class="separator:a3dfd3005393c93095dfc43b468a0485d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1695384db16109695e7940908b40542"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ae1695384db16109695e7940908b40542">cpp2kdb::IsQTypeIdInt</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:ae1695384db16109695e7940908b40542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if input_q_type_id is mapped to int.  <a href="namespacecpp2kdb.html#ae1695384db16109695e7940908b40542">More...</a><br /></td></tr>
+<tr class="separator:ae1695384db16109695e7940908b40542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7415f884ee9a2a189351f232fffb4019"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a7415f884ee9a2a189351f232fffb4019">cpp2kdb::IsQTypeIdInt64</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a7415f884ee9a2a189351f232fffb4019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if input_q_type_id is mapped to std::int64_t.  <a href="namespacecpp2kdb.html#a7415f884ee9a2a189351f232fffb4019">More...</a><br /></td></tr>
+<tr class="separator:a7415f884ee9a2a189351f232fffb4019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbba086521bedfc1d0c725487fd50b7a"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#abbba086521bedfc1d0c725487fd50b7a">cpp2kdb::IsQTypeIdDouble</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:abbba086521bedfc1d0c725487fd50b7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if input_q_type_id is mapped to double.  <a href="namespacecpp2kdb.html#abbba086521bedfc1d0c725487fd50b7a">More...</a><br /></td></tr>
+<tr class="separator:abbba086521bedfc1d0c725487fd50b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a186de9ca433bde0c4e8a9802a3b9fe1c"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a186de9ca433bde0c4e8a9802a3b9fe1c">cpp2kdb::IsQTypeIdString</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a186de9ca433bde0c4e8a9802a3b9fe1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if input_q_type_id is mapped to std::string.  <a href="namespacecpp2kdb.html#a186de9ca433bde0c4e8a9802a3b9fe1c">More...</a><br /></td></tr>
+<tr class="separator:a186de9ca433bde0c4e8a9802a3b9fe1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d4ff41c5ebbdd806acc68caeb84acea"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a0d4ff41c5ebbdd806acc68caeb84acea"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a0d4ff41c5ebbdd806acc68caeb84acea">cpp2kdb::IsSameType</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a0d4ff41c5ebbdd806acc68caeb84acea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the type indicted by q_type_id is the same as T.  <a href="namespacecpp2kdb.html#a0d4ff41c5ebbdd806acc68caeb84acea">More...</a><br /></td></tr>
+<tr class="separator:a0d4ff41c5ebbdd806acc68caeb84acea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a368772eb8f1e297109573b78f23dc527"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a368772eb8f1e297109573b78f23dc527">cpp2kdb::IsError</a> (void *x)</td></tr>
+<tr class="memdesc:a368772eb8f1e297109573b78f23dc527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the value is error.  <a href="namespacecpp2kdb.html#a368772eb8f1e297109573b78f23dc527">More...</a><br /></td></tr>
+<tr class="separator:a368772eb8f1e297109573b78f23dc527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dd3b737dd5c6b20a38e49474c1c0147"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a0dd3b737dd5c6b20a38e49474c1c0147">cpp2kdb::IsAtomic</a> (void *x)</td></tr>
+<tr class="memdesc:a0dd3b737dd5c6b20a38e49474c1c0147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the value is atomic (a.k.a not a vector)  <a href="namespacecpp2kdb.html#a0dd3b737dd5c6b20a38e49474c1c0147">More...</a><br /></td></tr>
+<tr class="separator:a0dd3b737dd5c6b20a38e49474c1c0147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01fc48ba4a3e6f9980ba9291900e5c28"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a01fc48ba4a3e6f9980ba9291900e5c28">cpp2kdb::IsVector</a> (void *x)</td></tr>
+<tr class="memdesc:a01fc48ba4a3e6f9980ba9291900e5c28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the value is vector.  <a href="namespacecpp2kdb.html#a01fc48ba4a3e6f9980ba9291900e5c28">More...</a><br /></td></tr>
+<tr class="separator:a01fc48ba4a3e6f9980ba9291900e5c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad405a074020fff5c322c574f6c49dbd4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ad405a074020fff5c322c574f6c49dbd4">cpp2kdb::IsMixedVector</a> (void *x)</td></tr>
+<tr class="memdesc:ad405a074020fff5c322c574f6c49dbd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the value is a mixed vector.  <a href="namespacecpp2kdb.html#ad405a074020fff5c322c574f6c49dbd4">More...</a><br /></td></tr>
+<tr class="separator:ad405a074020fff5c322c574f6c49dbd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a097e8971b150f702dc314379d2fc226a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a097e8971b150f702dc314379d2fc226a">cpp2kdb::IsDict</a> (void *x)</td></tr>
+<tr class="memdesc:a097e8971b150f702dc314379d2fc226a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the value is a dictionary or keyed table.  <a href="namespacecpp2kdb.html#a097e8971b150f702dc314379d2fc226a">More...</a><br /></td></tr>
+<tr class="separator:a097e8971b150f702dc314379d2fc226a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19fa3c25fe83b53370ae4c5ca128dcae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a19fa3c25fe83b53370ae4c5ca128dcae">cpp2kdb::IsTable</a> (void *x)</td></tr>
+<tr class="memdesc:a19fa3c25fe83b53370ae4c5ca128dcae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the value is a table.  <a href="namespacecpp2kdb.html#a19fa3c25fe83b53370ae4c5ca128dcae">More...</a><br /></td></tr>
+<tr class="separator:a19fa3c25fe83b53370ae4c5ca128dcae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ac81c614f2ea0ff77a0ef63d585cb1b93"><td class="memTemplParams" colspan="2"><a id="ac81c614f2ea0ff77a0ef63d585cb1b93"></a>
@@ -231,6 +275,14 @@ constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class=
 constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a7e44ca884849bd8c2dae53d96dc12fcd">cpp2kdb::q_dict_type_id</a> = 99</td></tr>
 <tr class="memdesc:a7e44ca884849bd8c2dae53d96dc12fcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for Dict/Keyed Table. <br /></td></tr>
 <tr class="separator:a7e44ca884849bd8c2dae53d96dc12fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52fcbe1d9bf3692a498cff56079c44d0"><td class="memItemLeft" align="right" valign="top"><a id="a52fcbe1d9bf3692a498cff56079c44d0"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a52fcbe1d9bf3692a498cff56079c44d0">cpp2kdb::q_error_type_id</a> = -128</td></tr>
+<tr class="memdesc:a52fcbe1d9bf3692a498cff56079c44d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for error state. <br /></td></tr>
+<tr class="separator:a52fcbe1d9bf3692a498cff56079c44d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7241274166a8b55a62491d3a2840e09"><td class="memItemLeft" align="right" valign="top"><a id="ae7241274166a8b55a62491d3a2840e09"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ae7241274166a8b55a62491d3a2840e09">cpp2kdb::q_mixed_type_id</a> = 0</td></tr>
+<tr class="memdesc:ae7241274166a8b55a62491d3a2840e09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for mixed type list. <br /></td></tr>
+<tr class="separator:ae7241274166a8b55a62491d3a2840e09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Convenient accessor functions using kdbwrappers.h. </p>
