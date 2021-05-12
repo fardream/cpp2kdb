@@ -9,6 +9,8 @@
 
 #include <cstdint>
 #include <string>
+#include <type_traits>
+#include <vector>
 
 // Including the wrapper
 #include "cpp2kdb/kdbwrapper.h"
@@ -268,5 +270,122 @@ constexpr const int q_table_type_id = 98;
 
 /// Q Type Id for Dict/Keyed Table
 constexpr const int q_dict_type_id = 99;
+
+/// Q Type Id for error state
+constexpr const int q_error_type_id = -128;
+
+/// Q Type Id for mixed type list
+constexpr const int q_mixed_type_id = 0;
+
+/// Check if C Type T is mapped to input_q_type_id
+template <typename T>
+constexpr bool IsCTypeMappedToQTypeId(
+    /// Input Q Type Id
+    int input_q_type_id) {
+  return
+      // Not Error
+      input_q_type_id != q_error_type_id &&
+      // mapped id is input_q_type_id
+      q_type_id<T> ==
+          (input_q_type_id > 0 ? input_q_type_id : -input_q_type_id);
+}
+/// Check if input_q_type_id is mapped to int
+///
+/// This works both for atomic types and vector types.
+constexpr bool IsQTypeIdInt(
+    /// Input Q Type Id
+    int input_q_type_id) {
+  // If the input is negative, make it positive.
+  int positive_q_type_id =
+      input_q_type_id > 0 ? input_q_type_id : -input_q_type_id;
+  // Iterate through all the possible types, including int.
+  return positive_q_type_id == q_time_type_id ||
+         positive_q_type_id == q_month_type_id ||
+         positive_q_type_id == q_date_type_id ||
+         positive_q_type_id == q_minute_type_id ||
+         positive_q_type_id == q_second_type_id ||
+         positive_q_type_id == q_type_id<int>;
+}
+
+/// Check if input_q_type_id is mapped to std::int64_t
+constexpr bool IsQTypeIdInt64(
+    /// Input Q Type Id
+    int input_q_type_id) {
+  // If the input is negative, make it positive.
+  int positive_q_type_id =
+      input_q_type_id > 0 ? input_q_type_id : -input_q_type_id;
+  return positive_q_type_id == q_timestamp_type_id ||
+         positive_q_type_id == q_timespan_type_id ||
+         positive_q_type_id == q_type_id<std::int64_t>;
+}
+
+/// Check if input_q_type_id is mapped to double
+constexpr bool IsQTypeIdDouble(
+    /// Input Q Type Id
+    int input_q_type_id) {
+  // If the input is negative, make it positive.
+  int positive_q_type_id =
+      input_q_type_id > 0 ? input_q_type_id : -input_q_type_id;
+  return positive_q_type_id == q_datetime_type_id ||
+         positive_q_type_id == q_type_id<double>;
+}
+
+/// Check if input_q_type_id is mapped to std::string.
+/// char list, which is type 10, is also a std;;string, but not -10, which is a
+/// single char.
+constexpr bool IsQTypeIdString(
+    /// Input Q Type Id
+    int input_q_type_id) {
+  return input_q_type_id == q_type_id<std::string> ||
+         input_q_type_id == q_type_id<char>;
+}
+
+/// Check if the type indicted by q_type_id is the same as T
+/// \tparam T input c_type to check.
+template <typename T>
+constexpr bool IsSameType(
+    /// Input q type id
+    int input_q_type_id) {
+  return  // Check if C type is mapped directly to this id.
+      IsCTypeMappedToQTypeId<T>(input_q_type_id) ||
+      // Check if the ID is an int
+      (std::is_same_v<int, T> && IsQTypeIdInt(input_q_type_id)) ||
+      // Check if the ID is a std::int64_t
+      (std::is_same_v<std::int64_t, T> && IsQTypeIdInt64(input_q_type_id)) ||
+      // Check if the ID is a double
+      (std::is_same_v<double, T> && IsQTypeIdDouble(input_q_type_id)) ||
+      // Check if the ID is a string
+      (std::is_same_v<std::string, T> && IsQTypeIdString(input_q_type_id));
+}
+
+/// Check if the value is error.
+///
+/// In reality, this checks for if type_id == -128
+bool IsError(void* x);
+
+/// Check if the value is atomic (a.k.a not a vector)
+///
+/// This checks if the type_id is negative and not an error.
+bool IsAtomic(void* x);
+
+/// Check if the value is vector
+///
+/// This checks if the type_id is >= 0 and not dictionary or table
+bool IsVector(void* x);
+
+/// Check if the value is a mixed vector
+///
+/// This checks if the type_id is 0.
+bool IsMixedVector(void* x);
+
+/// Check if the value is a dictionary or keyed table.
+///
+/// This checks if the type_id is 99
+bool IsDict(void* x);
+
+/// Check if the value is a table
+///
+/// This checks if the type_id is 98
+bool IsTable(void* x);
 }  // namespace cpp2kdb
 #endif  // CPP2KDB_ACCESSORS_H__

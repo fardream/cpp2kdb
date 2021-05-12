@@ -8,9 +8,11 @@
 #include <string>
 
 namespace {
+std::string SayYesOrNo(bool yes) { return yes ? "Yes" : "No"; }
+
 template <typename L, typename R>
 std::string IsSameType() {
-  return std::is_same_v<L, R> ? "Yes" : "No";
+  return SayYesOrNo(std::is_same_v<L, R>);
 }
 
 void TestTypes(int connection) {
@@ -18,7 +20,7 @@ void TestTypes(int connection) {
   std::cout << "Type of UID is "
             << cpp2kdb::q_type_id<cpp2kdb::QGuid> << std::endl;
   std::cout << "Type of byte is "
-            << cpp2kdb::q_type_id<std::uint8_t> << std::endl;
+            << cpp2kdb::q_type_id<std::int8_t> << std::endl;
   std::cout << "Type of string is "
             << cpp2kdb::q_type_id<std::string> << std::endl;
   std::cout << "Type ID 1 is mapped to bool? "
@@ -35,10 +37,63 @@ void TestTypes(int connection) {
             << std::endl;
 }
 
+void TestIsSame() {
+  std::cout << "Is bool 1? " << SayYesOrNo(cpp2kdb::IsSameType<bool>(1))
+            << std::endl;
+  std::cout << "Is GUID 2? "
+            << SayYesOrNo(cpp2kdb::IsSameType<cpp2kdb::QGuid>(2)) << std::endl;
+  std::cout << "Is std::int8_t 4? "
+            << SayYesOrNo(cpp2kdb::IsSameType<std::int8_t>(4)) << std::endl;
+  std::cout << "Is short 5? "
+            << SayYesOrNo(cpp2kdb::IsSameType<short>(5))  // NOLINT
+            << std::endl;
+  std::cout << "Is int 6? " << SayYesOrNo(cpp2kdb::IsSameType<int>(6))
+            << std::endl;
+  std::cout << "Is std::int64_t 7? "
+            << SayYesOrNo(cpp2kdb::IsSameType<std::int64_t>(7)) << std::endl;
+  std::cout << "Is float 8? "
+            << SayYesOrNo(cpp2kdb::IsSameType<float>(8))  // NOLINT
+            << std::endl;
+  std::cout << "Is double 9? " << SayYesOrNo(cpp2kdb::IsSameType<double>(9))
+            << std::endl;
+  std::cout << "Is char 10? " << SayYesOrNo(cpp2kdb::IsSameType<char>(10))
+            << std::endl;
+  std::cout << "Is std::string 11? "
+            << SayYesOrNo(cpp2kdb::IsSameType<std::string>(11)) << std::endl;
+  std::cout << "Is std::string 10? "
+            << SayYesOrNo(cpp2kdb::IsSameType<std::string>(10)) << std::endl;
+  std::cout << "Is std::string -10? "
+            << SayYesOrNo(cpp2kdb::IsSameType<std::string>(-10)) << std::endl;
+  std::cout << "Is std::int64_t 12? "
+            << SayYesOrNo(cpp2kdb::IsSameType<std::int64_t>(12)) << std::endl;
+  std::cout << "Is int 13? " << SayYesOrNo(cpp2kdb::IsSameType<int>(13))
+            << std::endl;
+  std::cout << "Is int 14? " << SayYesOrNo(cpp2kdb::IsSameType<int>(14))
+            << std::endl;
+  std::cout << "Is double 15? " << SayYesOrNo(cpp2kdb::IsSameType<double>(15))
+            << std::endl;
+  std::cout << "Is std::int64_t 16? "
+            << SayYesOrNo(cpp2kdb::IsSameType<std::int64_t>(16)) << std::endl;
+  std::cout << "Is int 17? " << SayYesOrNo(cpp2kdb::IsSameType<int>(17))
+            << std::endl;
+  std::cout << "Is int 18? " << SayYesOrNo(cpp2kdb::IsSameType<int>(18))
+            << std::endl;
+  std::cout << "Is int 19? " << SayYesOrNo(cpp2kdb::IsSameType<int>(19))
+            << std::endl;
+}
+
 void TestDictionary(int connection) {
   std::string query =
       "(`Arthur`Dent; `Zaphod`Beeblebrox; `Ford`Prefect)! 100 42 150";
   void* result = cpp2kdb::RunQueryOnConnection(connection, query.c_str());
+  std::cout << "Is value error? " << SayYesOrNo(cpp2kdb::IsError(result))
+            << std::endl;
+  std::cout << "Is value atomic? " << SayYesOrNo(cpp2kdb::IsAtomic(result))
+            << std::endl;
+  std::cout << "Is value dict? " << SayYesOrNo(cpp2kdb::IsDict(result))
+            << std::endl;
+  std::cout << "Is value table? " << SayYesOrNo(cpp2kdb::IsTable(result))
+            << std::endl;
   std::cout << "Result type is " << cpp2kdb::GetTypeId(result) << std::endl;
   std::cout << "Size of the list is "
             << cpp2kdb::GetNumberOfVectorElements(result) << std::endl;
@@ -65,6 +120,9 @@ int main(int argc, char** argv) {
   }
 
   TestTypes(connection);
+  std::cout << "----------------------" << std::endl;
+  TestIsSame();
+  std::cout << "----------------------" << std::endl;
   TestDictionary(connection);
   cpp2kdb::CloseConnection(connection);
   return 0;
