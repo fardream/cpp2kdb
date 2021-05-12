@@ -18,7 +18,10 @@ cc_library(
 cc_library(
     name = "accessors",
     srcs = ["accessors.cc"],
-    hdrs = ["accessors.h"],
+    hdrs = [
+        "accessors.h",
+        "q_types.h",
+    ],
     deps = [":kdbwrapper"],
 )
 

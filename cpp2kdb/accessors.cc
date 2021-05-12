@@ -5,22 +5,43 @@
 #include "cpp2kdb/accessors.h"
 
 namespace cpp2kdb {
-bool IsError(void* x) { return GetTypeId(x) == q_error_type_id; }
+bool IsError(void* x) { return GetQTypeId(x) == q_error_type_id; }
 
-bool IsAtomic(void* x) {
-  int type_id = GetTypeId(x);
-  return type_id < 0 && type_id != q_error_type_id;
+bool IsAtomic(void* x) { return IsQTypeIdError(GetQTypeId(x)); }
+
+bool IsVector(void* x) { return IsQTypeIdVector(GetQTypeId(x)); }
+
+bool IsMixedVector(void* x) { return IsQTypeIdMixedVector(GetQTypeId(x)); }
+
+bool IsDict(void* x) { return IsQTypeIdDict(GetQTypeId(x)); }
+
+bool IsTable(void* x) { return IsQTypeIdTable(GetQTypeId(x)); }
+
+DataRetrievalResult CheckVectorForVectorDataRetrieval(void* input_vector) {
+  // First, check if this pointer is null
+  if (input_vector == nullptr) {
+    return DataRetrievalResult::NullInput;
+  }
+  // Check if this is an error
+  if (IsError(input_vector)) {
+    return DataRetrievalResult::ValueError;
+  }
+  // Check if this is a vector
+  if (!IsVector(input_vector)) {
+    return DataRetrievalResult::NotVector;
+  }
+
+  // Return OK.
+  return DataRetrievalResult::Ok;
 }
 
-bool IsVector(void* x) {
-  int type_id = GetTypeId(x);
-  return type_id >= 0 && type_id != q_dict_type_id &&
-         type_id != q_table_type_id;
+DataRetrievalResult RetrieveVectorData(void* input_vector,
+                                       std::string* output_vector) {
+  return DataRetrievalResult::Ok;
 }
 
-bool IsMixedVector(void* x) { return GetTypeId(x) == q_mixed_type_id; }
-
-bool IsDict(void* x) { return GetTypeId(x) == q_dict_type_id; }
-
-bool IsTable(void* x) { return GetTypeId(x) == q_table_type_id; }
+DataRetrievalResult RetrieveVectorData(void* input_vector,
+                                       void** output_vector) {
+  return DataRetrievalResult::Ok;
+}
 }  // namespace cpp2kdb

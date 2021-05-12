@@ -16,7 +16,7 @@ void TestAtomValue(int connection) {
   void* x =
       cpp2kdb::RunQueryOnConnection(connection, expression_to_evaluate.c_str());
 
-  std::cout << "Type ID is " << cpp2kdb::GetTypeId(x) << std::endl;
+  std::cout << "Type ID is " << cpp2kdb::GetQTypeId(x) << std::endl;
 
   std::cout << "Cast to int64_t, the value is "
             << *(static_cast<int64_t*>(cpp2kdb::GetValue(x))) << std::endl;
@@ -31,7 +31,7 @@ void TestVectorValue(int connection) {
   void* v =
       cpp2kdb::RunQueryOnConnection(connection, expression_for_vector.c_str());
 
-  std::cout << "Type ID is " << cpp2kdb::GetTypeId(v) << std::endl;
+  std::cout << "Type ID is " << cpp2kdb::GetQTypeId(v) << std::endl;
 
   int64_t n = cpp2kdb::GetNumberOfVectorElements(v);
   std::cout << "Number of elements is " << n << std::endl;
@@ -48,7 +48,7 @@ void TestSymbol(int connection) {
   std::string expression = "`IBM";
   std::cout << "Now evaluate to a symbol: " << expression << std::endl;
   void* v = cpp2kdb::RunQueryOnConnection(connection, expression.c_str());
-  std::cout << "Type ID is " << cpp2kdb::GetTypeId(v) << std::endl;
+  std::cout << "Type ID is " << cpp2kdb::GetQTypeId(v) << std::endl;
   std::cout << std::string(*static_cast<char**>(cpp2kdb::GetValue(v)))
             << std::endl;
   cpp2kdb::DecreaseReferenceCount(v);

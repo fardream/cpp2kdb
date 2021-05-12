@@ -57,7 +57,7 @@ void* RunQueryOnConnection(
 ///
 /// Get the type id of the data contained in this k.
 /// It returns the ->t of the struct.
-int GetTypeId(void* x);
+int GetQTypeId(void* x);
 
 /// Get Pointer to the atom value
 ///

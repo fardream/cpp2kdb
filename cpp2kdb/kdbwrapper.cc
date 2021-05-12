@@ -39,7 +39,7 @@ void* RunQueryOnConnection(int connection, const char* query) {
   return k(connection, ConvertToNonConst(query), 0);
 }
 
-int GetTypeId(void* x) {
+int GetQTypeId(void* x) {
   // Get K.
   return GetK(x)->t;
 }
