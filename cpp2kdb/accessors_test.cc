@@ -34,6 +34,25 @@ void TestTypes(int connection) {
             << IsSameType<cpp2kdb::CTypeForQTypeId<11>::CType, std::string>()
             << std::endl;
 }
+
+void TestDictionary(int connection) {
+  std::string query =
+      "(`Arthur`Dent; `Zaphod`Beeblebrox; `Ford`Prefect)! 100 42 150";
+  void* result = cpp2kdb::RunQueryOnConnection(connection, query.c_str());
+  std::cout << "Result type is " << cpp2kdb::GetTypeId(result) << std::endl;
+  std::cout << "Size of the list is "
+            << cpp2kdb::GetNumberOfVectorElements(result) << std::endl;
+  void** key_value_list = static_cast<void**>(cpp2kdb::GetVector(result));
+  std::cout << "Key's type is " << cpp2kdb::GetTypeId(key_value_list[0])
+            << " and the count is "
+            << cpp2kdb::GetNumberOfVectorElements(key_value_list[0])
+            << std::endl;
+  std::cout << "Value's type is " << cpp2kdb::GetTypeId(key_value_list[1])
+            << " and the count is "
+            << cpp2kdb::GetNumberOfVectorElements(key_value_list[1])
+            << std::endl;
+  cpp2kdb::DecreaseReferenceCount(result);
+}
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -46,7 +65,7 @@ int main(int argc, char** argv) {
   }
 
   TestTypes(connection);
-
+  TestDictionary(connection);
   cpp2kdb::CloseConnection(connection);
   return 0;
 }

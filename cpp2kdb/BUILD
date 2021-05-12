@@ -12,7 +12,7 @@ cc_library(
     name = "kdbwrapper",
     srcs = ["kdbwrapper.cc"],
     hdrs = ["kdbwrapper.h"],
-    deps = ["@kdb//:kdb_l64_unsecured"],
+    deps = ["@kdb"],
 )
 
 cc_library(
