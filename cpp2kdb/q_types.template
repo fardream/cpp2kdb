@@ -9,9 +9,6 @@
 #include <cstdint>
 #include <string>
 
-// Including the wrapper
-#include "cpp2kdb/kdbwrapper.h"
-
 namespace cpp2kdb {
 /// Define the 16 byte GUID type (or U) in KDB.
 struct QGuid {
