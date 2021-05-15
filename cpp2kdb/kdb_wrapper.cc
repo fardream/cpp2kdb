@@ -2,12 +2,12 @@
 //
 // Part of cpp2kdb, which is released under BSD license. See LICENSE for full
 // details.
-#include "cpp2kdb/kdbwrapper.h"
+#include "cpp2kdb/kdb_wrapper.h"
 
 // Include k.h...
 #include <k.h>
 
-namespace cpp2kdb {
+namespace cpp2kdb::kdb_wrapper {
 namespace {
 /// reinterpret_cast a pointer into K
 ///
@@ -67,4 +67,4 @@ void* IncreaseReferenceCount(void* x) {
   // Call r1.
   return r1(GetK(x));
 }
-}  // namespace cpp2kdb
+}  // namespace cpp2kdb::kdb_wrapper

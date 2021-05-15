@@ -49,3 +49,6 @@
 
 # VS Code
 /.vscode
+
+# build q_types.h
+/build_q_types.sh

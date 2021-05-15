@@ -29,11 +29,11 @@ The **most unfanthomable** ones are from [line 99 to line 106](https://github.co
 
 ## Wrapping `k.h` without exposing `k.h`
 
-To prevent `k.h` from breaking other codes, this wrapper only includes `k.h` in one single file, [`kdbwrapper.cc`](cpp2kdb/kdbwrapper.cc), and expose most of kdb's functionalities through functions with common types. [`kdbwrapper.h`](cpp2kdb/kdbwrapper.h) and [`kdbwrapper.cc`](cpp2kdb/kdbwrapper.cc) don't have any other includes, and the chance that `k.h` would break other code will be minimized.
+To prevent `k.h` from breaking other codes, this wrapper only includes `k.h` in one single file, [`kdb_wrapper.cc`](cpp2kdb/kdb_wrapper.cc), and expose most of kdb's functionalities through functions with common types. [`kdb_wrapper.h`](cpp2kdb/kdb_wrapper.h) and [`kdb_wrapper.cc`](cpp2kdb/kdb_wrapper.cc) don't have any other includes, and the chance that `k.h` would break other code will be minimized.
 
 Most importantly, the `K` type, which is a pointer to `k0` struct, will be `void*`.
 
-[`accessors.h`](cpp2kdb/accessors.h) provides convenient accessor functions by calling functions in [`kdbwrapper.h`](cpp2kdb/kdbwrapper.h).
+[`accessors.h`](cpp2kdb/accessors.h) provides convenient accessor functions by calling functions in [`kdb_wrapper.h`](cpp2kdb/kdb_wrapper.h).
 
 ## Building the code
 
@@ -48,7 +48,7 @@ q -p 5000
 Now the example can be run by
 
 ```shell
-bazel run //cpp2kdb:kdbwrapper_test
+bazel run //cpp2kdb:kdb_wrapper_test
 ```
 
 ## Non-bazel build

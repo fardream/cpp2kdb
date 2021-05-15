@@ -1,7 +1,6 @@
-
-types:
+# Arithmetic types are handled separate from others
+arithmetic_types:
   - { c_type: bool, q_type: boolean, q_type_id: 1, q_type_define: KB, extra_comment: "Note in q, this is supposed to be mapped to char." }
-  - { c_type: QGuid, q_type: guid, q_type_id: 2, q_type_define: UU }
   - { c_type: "std::int8_t", q_type: byte, q_type_id: 4, q_type_define: KG }
   - { c_type: short, q_type: short, q_type_id: 5, q_type_define: KH, nolint: Yes }
   - { c_type: int, q_type: int, q_type_id: 6, q_type_define: KH }
@@ -9,7 +8,6 @@ types:
   - { c_type: float, q_type: real, q_type_id: 8, q_type_define: KE, extra_comment: "Note q type float is double in C type." }
   - { c_type: double, q_type: float, q_type_id: 9, q_type_define: KF, extra_comment: "Note q type float is double in C type." }
   - { c_type: char, q_type: char, q_type_id: 10, q_type_define: KC }
-  - { c_type: "std::string", q_type: symbol, q_type_id: 11, q_type_define: KS }
   - { mapped_c_type: "std::int64_t", q_type: timestamp, q_type_id: 12, q_type_define: KP }
   - { mapped_c_type: "int", q_type: month, q_type_id: 13, q_type_define: KM }
   - { mapped_c_type: "int", q_type: date, q_type_id: 14, q_type_define: KD }
@@ -18,3 +16,6 @@ types:
   - { mapped_c_type: "int", q_type: minute, q_type_id: 17, q_type_define: KU }
   - { mapped_c_type: "int", q_type: second, q_type_id: 18, q_type_define: KV }
   - { mapped_c_type: "int", q_type: time, q_type_id: 19, q_type_define: KT }
+nonarithmetic_types:
+  - { c_type: QGuid, q_type: guid, q_type_id: 2, q_type_define: UU }
+  - { c_type: "std::string", q_type: symbol, q_type_id: 11, q_type_define: KS }

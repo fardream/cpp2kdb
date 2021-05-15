@@ -4,18 +4,30 @@
 // details.
 #include "cpp2kdb/accessors.h"
 
-namespace cpp2kdb {
-bool IsError(void* x) { return GetQTypeId(x) == q_error_type_id; }
+namespace cpp2kdb::accessors {
+bool IsError(void* x) {
+  return kdb_wrapper::GetQTypeId(x) == q_types::q_error_type_id;
+}
 
-bool IsAtomic(void* x) { return IsQTypeIdError(GetQTypeId(x)); }
+bool IsAtomic(void* x) {
+  return q_types::IsQTypeIdError(kdb_wrapper::GetQTypeId(x));
+}
 
-bool IsVector(void* x) { return IsQTypeIdVector(GetQTypeId(x)); }
+bool IsVector(void* x) {
+  return q_types::IsQTypeIdVector(kdb_wrapper::GetQTypeId(x));
+}
 
-bool IsMixedVector(void* x) { return IsQTypeIdMixedVector(GetQTypeId(x)); }
+bool IsMixedVector(void* x) {
+  return q_types::IsQTypeIdMixedVector(kdb_wrapper::GetQTypeId(x));
+}
 
-bool IsDict(void* x) { return IsQTypeIdDict(GetQTypeId(x)); }
+bool IsDict(void* x) {
+  return q_types::IsQTypeIdDict(kdb_wrapper::GetQTypeId(x));
+}
 
-bool IsTable(void* x) { return IsQTypeIdTable(GetQTypeId(x)); }
+bool IsTable(void* x) {
+  return q_types::IsQTypeIdTable(kdb_wrapper::GetQTypeId(x));
+}
 
 DataRetrievalResult CheckVectorForVectorDataRetrieval(void* input_vector) {
   // First, check if this pointer is null
@@ -44,4 +56,4 @@ DataRetrievalResult RetrieveVectorData(void* input_vector,
                                        void** output_vector) {
   return DataRetrievalResult::Ok;
 }
-}  // namespace cpp2kdb
+}  // namespace cpp2kdb::accessors

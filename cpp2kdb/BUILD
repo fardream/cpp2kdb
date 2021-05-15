@@ -3,15 +3,15 @@
 # Part of cpp2kdb, which is released under BSD license. See LICENSE for full
 # details.
 cc_binary(
-    name = "kdbwrapper_test",
-    srcs = ["kdbwrapper_test.cc"],
-    deps = [":kdbwrapper"],
+    name = "kdb_wrapper_test",
+    srcs = ["kdb_wrapper_test.cc"],
+    deps = [":kdb_wrapper"],
 )
 
 cc_library(
-    name = "kdbwrapper",
-    srcs = ["kdbwrapper.cc"],
-    hdrs = ["kdbwrapper.h"],
+    name = "kdb_wrapper",
+    srcs = ["kdb_wrapper.cc"],
+    hdrs = ["kdb_wrapper.h"],
     deps = ["@kdb"],
 )
 
@@ -22,7 +22,7 @@ cc_library(
         "accessors.h",
         "q_types.h",
     ],
-    deps = [":kdbwrapper"],
+    deps = [":kdb_wrapper"],
 )
 
 cc_binary(

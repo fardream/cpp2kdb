@@ -6,10 +6,12 @@
 #define CPP2KDB_Q_TYPES_H__
 /// \file cpp2kdb/q_types.h
 
+#include <algorithm>
 #include <cstdint>
 #include <string>
 
-namespace cpp2kdb {
+/// Supporting Type Conversion Between C Type and Pointer Defined by Q Type Id
+namespace cpp2kdb::q_types {
 /// Define the 16 byte GUID type (or U) in KDB.
 struct QGuid {
   /// Value of the GUID. 4 4-byte int's should be 16 bytes.
@@ -38,7 +40,7 @@ class CTypeForQTypeIdHolder {};
 template <int NQTypeId>
 using CTypeForQTypeId = typename CTypeForQTypeIdHolder<NQTypeId>::CType;
 
-/////////////////////////////////////////////////////////////////////////
+/***************************************************************************/
 /// Q Type Id for C Type bool, which is boolean in q, KB=1
 /// Note in q, this is supposed to be mapped to char.
 template <>
@@ -58,27 +60,7 @@ class CTypeForQTypeIdHolder<q_boolean_type_id> {
   typedef bool CType;
 };
 
-/////////////////////////////////////////////////////////////////////////
-/// Q Type Id for C Type QGuid, which is guid in q, UU=2
-///
-template <>
-class QTypeId<QGuid> {
- public:
-  /// Q Type guid, UU=2
-  constexpr static const int type_id = 2;
-};
-/// Helper variable for Q Type Id for guid
-constexpr const int q_guid_type_id = q_type_id<QGuid>;
-
-/// C Type for Q Type guid with UU=2
-template <>
-class CTypeForQTypeIdHolder<q_guid_type_id> {
- public:
-  /// Map guid/2/UU to QGuid
-  typedef QGuid CType;
-};
-
-/////////////////////////////////////////////////////////////////////////
+/***************************************************************************/
 /// Q Type Id for C Type std::int8_t, which is byte in q, KG=4
 ///
 template <>
@@ -98,27 +80,27 @@ class CTypeForQTypeIdHolder<q_byte_type_id> {
   typedef std::int8_t CType;
 };
 
-/////////////////////////////////////////////////////////////////////////
+/***************************************************************************/
 /// Q Type Id for C Type short, which is short in q, KH=5
 ///
 template <>
 class QTypeId<short> {  // NOLINT
  public:
   /// Q Type short, KH=5
-  constexpr static const int type_id = 5;  // NOLINT
+  constexpr static const int type_id = 5;
 };
 /// Helper variable for Q Type Id for short
-constexpr const int q_short_type_id = q_type_id<short>;
+constexpr const int q_short_type_id = q_type_id<short>;  // NOLINT
 
 /// C Type for Q Type short with KH=5
 template <>
 class CTypeForQTypeIdHolder<q_short_type_id> {
  public:
   /// Map short/5/KH to short
-  typedef short CType;
+  typedef short CType;  // NOLINT
 };
 
-/////////////////////////////////////////////////////////////////////////
+/***************************************************************************/
 /// Q Type Id for C Type int, which is int in q, KH=6
 ///
 template <>
@@ -138,7 +120,7 @@ class CTypeForQTypeIdHolder<q_int_type_id> {
   typedef int CType;
 };
 
-/////////////////////////////////////////////////////////////////////////
+/***************************************************************************/
 /// Q Type Id for C Type std::int64_t, which is long in q, KJ=7
 ///
 template <>
@@ -158,7 +140,7 @@ class CTypeForQTypeIdHolder<q_long_type_id> {
   typedef std::int64_t CType;
 };
 
-/////////////////////////////////////////////////////////////////////////
+/***************************************************************************/
 /// Q Type Id for C Type float, which is real in q, KE=8
 /// Note q type float is double in C type.
 template <>
@@ -178,7 +160,7 @@ class CTypeForQTypeIdHolder<q_real_type_id> {
   typedef float CType;
 };
 
-/////////////////////////////////////////////////////////////////////////
+/***************************************************************************/
 /// Q Type Id for C Type double, which is float in q, KF=9
 /// Note q type float is double in C type.
 template <>
@@ -198,7 +180,7 @@ class CTypeForQTypeIdHolder<q_float_type_id> {
   typedef double CType;
 };
 
-/////////////////////////////////////////////////////////////////////////
+/***************************************************************************/
 /// Q Type Id for C Type char, which is char in q, KC=10
 ///
 template <>
@@ -218,7 +200,131 @@ class CTypeForQTypeIdHolder<q_char_type_id> {
   typedef char CType;
 };
 
-/////////////////////////////////////////////////////////////////////////
+/***************************************************************************/
+// No C Type is mapped to q type timestamp
+/// Helper variable for Q Type Id for timestamp
+constexpr const int q_timestamp_type_id = 12;
+
+/// C Type for Q Type timestamp with KP=12
+template <>
+class CTypeForQTypeIdHolder<q_timestamp_type_id> {
+ public:
+  /// Map timestamp/12/KP to std::int64_t
+  typedef std::int64_t CType;
+};
+
+/***************************************************************************/
+// No C Type is mapped to q type month
+/// Helper variable for Q Type Id for month
+constexpr const int q_month_type_id = 13;
+
+/// C Type for Q Type month with KM=13
+template <>
+class CTypeForQTypeIdHolder<q_month_type_id> {
+ public:
+  /// Map month/13/KM to int
+  typedef int CType;
+};
+
+/***************************************************************************/
+// No C Type is mapped to q type date
+/// Helper variable for Q Type Id for date
+constexpr const int q_date_type_id = 14;
+
+/// C Type for Q Type date with KD=14
+template <>
+class CTypeForQTypeIdHolder<q_date_type_id> {
+ public:
+  /// Map date/14/KD to int
+  typedef int CType;
+};
+
+/***************************************************************************/
+// No C Type is mapped to q type datetime
+/// Helper variable for Q Type Id for datetime
+constexpr const int q_datetime_type_id = 15;
+
+/// C Type for Q Type datetime with KZ=15
+template <>
+class CTypeForQTypeIdHolder<q_datetime_type_id> {
+ public:
+  /// Map datetime/15/KZ to double
+  typedef double CType;
+};
+
+/***************************************************************************/
+// No C Type is mapped to q type timespan
+/// Helper variable for Q Type Id for timespan
+constexpr const int q_timespan_type_id = 16;
+
+/// C Type for Q Type timespan with KN=16
+template <>
+class CTypeForQTypeIdHolder<q_timespan_type_id> {
+ public:
+  /// Map timespan/16/KN to std::int64_t
+  typedef std::int64_t CType;
+};
+
+/***************************************************************************/
+// No C Type is mapped to q type minute
+/// Helper variable for Q Type Id for minute
+constexpr const int q_minute_type_id = 17;
+
+/// C Type for Q Type minute with KU=17
+template <>
+class CTypeForQTypeIdHolder<q_minute_type_id> {
+ public:
+  /// Map minute/17/KU to int
+  typedef int CType;
+};
+
+/***************************************************************************/
+// No C Type is mapped to q type second
+/// Helper variable for Q Type Id for second
+constexpr const int q_second_type_id = 18;
+
+/// C Type for Q Type second with KV=18
+template <>
+class CTypeForQTypeIdHolder<q_second_type_id> {
+ public:
+  /// Map second/18/KV to int
+  typedef int CType;
+};
+
+/***************************************************************************/
+// No C Type is mapped to q type time
+/// Helper variable for Q Type Id for time
+constexpr const int q_time_type_id = 19;
+
+/// C Type for Q Type time with KT=19
+template <>
+class CTypeForQTypeIdHolder<q_time_type_id> {
+ public:
+  /// Map time/19/KT to int
+  typedef int CType;
+};
+
+/***************************************************************************/
+/// Q Type Id for C Type QGuid, which is guid in q, UU=2
+///
+template <>
+class QTypeId<QGuid> {
+ public:
+  /// Q Type guid, UU=2
+  constexpr static const int type_id = 2;
+};
+/// Helper variable for Q Type Id for guid
+constexpr const int q_guid_type_id = q_type_id<QGuid>;
+
+/// C Type for Q Type guid with UU=2
+template <>
+class CTypeForQTypeIdHolder<q_guid_type_id> {
+ public:
+  /// Map guid/2/UU to QGuid
+  typedef QGuid CType;
+};
+
+/***************************************************************************/
 /// Q Type Id for C Type std::string, which is symbol in q, KS=11
 ///
 template <>
@@ -238,110 +344,6 @@ class CTypeForQTypeIdHolder<q_symbol_type_id> {
   typedef std::string CType;
 };
 
-/////////////////////////////////////////////////////////////////////////
-// No C Type is mapped to q type timestamp
-/// Helper variable for Q Type Id for timestamp
-constexpr const int q_timestamp_type_id = 12;
-
-/// C Type for Q Type timestamp with KP=12
-template <>
-class CTypeForQTypeIdHolder<q_timestamp_type_id> {
- public:
-  /// Map timestamp/12/KP to std::int64_t
-  typedef std::int64_t CType;
-};
-
-/////////////////////////////////////////////////////////////////////////
-// No C Type is mapped to q type month
-/// Helper variable for Q Type Id for month
-constexpr const int q_month_type_id = 13;
-
-/// C Type for Q Type month with KM=13
-template <>
-class CTypeForQTypeIdHolder<q_month_type_id> {
- public:
-  /// Map month/13/KM to int
-  typedef int CType;
-};
-
-/////////////////////////////////////////////////////////////////////////
-// No C Type is mapped to q type date
-/// Helper variable for Q Type Id for date
-constexpr const int q_date_type_id = 14;
-
-/// C Type for Q Type date with KD=14
-template <>
-class CTypeForQTypeIdHolder<q_date_type_id> {
- public:
-  /// Map date/14/KD to int
-  typedef int CType;
-};
-
-/////////////////////////////////////////////////////////////////////////
-// No C Type is mapped to q type datetime
-/// Helper variable for Q Type Id for datetime
-constexpr const int q_datetime_type_id = 15;
-
-/// C Type for Q Type datetime with KZ=15
-template <>
-class CTypeForQTypeIdHolder<q_datetime_type_id> {
- public:
-  /// Map datetime/15/KZ to double
-  typedef double CType;
-};
-
-/////////////////////////////////////////////////////////////////////////
-// No C Type is mapped to q type timespan
-/// Helper variable for Q Type Id for timespan
-constexpr const int q_timespan_type_id = 16;
-
-/// C Type for Q Type timespan with KN=16
-template <>
-class CTypeForQTypeIdHolder<q_timespan_type_id> {
- public:
-  /// Map timespan/16/KN to std::int64_t
-  typedef std::int64_t CType;
-};
-
-/////////////////////////////////////////////////////////////////////////
-// No C Type is mapped to q type minute
-/// Helper variable for Q Type Id for minute
-constexpr const int q_minute_type_id = 17;
-
-/// C Type for Q Type minute with KU=17
-template <>
-class CTypeForQTypeIdHolder<q_minute_type_id> {
- public:
-  /// Map minute/17/KU to int
-  typedef int CType;
-};
-
-/////////////////////////////////////////////////////////////////////////
-// No C Type is mapped to q type second
-/// Helper variable for Q Type Id for second
-constexpr const int q_second_type_id = 18;
-
-/// C Type for Q Type second with KV=18
-template <>
-class CTypeForQTypeIdHolder<q_second_type_id> {
- public:
-  /// Map second/18/KV to int
-  typedef int CType;
-};
-
-/////////////////////////////////////////////////////////////////////////
-// No C Type is mapped to q type time
-/// Helper variable for Q Type Id for time
-constexpr const int q_time_type_id = 19;
-
-/// C Type for Q Type time with KT=19
-template <>
-class CTypeForQTypeIdHolder<q_time_type_id> {
- public:
-  /// Map time/19/KT to int
-  typedef int CType;
-};
-
 /// Q Type Id for Table/Flip
 constexpr const int q_table_type_id = 98;
 
@@ -353,5 +355,244 @@ constexpr const int q_error_type_id = -128;
 
 /// Q Type Id for mixed type list
 constexpr const int q_mixed_type_id = 0;
-}  // namespace cpp2kdb
+
+/***************************************************************************/
+/// Check if C Type T is mapped to input_q_type_id
+template <typename T>
+constexpr bool IsCTypeMappedToQTypeId(
+    /// Input Q Type Id
+    int input_q_type_id) {
+  return
+      // Not Error
+      input_q_type_id != q_error_type_id &&
+      // mapped id is input_q_type_id
+      q_type_id<T> ==
+          (input_q_type_id > 0 ? input_q_type_id : -input_q_type_id);
+}
+
+/// Check if input_q_type_id is mapped to int
+///
+/// This works both for atomic types and vector types.
+constexpr bool IsQTypeIdInt(
+    /// Input Q Type Id
+    int input_q_type_id) {
+  // If the input is negative, make it positive.
+  int positive_q_type_id =
+      input_q_type_id > 0 ? input_q_type_id : -input_q_type_id;
+  // Iterate through all the possible types, including int.
+  return positive_q_type_id == q_time_type_id ||
+         positive_q_type_id == q_month_type_id ||
+         positive_q_type_id == q_date_type_id ||
+         positive_q_type_id == q_minute_type_id ||
+         positive_q_type_id == q_second_type_id ||
+         positive_q_type_id == q_type_id<int>;
+}
+
+/// Check if input_q_type_id is mapped to std::int64_t
+constexpr bool IsQTypeIdInt64(
+    /// Input Q Type Id
+    int input_q_type_id) {
+  // If the input is negative, make it positive.
+  int positive_q_type_id =
+      input_q_type_id > 0 ? input_q_type_id : -input_q_type_id;
+  return positive_q_type_id == q_timestamp_type_id ||
+         positive_q_type_id == q_timespan_type_id ||
+         positive_q_type_id == q_type_id<std::int64_t>;
+}
+
+/// Check if input_q_type_id is mapped to double
+constexpr bool IsQTypeIdDouble(
+    /// Input Q Type Id
+    int input_q_type_id) {
+  // If the input is negative, make it positive.
+  int positive_q_type_id =
+      input_q_type_id > 0 ? input_q_type_id : -input_q_type_id;
+  return positive_q_type_id == q_datetime_type_id ||
+         positive_q_type_id == q_type_id<double>;
+}
+
+/// Check if input_q_type_id is mapped to std::string.
+/// char list, which is type 10, is also a std;;string, but not -10, which is a
+/// single char.
+constexpr bool IsQTypeIdString(
+    /// Input Q Type Id
+    int input_q_type_id) {
+  return input_q_type_id == q_type_id<std::string> ||
+         input_q_type_id == q_type_id<char>;
+}
+
+/// Check if the type indicted by q_type_id is the same as T
+/// \tparam T input c_type to check.
+template <typename T>
+constexpr bool IsSameType(
+    /// Input q type id
+    int input_q_type_id) {
+  return  // Check if C type is mapped directly to this id.
+      IsCTypeMappedToQTypeId<T>(input_q_type_id) ||
+      // Check if the ID is an int
+      (std::is_same_v<int, T> && IsQTypeIdInt(input_q_type_id)) ||
+      // Check if the ID is a std::int64_t
+      (std::is_same_v<std::int64_t, T> && IsQTypeIdInt64(input_q_type_id)) ||
+      // Check if the ID is a double
+      (std::is_same_v<double, T> && IsQTypeIdDouble(input_q_type_id)) ||
+      // Check if the ID is a string
+      (std::is_same_v<std::string, T> && IsQTypeIdString(input_q_type_id));
+}
+
+/// Check if the q type id is -128/error.
+constexpr bool IsQTypeIdError(int input_q_type_id) {
+  return input_q_type_id == q_error_type_id;
+}
+
+/// Check if the q type id is atomic
+constexpr bool IsQTypeIdAtomic(int input_q_type_id) {
+  return input_q_type_id < 0 && !IsQTypeIdError(input_q_type_id);
+}
+
+/// Check if the q type id is table/98.
+/// Note this does **NOT** check if it's keyed table.
+constexpr bool IsQTypeIdTable(int input_q_type_id) {
+  return input_q_type_id == q_table_type_id;
+}
+
+/// Check if the q type id is dict.
+/// Note the actual may be a keyed table, which is also a dict.
+constexpr bool IsQTypeIdDict(int input_q_type_id) {
+  return input_q_type_id == q_dict_type_id;
+}
+
+/// Check if the q type id is a vector
+///
+/// This checks if q type id is >= 0, not a table or dict
+constexpr bool IsQTypeIdVector(int input_q_type_id) {
+  return input_q_type_id >= 0 && !IsQTypeIdTable(input_q_type_id) &&
+         !IsQTypeIdDict(input_q_type_id);
+}
+
+/// Check if the q type id is a mixed vector.
+///
+/// Thsi checks if the q type id is 0.
+constexpr bool IsQTypeIdMixedVector(int input_q_type_id) {
+  return input_q_type_id == q_mixed_type_id;
+}
+/***************************************************************************/
+/// Copy from a void* indicated by q_type_id into a T*.
+///
+/// \tparam T Desired type for output.
+/// \returns A bool indicate if copy is performed.
+template <typename T>
+bool TryCopyDataByQTypeIdAndType(
+    /// Q Type Id of void*
+    int input_q_type_id,
+    /// Number of elements to copy.
+    std::size_t number_of_elements,
+    /// Input data, which is the vector data from K, not the pointer
+    /// to K itself.
+    void* input_data,
+    /// Output data.
+    T* output_data) {
+  // Switch case on input_q_type_id
+  switch (input_q_type_id) {
+    case q_boolean_type_id: {
+      CTypeForQTypeId<q_boolean_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_boolean_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_byte_type_id: {
+      CTypeForQTypeId<q_byte_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_byte_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_short_type_id: {
+      CTypeForQTypeId<q_short_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_short_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_int_type_id: {
+      CTypeForQTypeId<q_int_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_int_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_long_type_id: {
+      CTypeForQTypeId<q_long_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_long_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_real_type_id: {
+      CTypeForQTypeId<q_real_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_real_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_float_type_id: {
+      CTypeForQTypeId<q_float_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_float_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_char_type_id: {
+      CTypeForQTypeId<q_char_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_char_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_timestamp_type_id: {
+      CTypeForQTypeId<q_timestamp_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_timestamp_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_month_type_id: {
+      CTypeForQTypeId<q_month_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_month_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_date_type_id: {
+      CTypeForQTypeId<q_date_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_date_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_datetime_type_id: {
+      CTypeForQTypeId<q_datetime_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_datetime_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_timespan_type_id: {
+      CTypeForQTypeId<q_timespan_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_timespan_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_minute_type_id: {
+      CTypeForQTypeId<q_minute_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_minute_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_second_type_id: {
+      CTypeForQTypeId<q_second_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_second_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    case q_time_type_id: {
+      CTypeForQTypeId<q_time_type_id>* typed_input_data =
+          reinterpret_cast<CTypeForQTypeId<q_time_type_id>*>(input_data);
+      std::copy_n(typed_input_data, number_of_elements, output_data);
+      return true;
+    }
+    default: {
+      return false;
+    }
+  }
+}
+}  // namespace cpp2kdb::q_types
 #endif  // CPP2KDB_Q_TYPES_H__
