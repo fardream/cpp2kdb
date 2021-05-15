@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['openconnection_167',['OpenConnection',['../namespacecpp2kdb.html#a07b26c43efe8b238deff428db80b94cc',1,'cpp2kdb']]]
+  ['openconnection_168',['OpenConnection',['../namespacecpp2kdb_1_1kdb__wrapper.html#ad3123655e0b1cfa68154698da01f25b3',1,'cpp2kdb::kdb_wrapper']]]
 ];

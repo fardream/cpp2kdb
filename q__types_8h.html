@@ -69,221 +69,270 @@ $(function() {
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">q_types.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;cstdint&gt;</code><br />
+<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;cstdint&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 </div>
 <p><a href="q__types_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcpp2kdb_1_1_q_guid.html">cpp2kdb::QGuid</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the 16 byte GUID type (or U) in KDB.  <a href="structcpp2kdb_1_1_q_guid.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcpp2kdb_1_1q__types_1_1_q_guid.html">cpp2kdb::q_types::QGuid</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the 16 byte GUID type (or U) in KDB.  <a href="structcpp2kdb_1_1q__types_1_1_q_guid.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id.html">cpp2kdb::QTypeId&lt; T &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getting the Q Type Id of the given C++ Type.  <a href="classcpp2kdb_1_1_q_type_id.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id.html">cpp2kdb::q_types::QTypeId&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getting the Q Type Id of the given C++ Type.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder.html">cpp2kdb::CTypeForQTypeIdHolder&lt; NQTypeId &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getting the C Type from the given Q Type ID.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; NQTypeId &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getting the C Type from the given Q Type ID.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01bool_01_4.html">cpp2kdb::QTypeId&lt; bool &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type bool, which is boolean in q, KB=1 Note in q, this is supposed to be mapped to char.  <a href="classcpp2kdb_1_1_q_type_id_3_01bool_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01bool_01_4.html">cpp2kdb::q_types::QTypeId&lt; bool &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type bool, which is boolean in q, KB=1 Note in q, this is supposed to be mapped to char.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01bool_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__boolean__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_boolean_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type boolean with KB=1.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__boolean__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__boolean__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_boolean_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type boolean with KB=1.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__boolean__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01_q_guid_01_4.html">cpp2kdb::QTypeId&lt; QGuid &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type <a class="el" href="structcpp2kdb_1_1_q_guid.html" title="Define the 16 byte GUID type (or U) in KDB.">QGuid</a>, which is guid in q, UU=2.  <a href="classcpp2kdb_1_1_q_type_id_3_01_q_guid_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01std_1_1int8__t_01_4.html">cpp2kdb::q_types::QTypeId&lt; std::int8_t &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type std::int8_t, which is byte in q, KG=4.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01std_1_1int8__t_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__guid__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_guid_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type guid with UU=2.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__guid__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__byte__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_byte_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type byte with KG=4.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__byte__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01std_1_1int8__t_01_4.html">cpp2kdb::QTypeId&lt; std::int8_t &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type std::int8_t, which is byte in q, KG=4.  <a href="classcpp2kdb_1_1_q_type_id_3_01std_1_1int8__t_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01short_01_4.html">cpp2kdb::q_types::QTypeId&lt; short &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type short, which is short in q, KH=5.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01short_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__byte__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_byte_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type byte with KG=4.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__byte__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__short__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_short_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type short with KH=5.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__short__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01short_01_4.html">cpp2kdb::QTypeId&lt; short &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type short, which is short in q, KH=5.  <a href="classcpp2kdb_1_1_q_type_id_3_01short_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01int_01_4.html">cpp2kdb::q_types::QTypeId&lt; int &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type int, which is int in q, KH=6.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01int_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__short__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_short_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type short with KH=5.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__short__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__int__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_int_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type int with KH=6.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__int__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01int_01_4.html">cpp2kdb::QTypeId&lt; int &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type int, which is int in q, KH=6.  <a href="classcpp2kdb_1_1_q_type_id_3_01int_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01std_1_1int64__t_01_4.html">cpp2kdb::q_types::QTypeId&lt; std::int64_t &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type std::int64_t, which is long in q, KJ=7.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01std_1_1int64__t_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__int__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_int_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type int with KH=6.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__int__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__long__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_long_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type long with KJ=7.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__long__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01std_1_1int64__t_01_4.html">cpp2kdb::QTypeId&lt; std::int64_t &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type std::int64_t, which is long in q, KJ=7.  <a href="classcpp2kdb_1_1_q_type_id_3_01std_1_1int64__t_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01float_01_4.html">cpp2kdb::q_types::QTypeId&lt; float &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type float, which is real in q, KE=8 Note q type float is double in C type.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01float_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__long__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_long_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type long with KJ=7.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__long__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__real__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_real_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type real with KE=8.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__real__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01float_01_4.html">cpp2kdb::QTypeId&lt; float &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type float, which is real in q, KE=8 Note q type float is double in C type.  <a href="classcpp2kdb_1_1_q_type_id_3_01float_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01double_01_4.html">cpp2kdb::q_types::QTypeId&lt; double &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type double, which is float in q, KF=9 Note q type float is double in C type.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01double_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__real__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_real_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type real with KE=8.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__real__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__float__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_float_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type float with KF=9.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__float__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01double_01_4.html">cpp2kdb::QTypeId&lt; double &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type double, which is float in q, KF=9 Note q type float is double in C type.  <a href="classcpp2kdb_1_1_q_type_id_3_01double_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01char_01_4.html">cpp2kdb::q_types::QTypeId&lt; char &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type char, which is char in q, KC=10.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01char_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__float__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_float_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type float with KF=9.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__float__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__char__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_char_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type char with KC=10.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__char__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01char_01_4.html">cpp2kdb::QTypeId&lt; char &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type char, which is char in q, KC=10.  <a href="classcpp2kdb_1_1_q_type_id_3_01char_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__timestamp__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_timestamp_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type timestamp with KP=12.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__timestamp__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__char__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_char_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type char with KC=10.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__char__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__month__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_month_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type month with KM=13.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__month__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_q_type_id_3_01std_1_1string_01_4.html">cpp2kdb::QTypeId&lt; std::string &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type std::string, which is symbol in q, KS=11.  <a href="classcpp2kdb_1_1_q_type_id_3_01std_1_1string_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__date__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_date_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type date with KD=14.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__date__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__symbol__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_symbol_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type symbol with KS=11.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__symbol__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__datetime__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_datetime_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type datetime with KZ=15.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__datetime__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__timestamp__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_timestamp_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type timestamp with KP=12.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__timestamp__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__timespan__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_timespan_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type timespan with KN=16.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__timespan__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__month__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_month_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type month with KM=13.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__month__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__minute__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_minute_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type minute with KU=17.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__minute__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__date__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_date_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type date with KD=14.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__date__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__second__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_second_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type second with KV=18.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__second__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__datetime__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_datetime_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type datetime with KZ=15.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__datetime__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__time__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_time_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type time with KT=19.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__time__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__timespan__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_timespan_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type timespan with KN=16.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__timespan__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01_q_guid_01_4.html">cpp2kdb::q_types::QTypeId&lt; QGuid &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type <a class="el" href="structcpp2kdb_1_1q__types_1_1_q_guid.html" title="Define the 16 byte GUID type (or U) in KDB.">QGuid</a>, which is guid in q, UU=2.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01_q_guid_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__minute__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_minute_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type minute with KU=17.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__minute__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__guid__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_guid_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type guid with UU=2.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__guid__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__second__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_second_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type second with KV=18.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__second__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01std_1_1string_01_4.html">cpp2kdb::q_types::QTypeId&lt; std::string &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for C Type std::string, which is symbol in q, KS=11.  <a href="classcpp2kdb_1_1q__types_1_1_q_type_id_3_01std_1_1string_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__time__type__id_01_4.html">cpp2kdb::CTypeForQTypeIdHolder&lt; q_time_type_id &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type time with KT=19.  <a href="classcpp2kdb_1_1_c_type_for_q_type_id_holder_3_01q__time__type__id_01_4.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__symbol__type__id_01_4.html">cpp2kdb::q_types::CTypeForQTypeIdHolder&lt; q_symbol_type_id &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for Q Type symbol with KS=11.  <a href="classcpp2kdb_1_1q__types_1_1_c_type_for_q_type_id_holder_3_01q__symbol__type__id_01_4.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespacecpp2kdb"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html">cpp2kdb</a></td></tr>
-<tr class="memdesc:namespacecpp2kdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrappers for kx/kdb+'s k.h. <br /></td></tr>
+<tr class="memitem:namespacecpp2kdb_1_1q__types"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html">cpp2kdb::q_types</a></td></tr>
+<tr class="memdesc:namespacecpp2kdb_1_1q__types"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supporting Type Conversion Between C Type and Pointer Defined by Q Type Id. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ae08312d04833187734e97df96f157c77"><td class="memTemplParams" colspan="2"><a id="ae08312d04833187734e97df96f157c77"></a>
+<tr class="memitem:ad444a2ccd4cd4a67c13ac986b3ffcd0c"><td class="memTemplParams" colspan="2"><a id="ad444a2ccd4cd4a67c13ac986b3ffcd0c"></a>
 template&lt;int NQTypeId&gt; </td></tr>
-<tr class="memitem:ae08312d04833187734e97df96f157c77"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ae08312d04833187734e97df96f157c77">cpp2kdb::CTypeForQTypeId</a> = typename CTypeForQTypeIdHolder&lt; NQTypeId &gt;::CType</td></tr>
-<tr class="memdesc:ae08312d04833187734e97df96f157c77"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for the corresponding Q Type Id. <br /></td></tr>
-<tr class="separator:ae08312d04833187734e97df96f157c77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad444a2ccd4cd4a67c13ac986b3ffcd0c"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#ad444a2ccd4cd4a67c13ac986b3ffcd0c">cpp2kdb::q_types::CTypeForQTypeId</a> = typename CTypeForQTypeIdHolder&lt; NQTypeId &gt;::CType</td></tr>
+<tr class="memdesc:ad444a2ccd4cd4a67c13ac986b3ffcd0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">C Type for the corresponding Q Type Id. <br /></td></tr>
+<tr class="separator:ad444a2ccd4cd4a67c13ac986b3ffcd0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a3737b4a6e1e690e0b70b1675732c0782"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a3737b4a6e1e690e0b70b1675732c0782"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a3737b4a6e1e690e0b70b1675732c0782">cpp2kdb::q_types::IsCTypeMappedToQTypeId</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a3737b4a6e1e690e0b70b1675732c0782"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if C Type T is mapped to input_q_type_id.  <a href="namespacecpp2kdb_1_1q__types.html#a3737b4a6e1e690e0b70b1675732c0782">More...</a><br /></td></tr>
+<tr class="separator:a3737b4a6e1e690e0b70b1675732c0782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af48635c5ffe5997836d5fe7ce969f251"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#af48635c5ffe5997836d5fe7ce969f251">cpp2kdb::q_types::IsQTypeIdInt</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:af48635c5ffe5997836d5fe7ce969f251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if input_q_type_id is mapped to int.  <a href="namespacecpp2kdb_1_1q__types.html#af48635c5ffe5997836d5fe7ce969f251">More...</a><br /></td></tr>
+<tr class="separator:af48635c5ffe5997836d5fe7ce969f251"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bee45635dbb9263864d59d77226c510"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a6bee45635dbb9263864d59d77226c510">cpp2kdb::q_types::IsQTypeIdInt64</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a6bee45635dbb9263864d59d77226c510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if input_q_type_id is mapped to std::int64_t.  <a href="namespacecpp2kdb_1_1q__types.html#a6bee45635dbb9263864d59d77226c510">More...</a><br /></td></tr>
+<tr class="separator:a6bee45635dbb9263864d59d77226c510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d025c4f552acb97d64a8d0d5b6ecfb8"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a3d025c4f552acb97d64a8d0d5b6ecfb8">cpp2kdb::q_types::IsQTypeIdDouble</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a3d025c4f552acb97d64a8d0d5b6ecfb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if input_q_type_id is mapped to double.  <a href="namespacecpp2kdb_1_1q__types.html#a3d025c4f552acb97d64a8d0d5b6ecfb8">More...</a><br /></td></tr>
+<tr class="separator:a3d025c4f552acb97d64a8d0d5b6ecfb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1860bcef7b3163c88ab7cc2fb66b3389"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a1860bcef7b3163c88ab7cc2fb66b3389">cpp2kdb::q_types::IsQTypeIdString</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a1860bcef7b3163c88ab7cc2fb66b3389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if input_q_type_id is mapped to std::string.  <a href="namespacecpp2kdb_1_1q__types.html#a1860bcef7b3163c88ab7cc2fb66b3389">More...</a><br /></td></tr>
+<tr class="separator:a1860bcef7b3163c88ab7cc2fb66b3389"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a3c001dd91f891c668c641af807fd2b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a8a3c001dd91f891c668c641af807fd2b"><td class="memTemplItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a8a3c001dd91f891c668c641af807fd2b">cpp2kdb::q_types::IsSameType</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a8a3c001dd91f891c668c641af807fd2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the type indicted by q_type_id is the same as T.  <a href="namespacecpp2kdb_1_1q__types.html#a8a3c001dd91f891c668c641af807fd2b">More...</a><br /></td></tr>
+<tr class="separator:a8a3c001dd91f891c668c641af807fd2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12a9185c7467fda65ae5b46d6c07caa0"><td class="memItemLeft" align="right" valign="top"><a id="a12a9185c7467fda65ae5b46d6c07caa0"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a12a9185c7467fda65ae5b46d6c07caa0">cpp2kdb::q_types::IsQTypeIdError</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a12a9185c7467fda65ae5b46d6c07caa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the q type id is -128/error. <br /></td></tr>
+<tr class="separator:a12a9185c7467fda65ae5b46d6c07caa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b227aa851d7a7eca91dead4f600fed8"><td class="memItemLeft" align="right" valign="top"><a id="a1b227aa851d7a7eca91dead4f600fed8"></a>
+constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a1b227aa851d7a7eca91dead4f600fed8">cpp2kdb::q_types::IsQTypeIdAtomic</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a1b227aa851d7a7eca91dead4f600fed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the q type id is atomic. <br /></td></tr>
+<tr class="separator:a1b227aa851d7a7eca91dead4f600fed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a614767ad86868fdf0ee961c11d18d052"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a614767ad86868fdf0ee961c11d18d052">cpp2kdb::q_types::IsQTypeIdTable</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a614767ad86868fdf0ee961c11d18d052"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the q type id is table/98.  <a href="namespacecpp2kdb_1_1q__types.html#a614767ad86868fdf0ee961c11d18d052">More...</a><br /></td></tr>
+<tr class="separator:a614767ad86868fdf0ee961c11d18d052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cd8cb14a35d03fa2dd60acb67cd286d"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a5cd8cb14a35d03fa2dd60acb67cd286d">cpp2kdb::q_types::IsQTypeIdDict</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a5cd8cb14a35d03fa2dd60acb67cd286d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the q type id is dict.  <a href="namespacecpp2kdb_1_1q__types.html#a5cd8cb14a35d03fa2dd60acb67cd286d">More...</a><br /></td></tr>
+<tr class="separator:a5cd8cb14a35d03fa2dd60acb67cd286d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b4b5799191235e5ea65d34fefb9c097"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a5b4b5799191235e5ea65d34fefb9c097">cpp2kdb::q_types::IsQTypeIdVector</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a5b4b5799191235e5ea65d34fefb9c097"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the q type id is a vector.  <a href="namespacecpp2kdb_1_1q__types.html#a5b4b5799191235e5ea65d34fefb9c097">More...</a><br /></td></tr>
+<tr class="separator:a5b4b5799191235e5ea65d34fefb9c097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a099d2a68fcc36684ddd19ed7d656ca62"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a099d2a68fcc36684ddd19ed7d656ca62">cpp2kdb::q_types::IsQTypeIdMixedVector</a> (int input_q_type_id)</td></tr>
+<tr class="memdesc:a099d2a68fcc36684ddd19ed7d656ca62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the q type id is a mixed vector.  <a href="namespacecpp2kdb_1_1q__types.html#a099d2a68fcc36684ddd19ed7d656ca62">More...</a><br /></td></tr>
+<tr class="separator:a099d2a68fcc36684ddd19ed7d656ca62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb0af782ceaa66065be7bc1877aaa456"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:adb0af782ceaa66065be7bc1877aaa456"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#adb0af782ceaa66065be7bc1877aaa456">cpp2kdb::q_types::TryCopyDataByQTypeIdAndType</a> (int input_q_type_id, std::size_t number_of_elements, void *input_data, T *output_data)</td></tr>
+<tr class="memdesc:adb0af782ceaa66065be7bc1877aaa456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy from a void* indicated by q_type_id into a T*.  <a href="namespacecpp2kdb_1_1q__types.html#adb0af782ceaa66065be7bc1877aaa456">More...</a><br /></td></tr>
+<tr class="separator:adb0af782ceaa66065be7bc1877aaa456"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac81c614f2ea0ff77a0ef63d585cb1b93"><td class="memTemplParams" colspan="2"><a id="ac81c614f2ea0ff77a0ef63d585cb1b93"></a>
+<tr class="memitem:ae5a03c0a28f89d4f40bb81edd410acaa"><td class="memTemplParams" colspan="2"><a id="ae5a03c0a28f89d4f40bb81edd410acaa"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ac81c614f2ea0ff77a0ef63d585cb1b93"><td class="memTemplItemLeft" align="right" valign="top">constexpr const int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ac81c614f2ea0ff77a0ef63d585cb1b93">cpp2kdb::q_type_id</a> = QTypeId&lt;T&gt;::type_id</td></tr>
-<tr class="memdesc:ac81c614f2ea0ff77a0ef63d585cb1b93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for q_type_id. <br /></td></tr>
-<tr class="separator:ac81c614f2ea0ff77a0ef63d585cb1b93"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a985598493d0e72bf86625103294b77c0"><td class="memItemLeft" align="right" valign="top"><a id="a985598493d0e72bf86625103294b77c0"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a985598493d0e72bf86625103294b77c0">cpp2kdb::q_boolean_type_id</a> = q_type_id&lt;bool&gt;</td></tr>
-<tr class="memdesc:a985598493d0e72bf86625103294b77c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for boolean. <br /></td></tr>
-<tr class="separator:a985598493d0e72bf86625103294b77c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a669c3f5cd0c255d039eacf59a44d9feb"><td class="memItemLeft" align="right" valign="top"><a id="a669c3f5cd0c255d039eacf59a44d9feb"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a669c3f5cd0c255d039eacf59a44d9feb">cpp2kdb::q_guid_type_id</a> = q_type_id&lt;QGuid&gt;</td></tr>
-<tr class="memdesc:a669c3f5cd0c255d039eacf59a44d9feb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for guid. <br /></td></tr>
-<tr class="separator:a669c3f5cd0c255d039eacf59a44d9feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb22fc01f94ea2958f26fe68d76e9704"><td class="memItemLeft" align="right" valign="top"><a id="adb22fc01f94ea2958f26fe68d76e9704"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#adb22fc01f94ea2958f26fe68d76e9704">cpp2kdb::q_byte_type_id</a> = q_type_id&lt;std::int8_t&gt;</td></tr>
-<tr class="memdesc:adb22fc01f94ea2958f26fe68d76e9704"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for byte. <br /></td></tr>
-<tr class="separator:adb22fc01f94ea2958f26fe68d76e9704"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad711fdfff5e2d5ca8ed541983b0cfb33"><td class="memItemLeft" align="right" valign="top"><a id="ad711fdfff5e2d5ca8ed541983b0cfb33"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ad711fdfff5e2d5ca8ed541983b0cfb33">cpp2kdb::q_short_type_id</a> = q_type_id&lt;short&gt;</td></tr>
-<tr class="memdesc:ad711fdfff5e2d5ca8ed541983b0cfb33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for short. <br /></td></tr>
-<tr class="separator:ad711fdfff5e2d5ca8ed541983b0cfb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9153a23bd6ab70ed6c6f6a132e51aed6"><td class="memItemLeft" align="right" valign="top"><a id="a9153a23bd6ab70ed6c6f6a132e51aed6"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a9153a23bd6ab70ed6c6f6a132e51aed6">cpp2kdb::q_int_type_id</a> = q_type_id&lt;int&gt;</td></tr>
-<tr class="memdesc:a9153a23bd6ab70ed6c6f6a132e51aed6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for int. <br /></td></tr>
-<tr class="separator:a9153a23bd6ab70ed6c6f6a132e51aed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77ee54884a4c1b4b8a0e0a7f72335aac"><td class="memItemLeft" align="right" valign="top"><a id="a77ee54884a4c1b4b8a0e0a7f72335aac"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a77ee54884a4c1b4b8a0e0a7f72335aac">cpp2kdb::q_long_type_id</a> = q_type_id&lt;std::int64_t&gt;</td></tr>
-<tr class="memdesc:a77ee54884a4c1b4b8a0e0a7f72335aac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for long. <br /></td></tr>
-<tr class="separator:a77ee54884a4c1b4b8a0e0a7f72335aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e43c26d9c5a959ef4c5e077ad5f30aa"><td class="memItemLeft" align="right" valign="top"><a id="a7e43c26d9c5a959ef4c5e077ad5f30aa"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a7e43c26d9c5a959ef4c5e077ad5f30aa">cpp2kdb::q_real_type_id</a> = q_type_id&lt;float&gt;</td></tr>
-<tr class="memdesc:a7e43c26d9c5a959ef4c5e077ad5f30aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for real. <br /></td></tr>
-<tr class="separator:a7e43c26d9c5a959ef4c5e077ad5f30aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4f927228d6ad9587a1fa47fc2158b06"><td class="memItemLeft" align="right" valign="top"><a id="ad4f927228d6ad9587a1fa47fc2158b06"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ad4f927228d6ad9587a1fa47fc2158b06">cpp2kdb::q_float_type_id</a> = q_type_id&lt;double&gt;</td></tr>
-<tr class="memdesc:ad4f927228d6ad9587a1fa47fc2158b06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for float. <br /></td></tr>
-<tr class="separator:ad4f927228d6ad9587a1fa47fc2158b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dfdff133a3985eff6f12843931db941"><td class="memItemLeft" align="right" valign="top"><a id="a9dfdff133a3985eff6f12843931db941"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a9dfdff133a3985eff6f12843931db941">cpp2kdb::q_char_type_id</a> = q_type_id&lt;char&gt;</td></tr>
-<tr class="memdesc:a9dfdff133a3985eff6f12843931db941"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for char. <br /></td></tr>
-<tr class="separator:a9dfdff133a3985eff6f12843931db941"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04847697d9e6696f814dcc36a869c258"><td class="memItemLeft" align="right" valign="top"><a id="a04847697d9e6696f814dcc36a869c258"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a04847697d9e6696f814dcc36a869c258">cpp2kdb::q_symbol_type_id</a> = q_type_id&lt;std::string&gt;</td></tr>
-<tr class="memdesc:a04847697d9e6696f814dcc36a869c258"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for symbol. <br /></td></tr>
-<tr class="separator:a04847697d9e6696f814dcc36a869c258"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3680e5bc53a513d55898f88d3dfdb834"><td class="memItemLeft" align="right" valign="top"><a id="a3680e5bc53a513d55898f88d3dfdb834"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a3680e5bc53a513d55898f88d3dfdb834">cpp2kdb::q_timestamp_type_id</a> = 12</td></tr>
-<tr class="memdesc:a3680e5bc53a513d55898f88d3dfdb834"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for timestamp. <br /></td></tr>
-<tr class="separator:a3680e5bc53a513d55898f88d3dfdb834"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1764b617aed7dde4faeb560db929be8"><td class="memItemLeft" align="right" valign="top"><a id="ad1764b617aed7dde4faeb560db929be8"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ad1764b617aed7dde4faeb560db929be8">cpp2kdb::q_month_type_id</a> = 13</td></tr>
-<tr class="memdesc:ad1764b617aed7dde4faeb560db929be8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for month. <br /></td></tr>
-<tr class="separator:ad1764b617aed7dde4faeb560db929be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2612027c7a02088ba2fae7cc69804e5c"><td class="memItemLeft" align="right" valign="top"><a id="a2612027c7a02088ba2fae7cc69804e5c"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a2612027c7a02088ba2fae7cc69804e5c">cpp2kdb::q_date_type_id</a> = 14</td></tr>
-<tr class="memdesc:a2612027c7a02088ba2fae7cc69804e5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for date. <br /></td></tr>
-<tr class="separator:a2612027c7a02088ba2fae7cc69804e5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32f7412cfb62cd37dbf290da802d57ba"><td class="memItemLeft" align="right" valign="top"><a id="a32f7412cfb62cd37dbf290da802d57ba"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a32f7412cfb62cd37dbf290da802d57ba">cpp2kdb::q_datetime_type_id</a> = 15</td></tr>
-<tr class="memdesc:a32f7412cfb62cd37dbf290da802d57ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for datetime. <br /></td></tr>
-<tr class="separator:a32f7412cfb62cd37dbf290da802d57ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0af75c070b8599d7ac180158998e4ff9"><td class="memItemLeft" align="right" valign="top"><a id="a0af75c070b8599d7ac180158998e4ff9"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a0af75c070b8599d7ac180158998e4ff9">cpp2kdb::q_timespan_type_id</a> = 16</td></tr>
-<tr class="memdesc:a0af75c070b8599d7ac180158998e4ff9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for timespan. <br /></td></tr>
-<tr class="separator:a0af75c070b8599d7ac180158998e4ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3884b76c9752db42effa73abea053daf"><td class="memItemLeft" align="right" valign="top"><a id="a3884b76c9752db42effa73abea053daf"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a3884b76c9752db42effa73abea053daf">cpp2kdb::q_minute_type_id</a> = 17</td></tr>
-<tr class="memdesc:a3884b76c9752db42effa73abea053daf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for minute. <br /></td></tr>
-<tr class="separator:a3884b76c9752db42effa73abea053daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a614b58e8d2c51f6cc7a684489dfc1450"><td class="memItemLeft" align="right" valign="top"><a id="a614b58e8d2c51f6cc7a684489dfc1450"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a614b58e8d2c51f6cc7a684489dfc1450">cpp2kdb::q_second_type_id</a> = 18</td></tr>
-<tr class="memdesc:a614b58e8d2c51f6cc7a684489dfc1450"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for second. <br /></td></tr>
-<tr class="separator:a614b58e8d2c51f6cc7a684489dfc1450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e1f534aa9a916187af29aa60cd02712"><td class="memItemLeft" align="right" valign="top"><a id="a1e1f534aa9a916187af29aa60cd02712"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a1e1f534aa9a916187af29aa60cd02712">cpp2kdb::q_time_type_id</a> = 19</td></tr>
-<tr class="memdesc:a1e1f534aa9a916187af29aa60cd02712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for time. <br /></td></tr>
-<tr class="separator:a1e1f534aa9a916187af29aa60cd02712"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7e4ab286b680ba0e8bf5be7d050ec42"><td class="memItemLeft" align="right" valign="top"><a id="ad7e4ab286b680ba0e8bf5be7d050ec42"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ad7e4ab286b680ba0e8bf5be7d050ec42">cpp2kdb::q_table_type_id</a> = 98</td></tr>
-<tr class="memdesc:ad7e4ab286b680ba0e8bf5be7d050ec42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for Table/Flip. <br /></td></tr>
-<tr class="separator:ad7e4ab286b680ba0e8bf5be7d050ec42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e44ca884849bd8c2dae53d96dc12fcd"><td class="memItemLeft" align="right" valign="top"><a id="a7e44ca884849bd8c2dae53d96dc12fcd"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a7e44ca884849bd8c2dae53d96dc12fcd">cpp2kdb::q_dict_type_id</a> = 99</td></tr>
-<tr class="memdesc:a7e44ca884849bd8c2dae53d96dc12fcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for Dict/Keyed Table. <br /></td></tr>
-<tr class="separator:a7e44ca884849bd8c2dae53d96dc12fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52fcbe1d9bf3692a498cff56079c44d0"><td class="memItemLeft" align="right" valign="top"><a id="a52fcbe1d9bf3692a498cff56079c44d0"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#a52fcbe1d9bf3692a498cff56079c44d0">cpp2kdb::q_error_type_id</a> = -128</td></tr>
-<tr class="memdesc:a52fcbe1d9bf3692a498cff56079c44d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for error state. <br /></td></tr>
-<tr class="separator:a52fcbe1d9bf3692a498cff56079c44d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7241274166a8b55a62491d3a2840e09"><td class="memItemLeft" align="right" valign="top"><a id="ae7241274166a8b55a62491d3a2840e09"></a>
-constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb.html#ae7241274166a8b55a62491d3a2840e09">cpp2kdb::q_mixed_type_id</a> = 0</td></tr>
-<tr class="memdesc:ae7241274166a8b55a62491d3a2840e09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for mixed type list. <br /></td></tr>
-<tr class="separator:ae7241274166a8b55a62491d3a2840e09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5a03c0a28f89d4f40bb81edd410acaa"><td class="memTemplItemLeft" align="right" valign="top">constexpr const int&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#ae5a03c0a28f89d4f40bb81edd410acaa">cpp2kdb::q_types::q_type_id</a> = QTypeId&lt;T&gt;::type_id</td></tr>
+<tr class="memdesc:ae5a03c0a28f89d4f40bb81edd410acaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for q_type_id. <br /></td></tr>
+<tr class="separator:ae5a03c0a28f89d4f40bb81edd410acaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6c807b3d6710a2a9d944a14c8ce1666"><td class="memItemLeft" align="right" valign="top"><a id="ae6c807b3d6710a2a9d944a14c8ce1666"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#ae6c807b3d6710a2a9d944a14c8ce1666">cpp2kdb::q_types::q_boolean_type_id</a> = q_type_id&lt;bool&gt;</td></tr>
+<tr class="memdesc:ae6c807b3d6710a2a9d944a14c8ce1666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for boolean. <br /></td></tr>
+<tr class="separator:ae6c807b3d6710a2a9d944a14c8ce1666"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50e08eaf04f1ef6778b73d515479d189"><td class="memItemLeft" align="right" valign="top"><a id="a50e08eaf04f1ef6778b73d515479d189"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a50e08eaf04f1ef6778b73d515479d189">cpp2kdb::q_types::q_byte_type_id</a> = q_type_id&lt;std::int8_t&gt;</td></tr>
+<tr class="memdesc:a50e08eaf04f1ef6778b73d515479d189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for byte. <br /></td></tr>
+<tr class="separator:a50e08eaf04f1ef6778b73d515479d189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a071a2cdb610d541da6b69279f0a66e2f"><td class="memItemLeft" align="right" valign="top"><a id="a071a2cdb610d541da6b69279f0a66e2f"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a071a2cdb610d541da6b69279f0a66e2f">cpp2kdb::q_types::q_short_type_id</a> = q_type_id&lt;short&gt;</td></tr>
+<tr class="memdesc:a071a2cdb610d541da6b69279f0a66e2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for short. <br /></td></tr>
+<tr class="separator:a071a2cdb610d541da6b69279f0a66e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dac11e19a82e182587f833495eef236"><td class="memItemLeft" align="right" valign="top"><a id="a6dac11e19a82e182587f833495eef236"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a6dac11e19a82e182587f833495eef236">cpp2kdb::q_types::q_int_type_id</a> = q_type_id&lt;int&gt;</td></tr>
+<tr class="memdesc:a6dac11e19a82e182587f833495eef236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for int. <br /></td></tr>
+<tr class="separator:a6dac11e19a82e182587f833495eef236"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac14aa92f9decab2bb8a438d8c72575bb"><td class="memItemLeft" align="right" valign="top"><a id="ac14aa92f9decab2bb8a438d8c72575bb"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#ac14aa92f9decab2bb8a438d8c72575bb">cpp2kdb::q_types::q_long_type_id</a> = q_type_id&lt;std::int64_t&gt;</td></tr>
+<tr class="memdesc:ac14aa92f9decab2bb8a438d8c72575bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for long. <br /></td></tr>
+<tr class="separator:ac14aa92f9decab2bb8a438d8c72575bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd8c74910a32ae8921fbdbbee3aeb7b7"><td class="memItemLeft" align="right" valign="top"><a id="acd8c74910a32ae8921fbdbbee3aeb7b7"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#acd8c74910a32ae8921fbdbbee3aeb7b7">cpp2kdb::q_types::q_real_type_id</a> = q_type_id&lt;float&gt;</td></tr>
+<tr class="memdesc:acd8c74910a32ae8921fbdbbee3aeb7b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for real. <br /></td></tr>
+<tr class="separator:acd8c74910a32ae8921fbdbbee3aeb7b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad064eb677585cd4effef0b985772e420"><td class="memItemLeft" align="right" valign="top"><a id="ad064eb677585cd4effef0b985772e420"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#ad064eb677585cd4effef0b985772e420">cpp2kdb::q_types::q_float_type_id</a> = q_type_id&lt;double&gt;</td></tr>
+<tr class="memdesc:ad064eb677585cd4effef0b985772e420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for float. <br /></td></tr>
+<tr class="separator:ad064eb677585cd4effef0b985772e420"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a214ac0529ade591d954335e5ad38e5e6"><td class="memItemLeft" align="right" valign="top"><a id="a214ac0529ade591d954335e5ad38e5e6"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a214ac0529ade591d954335e5ad38e5e6">cpp2kdb::q_types::q_char_type_id</a> = q_type_id&lt;char&gt;</td></tr>
+<tr class="memdesc:a214ac0529ade591d954335e5ad38e5e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for char. <br /></td></tr>
+<tr class="separator:a214ac0529ade591d954335e5ad38e5e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a729d44521c1d4fa85e6eea9f89740c7b"><td class="memItemLeft" align="right" valign="top"><a id="a729d44521c1d4fa85e6eea9f89740c7b"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a729d44521c1d4fa85e6eea9f89740c7b">cpp2kdb::q_types::q_timestamp_type_id</a> = 12</td></tr>
+<tr class="memdesc:a729d44521c1d4fa85e6eea9f89740c7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for timestamp. <br /></td></tr>
+<tr class="separator:a729d44521c1d4fa85e6eea9f89740c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ba97ade5c47b5a8bd728d92bd5d06d1"><td class="memItemLeft" align="right" valign="top"><a id="a5ba97ade5c47b5a8bd728d92bd5d06d1"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a5ba97ade5c47b5a8bd728d92bd5d06d1">cpp2kdb::q_types::q_month_type_id</a> = 13</td></tr>
+<tr class="memdesc:a5ba97ade5c47b5a8bd728d92bd5d06d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for month. <br /></td></tr>
+<tr class="separator:a5ba97ade5c47b5a8bd728d92bd5d06d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c68bff3a1f8a495b06079c3674421b"><td class="memItemLeft" align="right" valign="top"><a id="ab3c68bff3a1f8a495b06079c3674421b"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#ab3c68bff3a1f8a495b06079c3674421b">cpp2kdb::q_types::q_date_type_id</a> = 14</td></tr>
+<tr class="memdesc:ab3c68bff3a1f8a495b06079c3674421b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for date. <br /></td></tr>
+<tr class="separator:ab3c68bff3a1f8a495b06079c3674421b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70f2e47e6a51847eb46ce227c4b70c54"><td class="memItemLeft" align="right" valign="top"><a id="a70f2e47e6a51847eb46ce227c4b70c54"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a70f2e47e6a51847eb46ce227c4b70c54">cpp2kdb::q_types::q_datetime_type_id</a> = 15</td></tr>
+<tr class="memdesc:a70f2e47e6a51847eb46ce227c4b70c54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for datetime. <br /></td></tr>
+<tr class="separator:a70f2e47e6a51847eb46ce227c4b70c54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3da2224ab7a41acb9d345890df5b46ec"><td class="memItemLeft" align="right" valign="top"><a id="a3da2224ab7a41acb9d345890df5b46ec"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a3da2224ab7a41acb9d345890df5b46ec">cpp2kdb::q_types::q_timespan_type_id</a> = 16</td></tr>
+<tr class="memdesc:a3da2224ab7a41acb9d345890df5b46ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for timespan. <br /></td></tr>
+<tr class="separator:a3da2224ab7a41acb9d345890df5b46ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bc0087ffcba1a3b3e5f0d04acb31a40"><td class="memItemLeft" align="right" valign="top"><a id="a2bc0087ffcba1a3b3e5f0d04acb31a40"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a2bc0087ffcba1a3b3e5f0d04acb31a40">cpp2kdb::q_types::q_minute_type_id</a> = 17</td></tr>
+<tr class="memdesc:a2bc0087ffcba1a3b3e5f0d04acb31a40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for minute. <br /></td></tr>
+<tr class="separator:a2bc0087ffcba1a3b3e5f0d04acb31a40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4505900be03052c0fa4366e32a2f2395"><td class="memItemLeft" align="right" valign="top"><a id="a4505900be03052c0fa4366e32a2f2395"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a4505900be03052c0fa4366e32a2f2395">cpp2kdb::q_types::q_second_type_id</a> = 18</td></tr>
+<tr class="memdesc:a4505900be03052c0fa4366e32a2f2395"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for second. <br /></td></tr>
+<tr class="separator:a4505900be03052c0fa4366e32a2f2395"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a071a2d669756f03524e8405691a32de3"><td class="memItemLeft" align="right" valign="top"><a id="a071a2d669756f03524e8405691a32de3"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a071a2d669756f03524e8405691a32de3">cpp2kdb::q_types::q_time_type_id</a> = 19</td></tr>
+<tr class="memdesc:a071a2d669756f03524e8405691a32de3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for time. <br /></td></tr>
+<tr class="separator:a071a2d669756f03524e8405691a32de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf84fdca59463cee9895060ccb93d4bd"><td class="memItemLeft" align="right" valign="top"><a id="aaf84fdca59463cee9895060ccb93d4bd"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#aaf84fdca59463cee9895060ccb93d4bd">cpp2kdb::q_types::q_guid_type_id</a> = q_type_id&lt;QGuid&gt;</td></tr>
+<tr class="memdesc:aaf84fdca59463cee9895060ccb93d4bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for guid. <br /></td></tr>
+<tr class="separator:aaf84fdca59463cee9895060ccb93d4bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b2b56750b7567da791a6ae422d23439"><td class="memItemLeft" align="right" valign="top"><a id="a8b2b56750b7567da791a6ae422d23439"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a8b2b56750b7567da791a6ae422d23439">cpp2kdb::q_types::q_symbol_type_id</a> = q_type_id&lt;std::string&gt;</td></tr>
+<tr class="memdesc:a8b2b56750b7567da791a6ae422d23439"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper variable for Q Type Id for symbol. <br /></td></tr>
+<tr class="separator:a8b2b56750b7567da791a6ae422d23439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadf2274f029938a43ac8ddeea3cd7155"><td class="memItemLeft" align="right" valign="top"><a id="aadf2274f029938a43ac8ddeea3cd7155"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#aadf2274f029938a43ac8ddeea3cd7155">cpp2kdb::q_types::q_table_type_id</a> = 98</td></tr>
+<tr class="memdesc:aadf2274f029938a43ac8ddeea3cd7155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for Table/Flip. <br /></td></tr>
+<tr class="separator:aadf2274f029938a43ac8ddeea3cd7155"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2745d8ff182d69b8bcc226d466279849"><td class="memItemLeft" align="right" valign="top"><a id="a2745d8ff182d69b8bcc226d466279849"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a2745d8ff182d69b8bcc226d466279849">cpp2kdb::q_types::q_dict_type_id</a> = 99</td></tr>
+<tr class="memdesc:a2745d8ff182d69b8bcc226d466279849"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for Dict/Keyed Table. <br /></td></tr>
+<tr class="separator:a2745d8ff182d69b8bcc226d466279849"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0b2c587678cc777d2302eee2861f7ce"><td class="memItemLeft" align="right" valign="top"><a id="ac0b2c587678cc777d2302eee2861f7ce"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#ac0b2c587678cc777d2302eee2861f7ce">cpp2kdb::q_types::q_error_type_id</a> = -128</td></tr>
+<tr class="memdesc:ac0b2c587678cc777d2302eee2861f7ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for error state. <br /></td></tr>
+<tr class="separator:ac0b2c587678cc777d2302eee2861f7ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d5f89964c14270c5c4728222aea4317"><td class="memItemLeft" align="right" valign="top"><a id="a5d5f89964c14270c5c4728222aea4317"></a>
+constexpr const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a5d5f89964c14270c5c4728222aea4317">cpp2kdb::q_types::q_mixed_type_id</a> = 0</td></tr>
+<tr class="memdesc:a5d5f89964c14270c5c4728222aea4317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Q Type Id for mixed type list. <br /></td></tr>
+<tr class="separator:a5d5f89964c14270c5c4728222aea4317"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dataretrievalresult_198',['DataRetrievalResult',['../namespacecpp2kdb.html#aba2fab2a31ed90544f1892f65e700d96',1,'cpp2kdb']]]
+  ['dataretrievalresult_199',['DataRetrievalResult',['../accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caa',1,'cpp2kdb::accessors']]]
 ];

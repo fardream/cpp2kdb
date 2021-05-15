@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['decreasereferencecount_143',['DecreaseReferenceCount',['../namespacecpp2kdb.html#ac8f8fb781bde871a0539bc8c4c6670ea',1,'cpp2kdb']]]
+  ['decreasereferencecount_144',['DecreaseReferenceCount',['../namespacecpp2kdb_1_1kdb__wrapper.html#ad2bda302bb94f193465eb7ca57f4bc1f',1,'cpp2kdb::kdb_wrapper']]]
 ];

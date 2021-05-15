@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ok_60',['Ok',['../namespacecpp2kdb.html#aba2fab2a31ed90544f1892f65e700d96aa60852f204ed8028c1c58808b746d115',1,'cpp2kdb']]],
-  ['openconnection_61',['OpenConnection',['../namespacecpp2kdb.html#a07b26c43efe8b238deff428db80b94cc',1,'cpp2kdb']]]
+  ['ok_61',['Ok',['../accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaaa60852f204ed8028c1c58808b746d115',1,'cpp2kdb::accessors']]],
+  ['openconnection_62',['OpenConnection',['../namespacecpp2kdb_1_1kdb__wrapper.html#ad3123655e0b1cfa68154698da01f25b3',1,'cpp2kdb::kdb_wrapper']]]
 ];

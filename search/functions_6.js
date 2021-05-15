@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['trycopydatabyqtypeidandtype_170',['TryCopyDataByQTypeIdAndType',['../namespacecpp2kdb.html#a07927042b0048d54d0783f5cb7e0eb17',1,'cpp2kdb']]]
+  ['trycopydatabyqtypeidandtype_171',['TryCopyDataByQTypeIdAndType',['../namespacecpp2kdb_1_1q__types.html#adb0af782ceaa66065be7bc1877aaa456',1,'cpp2kdb::q_types']]]
 ];

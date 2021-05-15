@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ok_206',['Ok',['../namespacecpp2kdb.html#aba2fab2a31ed90544f1892f65e700d96aa60852f204ed8028c1c58808b746d115',1,'cpp2kdb']]]
+  ['ok_207',['Ok',['../accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaaa60852f204ed8028c1c58808b746d115',1,'cpp2kdb::accessors']]]
 ];
