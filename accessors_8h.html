@@ -96,6 +96,9 @@ Enumerations</h2></td></tr>
 , <a class="el" href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaa948719a8daca68f6c26bdfc0e071a0ec">NotNumericalVector</a>
 , <br />
 &#160;&#160;<a class="el" href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaae69313774ff6fb6f0c2fcfcb6c5876bd">InvalidQTypeId</a>
+, <a class="el" href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaa16ef64eb7bf876c42291dca0429cdc11">NotMixedVector</a>
+, <a class="el" href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaaaae1485ac6c2e674cc1c11987ad2b110">NotStringVector</a>
+, <a class="el" href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaa8006e2d090b94ffdc03cf168308e834f">NotCharVectorInMixedVector</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a19912001d4e3d1fdabd3cd7dee128caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data Retrieval Result.  <a href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caa">More...</a><br /></td></tr>
@@ -124,9 +127,11 @@ Functions</h2></td></tr>
 <tr class="memitem:a3687d70420bcc3209b4242af256e4951"><td class="memItemLeft" align="right" valign="top">DataRetrievalResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#a3687d70420bcc3209b4242af256e4951">cpp2kdb::accessors::CheckVectorForVectorDataRetrieval</a> (void *input_vector)</td></tr>
 <tr class="memdesc:a3687d70420bcc3209b4242af256e4951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the input is valid for retrieving data into a vector.  <a href="accessors_8h.html#a3687d70420bcc3209b4242af256e4951">More...</a><br /></td></tr>
 <tr class="separator:a3687d70420bcc3209b4242af256e4951"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab134bf33efde8723be448bda582f8501"><td class="memItemLeft" align="right" valign="top"><a id="ab134bf33efde8723be448bda582f8501"></a>
-DataRetrievalResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#ab134bf33efde8723be448bda582f8501">cpp2kdb::accessors::RetrieveVectorData</a> (void *input_vector, std::string *output_vector)</td></tr>
-<tr class="memdesc:ab134bf33efde8723be448bda582f8501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for type std::string of Retrieving Data into Vector. <br /></td></tr>
+<tr class="memitem:ae4d5f6285e3ef18906b59d588d70714c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#ae4d5f6285e3ef18906b59d588d70714c">cpp2kdb::accessors::GetStringFromCharVector</a> (void *input_char_vector)</td></tr>
+<tr class="memdesc:ae4d5f6285e3ef18906b59d588d70714c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get std::string from a char vector.  <a href="accessors_8h.html#ae4d5f6285e3ef18906b59d588d70714c">More...</a><br /></td></tr>
+<tr class="separator:ae4d5f6285e3ef18906b59d588d70714c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab134bf33efde8723be448bda582f8501"><td class="memItemLeft" align="right" valign="top">DataRetrievalResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#ab134bf33efde8723be448bda582f8501">cpp2kdb::accessors::RetrieveVectorData</a> (void *input_vector, std::string *output_vector)</td></tr>
+<tr class="memdesc:ab134bf33efde8723be448bda582f8501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for type std::string of Retrieving Data into Vector.  <a href="accessors_8h.html#ab134bf33efde8723be448bda582f8501">More...</a><br /></td></tr>
 <tr class="separator:ab134bf33efde8723be448bda582f8501"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7c254409a88d5492ba54d7dec421643"><td class="memItemLeft" align="right" valign="top">DataRetrievalResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#ae7c254409a88d5492ba54d7dec421643">cpp2kdb::accessors::RetrieveVectorData</a> (void *input_vector, void **output_vector)</td></tr>
 <tr class="memdesc:ae7c254409a88d5492ba54d7dec421643"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization for type void** of Retrieving Data into Vector.  <a href="accessors_8h.html#ae7c254409a88d5492ba54d7dec421643">More...</a><br /></td></tr>
@@ -179,6 +184,13 @@ DataRetrievalResult&#160;</td><td class="memItemRight" valign="bottom"><a class=
 </td></tr>
 <tr><td class="fieldname"><a id="a19912001d4e3d1fdabd3cd7dee128caaae69313774ff6fb6f0c2fcfcb6c5876bd"></a>InvalidQTypeId&#160;</td><td class="fielddoc"><p>Not a valid Q Type Id. </p>
 </td></tr>
+<tr><td class="fieldname"><a id="a19912001d4e3d1fdabd3cd7dee128caaa16ef64eb7bf876c42291dca0429cdc11"></a>NotMixedVector&#160;</td><td class="fielddoc"><p>Not a mixed vector. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a19912001d4e3d1fdabd3cd7dee128caaaaae1485ac6c2e674cc1c11987ad2b110"></a>NotStringVector&#160;</td><td class="fielddoc"><p>Not a std::string vector. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a19912001d4e3d1fdabd3cd7dee128caaa8006e2d090b94ffdc03cf168308e834f"></a>NotCharVectorInMixedVector&#160;</td><td class="fielddoc"><p>Mixed Vector Contains an element that is not char vector. </p>
+<p>This happens when std::string vector is requested, and a mixed list is input. The mixed input contains an element that is not a char vector. </p>
+</td></tr>
 </table>
 
 </div>
@@ -202,6 +214,27 @@ DataRetrievalResult&#160;</td><td class="memItemRight" valign="bottom"><a class=
 
 <p>Check if the input is valid for retrieving data into a vector. </p>
 <p>This support symbol vector, mixed list if all the elements are vector of chars. </p>
+
+</div>
+</div>
+<a id="ae4d5f6285e3ef18906b59d588d70714c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4d5f6285e3ef18906b59d588d70714c">&#9670;&nbsp;</a></span>GetStringFromCharVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string cpp2kdb::accessors::GetStringFromCharVector </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>input_char_vector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get std::string from a char vector. </p>
+<p>In kdb, string is actually char vector, but without the terminating \0. Symbols are \0 terminated strings in C. The function doesn't perform check on the type. It takes the pointer defined by the k and the number of chars and construct a std::string </p>
 
 </div>
 </div>
@@ -331,8 +364,39 @@ DataRetrievalResult&#160;</td><td class="memItemRight" valign="bottom"><a class=
 
 </div>
 </div>
+<a id="ab134bf33efde8723be448bda582f8501"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab134bf33efde8723be448bda582f8501">&#9670;&nbsp;</a></span>RetrieveVectorData() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DataRetrievalResult cpp2kdb::accessors::RetrieveVectorData </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>input_vector</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string *&#160;</td>
+          <td class="paramname"><em>output_vector</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Specialization for type std::string of Retrieving Data into Vector. </p>
+<p>std::string can be either a vector of symbol (type 11), or a mixed vector with each element a vector of char (type 0, and then type 10 for all elements). </p>
+
+</div>
+</div>
 <a id="a417c2acc8b0944febacb2ee6b86979e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a417c2acc8b0944febacb2ee6b86979e9">&#9670;&nbsp;</a></span>RetrieveVectorData() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a417c2acc8b0944febacb2ee6b86979e9">&#9670;&nbsp;</a></span>RetrieveVectorData() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -365,7 +429,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;std::is_arithmetic_v&lt
 </div>
 </div>
 <a id="ae7c254409a88d5492ba54d7dec421643"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7c254409a88d5492ba54d7dec421643">&#9670;&nbsp;</a></span>RetrieveVectorData() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7c254409a88d5492ba54d7dec421643">&#9670;&nbsp;</a></span>RetrieveVectorData() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -391,7 +455,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;std::is_arithmetic_v&lt
 </div><div class="memdoc">
 
 <p>Specialization for type void** of Retrieving Data into Vector. </p>
-<p>This is for mixed type vector. </p>
+<p>This is for mixed type vector (so the q type id should be 0). </p>
 
 </div>
 </div>
