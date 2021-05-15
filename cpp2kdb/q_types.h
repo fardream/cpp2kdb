@@ -418,7 +418,8 @@ constexpr bool IsQTypeIdString(
     /// Input Q Type Id
     int input_q_type_id) {
   return input_q_type_id == q_type_id<std::string> ||
-         input_q_type_id == q_type_id<char>;
+         input_q_type_id == q_type_id<char> ||
+         input_q_type_id == -q_type_id<std::string>;
 }
 
 /// Check if the type indicted by q_type_id is the same as T

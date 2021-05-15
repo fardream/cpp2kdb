@@ -136,6 +136,52 @@ void TestDictionary(int connection) {
     std::cout << values[i] << " ";
   }
   std::cout << std::endl;
+
+  std::vector<void*> keys(3, nullptr);
+  auto key_list_result =
+      cpp2kdb::accessors::RetrieveVectorData(key_value_list[0], keys.data());
+  std::cout << "Getting keys result is " << static_cast<int>(key_list_result)
+            << std::endl;
+  std::cout << "Type of first key is "
+            << cpp2kdb::kdb_wrapper::GetQTypeId(keys[0]) << std::endl;
+  std::cout << "Size of first key is "
+            << cpp2kdb::kdb_wrapper::GetNumberOfVectorElements(keys[0])
+            << std::endl;
+  std::vector<std::string> first_key(
+      cpp2kdb::kdb_wrapper::GetNumberOfVectorElements(keys[0]));
+  cpp2kdb::accessors::RetrieveVectorData(keys[0], first_key.data());
+  std::cout << "First keys are: ";
+  for (std::size_t i = 0; i < first_key.size(); i++) {
+    std::cout << first_key[i] << "|";
+  }
+  std::cout << std::endl;
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result);
+}
+void TestString(int connection) {
+  std::string query = "(\"abc\";\"defg\";\"hi\")";
+  void* result =
+      cpp2kdb::kdb_wrapper::RunQueryOnConnection(connection, query.c_str());
+  std::cout << "Is value error? "
+            << SayYesOrNo(cpp2kdb::accessors::IsError(result)) << std::endl;
+  std::cout << "Is value atomic? "
+            << SayYesOrNo(cpp2kdb::accessors::IsAtomic(result)) << std::endl;
+  std::cout << "Is value dict? "
+            << SayYesOrNo(cpp2kdb::accessors::IsDict(result)) << std::endl;
+  std::cout << "Is value table? "
+            << SayYesOrNo(cpp2kdb::accessors::IsTable(result)) << std::endl;
+  std::cout << "Result type is " << cpp2kdb::kdb_wrapper::GetQTypeId(result)
+            << std::endl;
+  std::cout << "Size of the list is "
+            << cpp2kdb::kdb_wrapper::GetNumberOfVectorElements(result)
+            << std::endl;
+  std::vector<std::string> values(
+      cpp2kdb::kdb_wrapper::GetNumberOfVectorElements(result));
+  auto d = cpp2kdb::accessors::RetrieveVectorData(result, values.data());
+  std::cout << "Retrieval result is " << static_cast<int>(d) << std::endl;
+  for (std::size_t i = 0; i < values.size(); i++) {
+    std::cout << values[i] << "|";
+  }
+  std::cout << std::endl;
   cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result);
 }
 }  // namespace
@@ -154,6 +200,8 @@ int main(int argc, char** argv) {
   TestIsSame();
   std::cout << "----------------------" << std::endl;
   TestDictionary(connection);
+  std::cout << "----------------------" << std::endl;
+  TestString(connection);
   cpp2kdb::kdb_wrapper::CloseConnection(connection);
   return 0;
 }

@@ -66,7 +66,15 @@ enum class DataRetrievalResult {
   /// char vector is valid).
   NotNumericalVector,
   /// Not a valid Q Type Id
-  InvalidQTypeId
+  InvalidQTypeId,
+  /// Not a mixed vector
+  NotMixedVector,
+  /// Not a std::string vector
+  NotStringVector,
+  /// Mixed Vector Contains an element that is not char vector.
+  /// This happens when std::string vector is requested, and a mixed list is
+  /// input. The mixed input contains an element that is not a char vector.
+  NotCharVectorInMixedVector
 };
 
 /// Check if the input is valid for retrieving data into a vector.
@@ -74,11 +82,23 @@ enum class DataRetrievalResult {
 /// chars.
 DataRetrievalResult CheckVectorForVectorDataRetrieval(void* input_vector);
 
-/// Specialization for type std::string of Retrieving Data into Vector
+/// Get std::string from a char vector.
+///
+/// In kdb, string is actually char vector, but without the terminating \0.
+/// Symbols are \0 terminated strings in C. The function doesn't perform check
+/// on the type. It takes the pointer defined by the k and the number of chars
+/// and construct a std::string
+std::string GetStringFromCharVector(void* input_char_vector);
+
+/// Specialization for type std::string of Retrieving Data into Vector.
+/// std::string can be either a vector of symbol (type 11), or a mixed vector
+/// with each element a vector of char (type 0, and then type 10 for all
+/// elements).
 DataRetrievalResult RetrieveVectorData(void* input_vector,
                                        std::string* output_vector);
+
 /// Specialization for type void** of Retrieving Data into Vector.
-/// This is for mixed type vector.
+/// This is for mixed type vector (so the q type id should be 0).
 DataRetrievalResult RetrieveVectorData(void* input_vector,
                                        void** output_vector);
 
