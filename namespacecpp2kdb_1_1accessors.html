@@ -121,6 +121,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a38ec685bf2a88acaf2354b6800d67046"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1accessors.html#a38ec685bf2a88acaf2354b6800d67046">IsTable</a> (void *x)</td></tr>
 <tr class="memdesc:a38ec685bf2a88acaf2354b6800d67046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the value is a table.  <a href="namespacecpp2kdb_1_1accessors.html#a38ec685bf2a88acaf2354b6800d67046">More...</a><br /></td></tr>
 <tr class="separator:a38ec685bf2a88acaf2354b6800d67046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa923ee3bb5c81d471a9b249684f9d3ea"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aa923ee3bb5c81d471a9b249684f9d3ea"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1accessors.html#aa923ee3bb5c81d471a9b249684f9d3ea">GetValue</a> (void *x)</td></tr>
+<tr class="memdesc:aa923ee3bb5c81d471a9b249684f9d3ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the atomic value as type T The function first gets the pointer to the data union of this K, then casts the pointer to T*, then gets the value.  <a href="namespacecpp2kdb_1_1accessors.html#aa923ee3bb5c81d471a9b249684f9d3ea">More...</a><br /></td></tr>
+<tr class="separator:aa923ee3bb5c81d471a9b249684f9d3ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a325ccc2acff6439dc1e01e92027136"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a9a325ccc2acff6439dc1e01e92027136"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1accessors.html#a9a325ccc2acff6439dc1e01e92027136">GetVector</a> (void *x)</td></tr>
+<tr class="memdesc:a9a325ccc2acff6439dc1e01e92027136"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the vector value as type T* The function first gets the pointer to the vector in the data union of this K, then casts the pointer to T*.  <a href="namespacecpp2kdb_1_1accessors.html#a9a325ccc2acff6439dc1e01e92027136">More...</a><br /></td></tr>
+<tr class="separator:a9a325ccc2acff6439dc1e01e92027136"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a793805c0081ade9acc6994ed08d30b2f"><td class="memItemLeft" align="right" valign="top"><a id="a793805c0081ade9acc6994ed08d30b2f"></a>
 const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1accessors.html#a793805c0081ade9acc6994ed08d30b2f">GetDataRetrievalResultName</a> (<a class="el" href="namespacecpp2kdb_1_1accessors.html#a19912001d4e3d1fdabd3cd7dee128caa">DataRetrievalResult</a> result)</td></tr>
 <tr class="memdesc:a793805c0081ade9acc6994ed08d30b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name from a result. <br /></td></tr>
@@ -313,6 +321,65 @@ Variables</h2></td></tr>
 
 <p>Get std::string from a char vector. </p>
 <p>In kdb, string is actually char vector, but without the terminating \0. Symbols are \0 terminated strings in C. The function doesn't perform check on the type. It takes the pointer defined by the k and the number of chars and construct a std::string </p>
+
+</div>
+</div>
+<a id="aa923ee3bb5c81d471a9b249684f9d3ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa923ee3bb5c81d471a9b249684f9d3ea">&#9670;&nbsp;</a></span>GetValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T cpp2kdb::accessors::GetValue </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the atomic value as type T The function first gets the pointer to the data union of this K, then casts the pointer to T*, then gets the value. </p>
+<p>There is no check and no guarantee this will work, especially for the following two types:</p><ul>
+<li>symbol: in q, symbol is just a char*. To make it a std::string, pass the obtained char* to the constructor of std::string.</li>
+<li>k: there may be a chance the data contained is a k, such as table (98), which contains a dict (98). Use void* for the return type. <dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>type desired. </td></tr>
+  </table>
+  </dd>
+</dl>
+</li>
+</ul>
+
+</div>
+</div>
+<a id="a9a325ccc2acff6439dc1e01e92027136"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a325ccc2acff6439dc1e01e92027136">&#9670;&nbsp;</a></span>GetVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T* cpp2kdb::accessors::GetVector </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the vector value as type T* The function first gets the pointer to the vector in the data union of this K, then casts the pointer to T*. </p>
+<p>There is no check and no guarantee this will work, especially for the following:</p><ul>
+<li>symbol: in q, symbol is a char*, so the vector is char**.</li>
+<li>mixed type: this will be represented by void** - a pointer to void*.</li>
+<li>dict: this will be presented by void** with a size of 2. </li>
+</ul>
 
 </div>
 </div>
@@ -598,7 +665,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;std::is_arithmetic_v&lt
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">    <span class="keyword">sizeof</span>(<a class="code" href="namespacecpp2kdb_1_1accessors.html#abb2d76b300ad5e65345f94b6f7ff5283">DataRetrievalResultNames</a>) / <span class="keyword">sizeof</span>(<a class="code" href="namespacecpp2kdb_1_1accessors.html#abb2d76b300ad5e65345f94b6f7ff5283">DataRetrievalResultNames</a>[0])</div>
-<div class="ttc" id="anamespacecpp2kdb_1_1accessors_html_abb2d76b300ad5e65345f94b6f7ff5283"><div class="ttname"><a href="namespacecpp2kdb_1_1accessors.html#abb2d76b300ad5e65345f94b6f7ff5283">cpp2kdb::accessors::DataRetrievalResultNames</a></div><div class="ttdeci">constexpr const char * DataRetrievalResultNames[]</div><div class="ttdoc">Names for the enums....</div><div class="ttdef"><b>Definition:</b> accessors.h:88</div></div>
+<div class="ttc" id="anamespacecpp2kdb_1_1accessors_html_abb2d76b300ad5e65345f94b6f7ff5283"><div class="ttname"><a href="namespacecpp2kdb_1_1accessors.html#abb2d76b300ad5e65345f94b6f7ff5283">cpp2kdb::accessors::DataRetrievalResultNames</a></div><div class="ttdeci">constexpr const char * DataRetrievalResultNames[]</div><div class="ttdoc">Names for the enums....</div><div class="ttdef"><b>Definition:</b> accessors.h:114</div></div>
 </div><!-- fragment -->
 <p>Number of data retrieval result names. </p>
 

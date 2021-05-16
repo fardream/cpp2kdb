@@ -66,6 +66,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">cpp2kdb::kdb_wrapper Namespace Reference</div>  </div>
@@ -75,6 +76,12 @@ $(function() {
 <p>Wrappers for kx/kdb+'s k.h.  
 <a href="namespacecpp2kdb_1_1kdb__wrapper.html#details">More...</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcpp2kdb_1_1kdb__wrapper_1_1_decrease_reference_count_guard.html">DecreaseReferenceCountGuard</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call r0 when this class is destructed.  <a href="classcpp2kdb_1_1kdb__wrapper_1_1_decrease_reference_count_guard.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae39f1dc2f4ae9117180078d4f801b93c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1kdb__wrapper.html#ae39f1dc2f4ae9117180078d4f801b93c">ConvertToNonConst</a> (const char *c)</td></tr>
@@ -107,6 +114,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aba3a72657cc0721a18f3da61679ab942"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1kdb__wrapper.html#aba3a72657cc0721a18f3da61679ab942">IncreaseReferenceCount</a> (void *x)</td></tr>
 <tr class="memdesc:aba3a72657cc0721a18f3da61679ab942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increase reference count by calling <code>r1</code> function.  <a href="namespacecpp2kdb_1_1kdb__wrapper.html#aba3a72657cc0721a18f3da61679ab942">More...</a><br /></td></tr>
 <tr class="separator:aba3a72657cc0721a18f3da61679ab942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63d191cbbf65129a31aa8aa391b6723e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1kdb__wrapper.html#a63d191cbbf65129a31aa8aa391b6723e">DekeyKeyedTable</a> (void *x)</td></tr>
+<tr class="memdesc:a63d191cbbf65129a31aa8aa391b6723e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call ktd (Convert keyed table to a simple table) on x.  <a href="namespacecpp2kdb_1_1kdb__wrapper.html#a63d191cbbf65129a31aa8aa391b6723e">More...</a><br /></td></tr>
+<tr class="separator:a63d191cbbf65129a31aa8aa391b6723e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Wrappers for kx/kdb+'s k.h. </p>
@@ -176,6 +186,27 @@ Functions</h2></td></tr>
 
 <p>Decrease reference count by calling <code>r0</code> function. </p>
 <p>There are many restrictions on how memory (or threading) is used in kdb. Check with their documentation for more details. </p>
+
+</div>
+</div>
+<a id="a63d191cbbf65129a31aa8aa391b6723e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63d191cbbf65129a31aa8aa391b6723e">&#9670;&nbsp;</a></span>DekeyKeyedTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* cpp2kdb::kdb_wrapper::DekeyKeyedTable </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Call ktd (Convert keyed table to a simple table) on x. </p>
+<dl class="section return"><dt>Returns</dt><dd>the result from ktd function. nullptr if the operation failed. </dd></dl>
 
 </div>
 </div>
