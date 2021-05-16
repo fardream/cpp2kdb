@@ -95,5 +95,37 @@ void DecreaseReferenceCount(void* x);
 /// There are many restrictions on how memory (or threading) is used in kdb.
 /// Check with their documentation for more details.
 void* IncreaseReferenceCount(void* x);
+
+/// Call ktd (Convert keyed table to a simple table) on x.
+/// \returns the result from ktd function. nullptr if the operation failed.
+void* DekeyKeyedTable(void* x);
+
+/// Call r0 when this class is destructed.
+///
+/// After getting a pointer to a K object, just construct
+/// DecreaseReferenceCountGuard with that void*.
+class DecreaseReferenceCountGuard {
+ public:
+  /// Create DecreaseReferenceCountGuard to guard pointer_to_guard.
+  /// Will call r0 when destructor is called.
+  explicit DecreaseReferenceCountGuard(void* pointer_to_guard);
+  /// Default constructor is deleted.
+  DecreaseReferenceCountGuard() = delete;
+  /// Copy constructor is deleted.
+  DecreaseReferenceCountGuard(const DecreaseReferenceCountGuard&) = delete;
+  /// Move constructor is deleted.
+  DecreaseReferenceCountGuard(DecreaseReferenceCountGuard&&) = delete;
+  /// assignment operator is deleted.
+  DecreaseReferenceCountGuard& operator=(const DecreaseReferenceCountGuard&) =
+      delete;
+  /// Unguard this pointer by setting the pointer_to_guard to nullptr.
+  void Unguard();
+
+  /// Destructor, calling r0 on pointer_to_guard if it's not nullptr
+  ~DecreaseReferenceCountGuard();
+
+ private:
+  void* pointer_to_guard;
+};
 }  // namespace cpp2kdb::kdb_wrapper
 #endif  // CPP2KDB_KDB_WRAPPER_H__

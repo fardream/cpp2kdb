@@ -13,8 +13,7 @@ namespace {
 DataRetrievalResult CopySymbolListToString(void* input_vector,
                                            std::string* output_vector) {
   // Data is just an array of pointers to \0 terminated strings.
-  char** symbols =
-      reinterpret_cast<char**>(kdb_wrapper::GetVector(input_vector));
+  char** symbols = GetVector<char*>(input_vector);
 
   std::size_t number_of_elements =
       kdb_wrapper::GetNumberOfVectorElements(input_vector);
@@ -29,8 +28,7 @@ DataRetrievalResult CopySymbolListToString(void* input_vector,
 DataRetrievalResult CopyMixedVectorAsString(void* input_vector,
                                             std::string* output_vector) {
   // Get thet list of Ks
-  void** charlistlist =
-      reinterpret_cast<void**>(kdb_wrapper::GetVector(input_vector));
+  void** charlistlist = GetVector<void*>(input_vector);
 
   std::size_t number_of_elements =
       kdb_wrapper::GetNumberOfVectorElements(input_vector);
@@ -110,9 +108,8 @@ DataRetrievalResult CheckVectorForVectorDataRetrieval(void* input_vector) {
 }
 
 std::string GetStringFromCharVector(void* input_char_vector) {
-  return std::string(
-      reinterpret_cast<char*>(kdb_wrapper::GetVector(input_char_vector)),
-      kdb_wrapper::GetNumberOfVectorElements(input_char_vector));
+  return std::string(GetVector<char>(input_char_vector),
+                     kdb_wrapper::GetNumberOfVectorElements(input_char_vector));
 }
 
 DataRetrievalResult RetrieveVectorData(void* input_vector,
@@ -150,7 +147,7 @@ DataRetrievalResult RetrieveVectorData(void* input_vector,
   }
 
   // Copy is simple, since the data should be void** anyway
-  std::copy_n(reinterpret_cast<void**>(kdb_wrapper::GetVector(input_vector)),
+  std::copy_n(GetVector<void*>(input_vector),
               kdb_wrapper::GetNumberOfVectorElements(input_vector),
               output_vector);
 
@@ -162,22 +159,24 @@ DataRetrievalResult GetSimpleTable(void* simple_table, void** column_heading,
                                    std::size_t* number_of_columns,
                                    std::size_t* number_of_rows) {
   // Underlying dictionary.
-  void* underlying_dict =
-      *(reinterpret_cast<void**>(kdb_wrapper::GetValue(simple_table)));
+  void* underlying_dict = GetValue<void*>(simple_table);
+
   // Key list and value list of the dictionary.
-  void** key_value_list =
-      reinterpret_cast<void**>(kdb_wrapper::GetVector(underlying_dict));
+  void** key_value_list = GetVector<void*>(underlying_dict);
+
   // Separate keys and values
   *column_heading = key_value_list[0];
   void* value_list = key_value_list[1];
 
   // Get number of columns first
   *number_of_columns = kdb_wrapper::GetNumberOfVectorElements(*column_heading);
+  // If the number of columns is zero, return rightway.
   if (number_of_columns == 0) {
     return DataRetrievalResult::Ok;
   }
 
-  *values = reinterpret_cast<void**>(kdb_wrapper::GetVector(value_list));
+  // get values.
+  *values = GetVector<void*>(value_list);
   *number_of_rows = kdb_wrapper::GetNumberOfVectorElements(**values);
 
   return DataRetrievalResult::Ok;

@@ -50,6 +50,32 @@ bool IsDict(void* x);
 /// This checks if the type_id is 98
 bool IsTable(void* x);
 
+/// Get the atomic value as type T
+/// The function first gets the pointer to the data union of this K, then casts
+/// the pointer to T*, then gets the value. There is no check and no guarantee
+/// this will work, especially for the following two types:
+/// - symbol: in q, symbol is just a char*. To make it a std::string, pass the
+///   obtained char* to the constructor of std::string.
+/// - k: there may be a chance the data contained is a k, such as table (98),
+///   which contains a dict (98). Use void* for the return type.
+/// \tparam T type desired.
+template <typename T>
+T GetValue(void* x) {
+  return *(reinterpret_cast<T*>(kdb_wrapper::GetValue(x)));
+}
+
+/// Get the vector value as type T*
+/// The function first gets the pointer to the vector  in the data union of this
+/// K, then casts the pointer to T*. There is no check and no guarantee this
+/// will work, especially for the following:
+/// - symbol: in q, symbol is a char*, so the vector is char**.
+/// - mixed type: this will be represented by void** - a pointer to void*.
+/// - dict: this will be presented by void** with a size of 2.
+template <typename T>
+T* GetVector(void* x) {
+  return reinterpret_cast<T*>(kdb_wrapper::GetVector(x));
+}
+
 /// Data Retrieval Result
 enum class DataRetrievalResult {
   /// Ok.

@@ -99,6 +99,7 @@ void TestDictionary(int connection) {
       "(`Arthur`Dent; `Zaphod`Beeblebrox; `Ford`Prefect)! 100 42 150";
   void* result =
       cpp2kdb::kdb_wrapper::RunQueryOnConnection(connection, query.c_str());
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCountGuard guard(result);
   std::cout << "Is value error? "
             << SayYesOrNo(cpp2kdb::accessors::IsError(result)) << std::endl;
   std::cout << "Is value atomic? "
@@ -155,12 +156,13 @@ void TestDictionary(int connection) {
     std::cout << first_key[i] << "|";
   }
   std::cout << std::endl;
-  cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result);
 }
 void TestString(int connection) {
   std::string query = "(\"abc\";\"defg\";\"hi\")";
   void* result =
       cpp2kdb::kdb_wrapper::RunQueryOnConnection(connection, query.c_str());
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCountGuard guard(result);
+
   std::cout << "Is value error? "
             << SayYesOrNo(cpp2kdb::accessors::IsError(result)) << std::endl;
   std::cout << "Is value atomic? "
@@ -182,7 +184,6 @@ void TestString(int connection) {
     std::cout << values[i] << "|";
   }
   std::cout << std::endl;
-  cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result);
 
   std::string query1 = "\"abc\"";
   void* result1 =
@@ -192,7 +193,6 @@ void TestString(int connection) {
   auto d1 = cpp2kdb::accessors::RetrieveVectorData(result1, values.data());
   std::cout << "Retrieve result from query " << query1 << " is " << d1
             << std::endl;
-  cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result1);
 }
 
 void TestTable(int connection) {
@@ -204,6 +204,11 @@ void TestTable(int connection) {
   std::cout << "Query to run is: " << std::endl << query << std::endl;
   void* result =
       cpp2kdb::kdb_wrapper::RunQueryOnConnection(connection, query.c_str());
+  if (result == nullptr) {
+    std::cout << "Result is nullptr" << std::endl;
+  }
+
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCountGuard guard(result);
   std::cout << "Type of result is " << cpp2kdb::kdb_wrapper::GetQTypeId(result)
             << std::endl;
   std::size_t nc, nr;
@@ -218,7 +223,6 @@ void TestTable(int connection) {
     if (cpp2kdb::accessors::RetrieveVectorData(column_heading,
                                                column_names.data()) !=
         cpp2kdb::accessors::DataRetrievalResult::Ok) {
-      cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result);
       return;
     }
     for (std::size_t i = 0; i < column_names.size(); i++) {
@@ -235,7 +239,61 @@ void TestTable(int connection) {
     }
     std::cout << std::endl;
   }
-  cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result);
+
+  return;
+}
+void TestKeyedTable(int connection) {
+  std::string query =
+      "([eid:1001 1002 1003] name:`Dent`Beeblebrox`Prefect; iq:98 42 126)";
+  std::cout << "Query to run is: " << std::endl << query << std::endl;
+  void* result =
+      cpp2kdb::kdb_wrapper::RunQueryOnConnection(connection, query.c_str());
+  if (result == nullptr) {
+    std::cout << "Result is nullptr" << std::endl;
+  }
+  std::cout << "Type of result is " << cpp2kdb::kdb_wrapper::GetQTypeId(result)
+            << std::endl;
+
+  void** key_value_list =
+      reinterpret_cast<void**>(cpp2kdb::kdb_wrapper::GetVector(result));
+  std::cout << "Type of the first k is "
+            << cpp2kdb::kdb_wrapper::GetQTypeId(key_value_list[0])
+            << " and the type of the second K is "
+            << cpp2kdb::kdb_wrapper::GetQTypeId(key_value_list[1]) << std::endl;
+
+  void* temp_result = result;
+  result = cpp2kdb::kdb_wrapper::DekeyKeyedTable(temp_result);
+
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCountGuard guard(result);
+
+  std::size_t nc, nr;
+  void* column_heading;
+  void** values;
+  if (cpp2kdb::accessors::GetSimpleTable(result, &column_heading, &values, &nc,
+                                         &nr) ==
+      cpp2kdb::accessors::DataRetrievalResult::Ok) {
+    std::cout << "Shape of the table is: row count " << nr << " column count "
+              << nc << std::endl;
+    std::vector<std::string> column_names(nc);
+    if (cpp2kdb::accessors::RetrieveVectorData(column_heading,
+                                               column_names.data()) !=
+        cpp2kdb::accessors::DataRetrievalResult::Ok) {
+      return;
+    }
+    for (std::size_t i = 0; i < column_names.size(); i++) {
+      std::cout << "column " << i << ": " << column_names[i]
+                << ", column type is "
+                << cpp2kdb::kdb_wrapper::GetQTypeId(values[i]) << std::endl;
+    }
+    std::vector<std::string> s_column(nr);
+    if (cpp2kdb::accessors::RetrieveVectorData(values[1], s_column.data()) ==
+        cpp2kdb::accessors::DataRetrievalResult::Ok) {
+      for (std::size_t i = 0; i < s_column.size(); i++) {
+        std::cout << s_column[i] << " ";
+      }
+    }
+    std::cout << std::endl;
+  }
 
   return;
 }
@@ -259,6 +317,8 @@ int main(int argc, char** argv) {
   TestString(connection);
   std::cout << "----------------------" << std::endl;
   TestTable(connection);
+  std::cout << "----------------------" << std::endl;
+  TestKeyedTable(connection);
   cpp2kdb::kdb_wrapper::CloseConnection(connection);
   return 0;
 }

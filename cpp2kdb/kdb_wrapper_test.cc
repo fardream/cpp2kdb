@@ -16,14 +16,13 @@ void TestAtomValue(int connection) {
   void* x = cpp2kdb::kdb_wrapper::RunQueryOnConnection(
       connection, expression_to_evaluate.c_str());
 
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCountGuard guard(x);
   std::cout << "Type ID is " << cpp2kdb::kdb_wrapper::GetQTypeId(x)
             << std::endl;
 
   std::cout << "Cast to int64_t, the value is "
             << *(static_cast<int64_t*>(cpp2kdb::kdb_wrapper::GetValue(x)))
             << std::endl;
-
-  cpp2kdb::kdb_wrapper::DecreaseReferenceCount(x);
 }
 void TestVectorValue(int connection) {
   std::string expression_for_vector = "1 2 3";
@@ -32,7 +31,7 @@ void TestVectorValue(int connection) {
 
   void* v = cpp2kdb::kdb_wrapper::RunQueryOnConnection(
       connection, expression_for_vector.c_str());
-
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCountGuard guard(v);
   std::cout << "Type ID is " << cpp2kdb::kdb_wrapper::GetQTypeId(v)
             << std::endl;
 
@@ -45,19 +44,18 @@ void TestVectorValue(int connection) {
     std::cout << values[i] << " ";
   }
   std::cout << std::endl;
-  cpp2kdb::kdb_wrapper::DecreaseReferenceCount(v);
 }
 void TestSymbol(int connection) {
   std::string expression = "`IBM";
   std::cout << "Now evaluate to a symbol: " << expression << std::endl;
   void* v = cpp2kdb::kdb_wrapper::RunQueryOnConnection(connection,
                                                        expression.c_str());
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCountGuard guard(v);
   std::cout << "Type ID is " << cpp2kdb::kdb_wrapper::GetQTypeId(v)
             << std::endl;
   std::cout << std::string(
                    *static_cast<char**>(cpp2kdb::kdb_wrapper::GetValue(v)))
             << std::endl;
-  cpp2kdb::kdb_wrapper::DecreaseReferenceCount(v);
 }
 }  // namespace
 

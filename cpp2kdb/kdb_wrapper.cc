@@ -30,7 +30,7 @@ int OpenConnection(const char* host, int port, const char* username_password,
 }
 
 void CloseConnection(int connection) {
-  //
+  // call kclose
   return kclose(connection);
 }
 
@@ -63,8 +63,28 @@ void DecreaseReferenceCount(void* x) {
   // Call r0
   r0(GetK(x));
 }
+
 void* IncreaseReferenceCount(void* x) {
   // Call r1.
   return r1(GetK(x));
+}
+
+void* DekeyKeyedTable(void* x) {
+  // call ktd
+  return static_cast<void*>(ktd(GetK(x)));
+}
+
+DecreaseReferenceCountGuard::DecreaseReferenceCountGuard(void* pointer_to_guard)
+    : pointer_to_guard(pointer_to_guard) {
+  // do nothing here
+}
+void DecreaseReferenceCountGuard::Unguard() {
+  this->pointer_to_guard = nullptr;
+}
+DecreaseReferenceCountGuard::~DecreaseReferenceCountGuard() {
+  // Only call when pointer_to_guard is not nullptr.
+  if (this->pointer_to_guard != nullptr) {
+    kdb_wrapper::DecreaseReferenceCount(this->pointer_to_guard);
+  }
 }
 }  // namespace cpp2kdb::kdb_wrapper
