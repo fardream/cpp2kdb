@@ -156,4 +156,30 @@ DataRetrievalResult RetrieveVectorData(void* input_vector,
 
   return DataRetrievalResult::Ok;
 }
+
+DataRetrievalResult GetSimpleTable(void* simple_table, void** column_heading,
+                                   void*** values,
+                                   std::size_t* number_of_columns,
+                                   std::size_t* number_of_rows) {
+  // Underlying dictionary.
+  void* underlying_dict =
+      *(reinterpret_cast<void**>(kdb_wrapper::GetValue(simple_table)));
+  // Key list and value list of the dictionary.
+  void** key_value_list =
+      reinterpret_cast<void**>(kdb_wrapper::GetVector(underlying_dict));
+  // Separate keys and values
+  *column_heading = key_value_list[0];
+  void* value_list = key_value_list[1];
+
+  // Get number of columns first
+  *number_of_columns = kdb_wrapper::GetNumberOfVectorElements(*column_heading);
+  if (number_of_columns == 0) {
+    return DataRetrievalResult::Ok;
+  }
+
+  *values = reinterpret_cast<void**>(kdb_wrapper::GetVector(value_list));
+  *number_of_rows = kdb_wrapper::GetNumberOfVectorElements(**values);
+
+  return DataRetrievalResult::Ok;
+}
 }  // namespace cpp2kdb::accessors

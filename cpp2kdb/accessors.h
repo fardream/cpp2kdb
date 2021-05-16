@@ -75,7 +75,9 @@ enum class DataRetrievalResult {
   /// Mixed Vector Contains an element that is not char vector.
   /// This happens when std::string vector is requested, and a mixed list is
   /// input. The mixed input contains an element that is not a char vector.
-  NotCharVectorInMixedVector
+  NotCharVectorInMixedVector,
+  /// Not simple type (type is not 98)
+  NotSimpleTable
 };
 
 /// Names for the enums....
@@ -92,7 +94,8 @@ constexpr const char* DataRetrievalResultNames[] = {
     "InvalidQTypeId",
     "NotMixedVector",
     "NotStringVector",
-    "NotCharVectorInMixedVector"};
+    "NotCharVectorInMixedVector",
+    "NotSimpleTable"};
 
 /// Number of data retrieval result names
 constexpr const std::size_t number_of_data_retrieval_result_names =
@@ -160,5 +163,23 @@ DataRetrievalResult RetrieveVectorData(void* input_vector, T* output_vector) {
     return DataRetrievalResult::InvalidQTypeId;
   }
 }
+
+/// Get all the data a simple table.
+///
+/// A simple table is type 98 K. It contains an atomic K pointing to a
+/// dictionary. The dictionary's keys are the columns, and the values are all
+/// the values by column. The function will also get the number of columns and
+/// the rows.
+DataRetrievalResult GetSimpleTable(
+    /// Input simple table.
+    void* simple_table,
+    /// Output, K object containing the column heading
+    void** column_heading,
+    /// Output, an list of k object containing by column
+    void*** values,
+    /// Output, number of columns.
+    std::size_t* number_of_columns,
+    /// Output, number of rows.
+    std::size_t* number_of_rows);
 }  // namespace cpp2kdb::accessors
 #endif  // CPP2KDB_ACCESSORS_H__

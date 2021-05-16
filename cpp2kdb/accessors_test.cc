@@ -194,6 +194,51 @@ void TestString(int connection) {
             << std::endl;
   cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result1);
 }
+
+void TestTable(int connection) {
+  std::string query =
+      "([]B:01010b;X:0x0001020304;H:0 1 2 3 4h;I:0 1 2 3 4i;J:0 1 2 3 4j;E:0 1 "
+      "2 3 4e;F:0 1 2 3 4.;C:\"abcde\";S:`a`b`c`d`e;P:.z.p+til "
+      "5;M:2001.01m+til 5;D:2001.01.01+til 5;Z:.z.z+til 5;N:.z.n+til "
+      "5;U:10:00:00+til 5;T:10:00:00.000+til 5)";
+  std::cout << "Query to run is: " << std::endl << query << std::endl;
+  void* result =
+      cpp2kdb::kdb_wrapper::RunQueryOnConnection(connection, query.c_str());
+  std::cout << "Type of result is " << cpp2kdb::kdb_wrapper::GetQTypeId(result)
+            << std::endl;
+  std::size_t nc, nr;
+  void* column_heading;
+  void** values;
+  if (cpp2kdb::accessors::GetSimpleTable(result, &column_heading, &values, &nc,
+                                         &nr) ==
+      cpp2kdb::accessors::DataRetrievalResult::Ok) {
+    std::cout << "Shape of the table is: row count " << nr << " column count "
+              << nc << std::endl;
+    std::vector<std::string> column_names(nc);
+    if (cpp2kdb::accessors::RetrieveVectorData(column_heading,
+                                               column_names.data()) !=
+        cpp2kdb::accessors::DataRetrievalResult::Ok) {
+      cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result);
+      return;
+    }
+    for (std::size_t i = 0; i < column_names.size(); i++) {
+      std::cout << "column " << i << ": " << column_names[i]
+                << ", column type is "
+                << cpp2kdb::kdb_wrapper::GetQTypeId(values[i]) << std::endl;
+    }
+    std::vector<std::string> s_column(nr);
+    if (cpp2kdb::accessors::RetrieveVectorData(values[8], s_column.data()) ==
+        cpp2kdb::accessors::DataRetrievalResult::Ok) {
+      for (std::size_t i = 0; i < s_column.size(); i++) {
+        std::cout << s_column[i] << " ";
+      }
+    }
+    std::cout << std::endl;
+  }
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result);
+
+  return;
+}
 }  // namespace
 
 int main(int argc, char** argv) {
@@ -212,6 +257,8 @@ int main(int argc, char** argv) {
   TestDictionary(connection);
   std::cout << "----------------------" << std::endl;
   TestString(connection);
+  std::cout << "----------------------" << std::endl;
+  TestTable(connection);
   cpp2kdb::kdb_wrapper::CloseConnection(connection);
   return 0;
 }
