@@ -5,6 +5,7 @@
 #ifndef CPP2KDB_Q_TYPES_H__
 #define CPP2KDB_Q_TYPES_H__
 /// \file cpp2kdb/q_types.h
+/// Define mappings between q_type_id (an int) and c type.
 
 #include <algorithm>
 #include <cstdint>
@@ -237,6 +238,7 @@ bool TryCopyDataByQTypeIdAndType(
   switch (input_q_type_id) {
 {{#arithmetic_types}}
     case q_{{q_type}}_type_id: {
+      // {{q_type}} is mapped to {{c_type}}{{mapped_c_type}}
       CTypeForQTypeId<q_{{q_type}}_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_{{q_type}}_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);

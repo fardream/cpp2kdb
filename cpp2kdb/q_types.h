@@ -5,6 +5,7 @@
 #ifndef CPP2KDB_Q_TYPES_H__
 #define CPP2KDB_Q_TYPES_H__
 /// \file cpp2kdb/q_types.h
+/// Define mappings between q_type_id (an int) and c type.
 
 #include <algorithm>
 #include <cstdint>
@@ -495,96 +496,112 @@ bool TryCopyDataByQTypeIdAndType(
   // Switch case on input_q_type_id
   switch (input_q_type_id) {
     case q_boolean_type_id: {
+      // boolean is mapped to bool
       CTypeForQTypeId<q_boolean_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_boolean_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_byte_type_id: {
+      // byte is mapped to std::int8_t
       CTypeForQTypeId<q_byte_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_byte_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_short_type_id: {
+      // short is mapped to short
       CTypeForQTypeId<q_short_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_short_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_int_type_id: {
+      // int is mapped to int
       CTypeForQTypeId<q_int_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_int_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_long_type_id: {
+      // long is mapped to std::int64_t
       CTypeForQTypeId<q_long_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_long_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_real_type_id: {
+      // real is mapped to float
       CTypeForQTypeId<q_real_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_real_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_float_type_id: {
+      // float is mapped to double
       CTypeForQTypeId<q_float_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_float_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_char_type_id: {
+      // char is mapped to char
       CTypeForQTypeId<q_char_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_char_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_timestamp_type_id: {
+      // timestamp is mapped to std::int64_t
       CTypeForQTypeId<q_timestamp_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_timestamp_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_month_type_id: {
+      // month is mapped to int
       CTypeForQTypeId<q_month_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_month_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_date_type_id: {
+      // date is mapped to int
       CTypeForQTypeId<q_date_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_date_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_datetime_type_id: {
+      // datetime is mapped to double
       CTypeForQTypeId<q_datetime_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_datetime_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_timespan_type_id: {
+      // timespan is mapped to std::int64_t
       CTypeForQTypeId<q_timespan_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_timespan_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_minute_type_id: {
+      // minute is mapped to int
       CTypeForQTypeId<q_minute_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_minute_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_second_type_id: {
+      // second is mapped to int
       CTypeForQTypeId<q_second_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_second_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
       return true;
     }
     case q_time_type_id: {
+      // time is mapped to int
       CTypeForQTypeId<q_time_type_id>* typed_input_data =
           reinterpret_cast<CTypeForQTypeId<q_time_type_id>*>(input_data);
       std::copy_n(typed_input_data, number_of_elements, output_data);
