@@ -67,7 +67,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">accessors.h File Reference</div>  </div>
 </div><!--header-->
@@ -75,7 +76,8 @@ $(function() {
 
 <p>Convenient accessor functions using kdb_wrappers.h.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="kdb__wrapper_8h_source.html">cpp2kdb/kdb_wrapper.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="q__types_8h_source.html">cpp2kdb/q_types.h</a>&quot;</code><br />
@@ -124,6 +126,14 @@ Functions</h2></td></tr>
 <tr class="memitem:a38ec685bf2a88acaf2354b6800d67046"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#a38ec685bf2a88acaf2354b6800d67046">cpp2kdb::accessors::IsTable</a> (void *x)</td></tr>
 <tr class="memdesc:a38ec685bf2a88acaf2354b6800d67046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the value is a table.  <a href="accessors_8h.html#a38ec685bf2a88acaf2354b6800d67046">More...</a><br /></td></tr>
 <tr class="separator:a38ec685bf2a88acaf2354b6800d67046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a793805c0081ade9acc6994ed08d30b2f"><td class="memItemLeft" align="right" valign="top"><a id="a793805c0081ade9acc6994ed08d30b2f"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#a793805c0081ade9acc6994ed08d30b2f">cpp2kdb::accessors::GetDataRetrievalResultName</a> (DataRetrievalResult result)</td></tr>
+<tr class="memdesc:a793805c0081ade9acc6994ed08d30b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the name from a result. <br /></td></tr>
+<tr class="separator:a793805c0081ade9acc6994ed08d30b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac305bef2a3d0a4138cc51998c9cfdc5e"><td class="memItemLeft" align="right" valign="top"><a id="ac305bef2a3d0a4138cc51998c9cfdc5e"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#ac305bef2a3d0a4138cc51998c9cfdc5e">cpp2kdb::accessors::operator&lt;&lt;</a> (std::ostream &amp;output_stream, DataRetrievalResult result)</td></tr>
+<tr class="memdesc:ac305bef2a3d0a4138cc51998c9cfdc5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload &lt;&lt; for reuslt type. <br /></td></tr>
+<tr class="separator:ac305bef2a3d0a4138cc51998c9cfdc5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3687d70420bcc3209b4242af256e4951"><td class="memItemLeft" align="right" valign="top">DataRetrievalResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#a3687d70420bcc3209b4242af256e4951">cpp2kdb::accessors::CheckVectorForVectorDataRetrieval</a> (void *input_vector)</td></tr>
 <tr class="memdesc:a3687d70420bcc3209b4242af256e4951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the input is valid for retrieving data into a vector.  <a href="accessors_8h.html#a3687d70420bcc3209b4242af256e4951">More...</a><br /></td></tr>
 <tr class="separator:a3687d70420bcc3209b4242af256e4951"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,6 +150,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a417c2acc8b0944febacb2ee6b86979e9"><td class="memTemplItemLeft" align="right" valign="top">DataRetrievalResult&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="accessors_8h.html#a417c2acc8b0944febacb2ee6b86979e9">cpp2kdb::accessors::RetrieveVectorData</a> (void *input_vector, T *output_vector)</td></tr>
 <tr class="memdesc:a417c2acc8b0944febacb2ee6b86979e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve Data Into Vector.  <a href="accessors_8h.html#a417c2acc8b0944febacb2ee6b86979e9">More...</a><br /></td></tr>
 <tr class="separator:a417c2acc8b0944febacb2ee6b86979e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:abb2d76b300ad5e65345f94b6f7ff5283"><td class="memItemLeft" align="right" valign="top">constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#abb2d76b300ad5e65345f94b6f7ff5283">cpp2kdb::accessors::DataRetrievalResultNames</a> []</td></tr>
+<tr class="memdesc:abb2d76b300ad5e65345f94b6f7ff5283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Names for the enums....  <a href="accessors_8h.html#abb2d76b300ad5e65345f94b6f7ff5283">More...</a><br /></td></tr>
+<tr class="separator:abb2d76b300ad5e65345f94b6f7ff5283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe7cc3abcbd70691577200222163f7bc"><td class="memItemLeft" align="right" valign="top">constexpr const std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#abe7cc3abcbd70691577200222163f7bc">cpp2kdb::accessors::number_of_data_retrieval_result_names</a></td></tr>
+<tr class="memdesc:abe7cc3abcbd70691577200222163f7bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of data retrieval result names.  <a href="accessors_8h.html#abe7cc3abcbd70691577200222163f7bc">More...</a><br /></td></tr>
+<tr class="separator:abe7cc3abcbd70691577200222163f7bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Convenient accessor functions using kdb_wrappers.h. </p>
@@ -456,6 +475,72 @@ template&lt;typename T , typename  = std::enable_if_t&lt;std::is_arithmetic_v&lt
 
 <p>Specialization for type void** of Retrieving Data into Vector. </p>
 <p>This is for mixed type vector (so the q type id should be 0). </p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="abb2d76b300ad5e65345f94b6f7ff5283"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb2d76b300ad5e65345f94b6f7ff5283">&#9670;&nbsp;</a></span>DataRetrievalResultNames</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const char* cpp2kdb::accessors::DataRetrievalResultNames[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    <span class="stringliteral">&quot;Ok&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;NullInput&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;ValueError&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;NotTable&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;NotDictionary&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;NotKeyedTable&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;NotVector&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;NotNumericalVector&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;InvalidQTypeId&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;NotMixedVector&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;NotStringVector&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;NotCharVectorInMixedVector&quot;</span>}</div>
+</div><!-- fragment -->
+<p>Names for the enums.... </p>
+<p>There got to be a better way. </p>
+
+</div>
+</div>
+<a id="abe7cc3abcbd70691577200222163f7bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe7cc3abcbd70691577200222163f7bc">&#9670;&nbsp;</a></span>number_of_data_retrieval_result_names</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const std::size_t cpp2kdb::accessors::number_of_data_retrieval_result_names</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">    <span class="keyword">sizeof</span>(<a class="code" href="accessors_8h.html#abb2d76b300ad5e65345f94b6f7ff5283">DataRetrievalResultNames</a>) / <span class="keyword">sizeof</span>(DataRetrievalResultNames[0])</div>
+<div class="ttc" id="aaccessors_8h_html_abb2d76b300ad5e65345f94b6f7ff5283"><div class="ttname"><a href="accessors_8h.html#abb2d76b300ad5e65345f94b6f7ff5283">cpp2kdb::accessors::DataRetrievalResultNames</a></div><div class="ttdeci">constexpr const char * DataRetrievalResultNames[]</div><div class="ttdoc">Names for the enums....</div><div class="ttdef"><b>Definition:</b> accessors.h:83</div></div>
+</div><!-- fragment -->
+<p>Number of data retrieval result names. </p>
 
 </div>
 </div>
