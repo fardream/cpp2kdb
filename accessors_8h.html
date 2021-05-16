@@ -101,6 +101,8 @@ Enumerations</h2></td></tr>
 , <a class="el" href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaa16ef64eb7bf876c42291dca0429cdc11">NotMixedVector</a>
 , <a class="el" href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaaaae1485ac6c2e674cc1c11987ad2b110">NotStringVector</a>
 , <a class="el" href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaa8006e2d090b94ffdc03cf168308e834f">NotCharVectorInMixedVector</a>
+, <br />
+&#160;&#160;<a class="el" href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caaac817589712d71cd90f3cceb7a899c984">NotSimpleTable</a>
 <br />
  }</td></tr>
 <tr class="memdesc:a19912001d4e3d1fdabd3cd7dee128caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data Retrieval Result.  <a href="accessors_8h.html#a19912001d4e3d1fdabd3cd7dee128caa">More...</a><br /></td></tr>
@@ -150,6 +152,9 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="
 <tr class="memitem:a417c2acc8b0944febacb2ee6b86979e9"><td class="memTemplItemLeft" align="right" valign="top">DataRetrievalResult&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="accessors_8h.html#a417c2acc8b0944febacb2ee6b86979e9">cpp2kdb::accessors::RetrieveVectorData</a> (void *input_vector, T *output_vector)</td></tr>
 <tr class="memdesc:a417c2acc8b0944febacb2ee6b86979e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve Data Into Vector.  <a href="accessors_8h.html#a417c2acc8b0944febacb2ee6b86979e9">More...</a><br /></td></tr>
 <tr class="separator:a417c2acc8b0944febacb2ee6b86979e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7bbe7aa24d21e3b0e5a8ccf2c08c4ec"><td class="memItemLeft" align="right" valign="top">DataRetrievalResult&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="accessors_8h.html#ab7bbe7aa24d21e3b0e5a8ccf2c08c4ec">cpp2kdb::accessors::GetSimpleTable</a> (void *simple_table, void **column_heading, void ***values, std::size_t *number_of_columns, std::size_t *number_of_rows)</td></tr>
+<tr class="memdesc:ab7bbe7aa24d21e3b0e5a8ccf2c08c4ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all the data a simple table.  <a href="accessors_8h.html#ab7bbe7aa24d21e3b0e5a8ccf2c08c4ec">More...</a><br /></td></tr>
+<tr class="separator:ab7bbe7aa24d21e3b0e5a8ccf2c08c4ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -210,6 +215,8 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="a19912001d4e3d1fdabd3cd7dee128caaa8006e2d090b94ffdc03cf168308e834f"></a>NotCharVectorInMixedVector&#160;</td><td class="fielddoc"><p>Mixed Vector Contains an element that is not char vector. </p>
 <p>This happens when std::string vector is requested, and a mixed list is input. The mixed input contains an element that is not a char vector. </p>
 </td></tr>
+<tr><td class="fieldname"><a id="a19912001d4e3d1fdabd3cd7dee128caaac817589712d71cd90f3cceb7a899c984"></a>NotSimpleTable&#160;</td><td class="fielddoc"><p>Not simple type (type is not 98) </p>
+</td></tr>
 </table>
 
 </div>
@@ -233,6 +240,65 @@ Variables</h2></td></tr>
 
 <p>Check if the input is valid for retrieving data into a vector. </p>
 <p>This support symbol vector, mixed list if all the elements are vector of chars. </p>
+
+</div>
+</div>
+<a id="ab7bbe7aa24d21e3b0e5a8ccf2c08c4ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7bbe7aa24d21e3b0e5a8ccf2c08c4ec">&#9670;&nbsp;</a></span>GetSimpleTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DataRetrievalResult cpp2kdb::accessors::GetSimpleTable </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>simple_table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>column_heading</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void ***&#160;</td>
+          <td class="paramname"><em>values</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t *&#160;</td>
+          <td class="paramname"><em>number_of_columns</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t *&#160;</td>
+          <td class="paramname"><em>number_of_rows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get all the data a simple table. </p>
+<p>A simple table is type 98 K. It contains an atomic K pointing to a dictionary. The dictionary's keys are the columns, and the values are all the values by column. The function will also get the number of columns and the rows. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">simple_table</td><td>Input simple table. </td></tr>
+    <tr><td class="paramname">column_heading</td><td>Output, K object containing the column heading </td></tr>
+    <tr><td class="paramname">values</td><td>Output, an list of k object containing by column </td></tr>
+    <tr><td class="paramname">number_of_columns</td><td>Output, number of columns. </td></tr>
+    <tr><td class="paramname">number_of_rows</td><td>Output, number of rows. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -510,7 +576,8 @@ template&lt;typename T , typename  = std::enable_if_t&lt;std::is_arithmetic_v&lt
 <div class="line">    <span class="stringliteral">&quot;InvalidQTypeId&quot;</span>,</div>
 <div class="line">    <span class="stringliteral">&quot;NotMixedVector&quot;</span>,</div>
 <div class="line">    <span class="stringliteral">&quot;NotStringVector&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;NotCharVectorInMixedVector&quot;</span>}</div>
+<div class="line">    <span class="stringliteral">&quot;NotCharVectorInMixedVector&quot;</span>,</div>
+<div class="line">    <span class="stringliteral">&quot;NotSimpleTable&quot;</span>}</div>
 </div><!-- fragment -->
 <p>Names for the enums.... </p>
 <p>There got to be a better way. </p>
@@ -538,7 +605,7 @@ template&lt;typename T , typename  = std::enable_if_t&lt;std::is_arithmetic_v&lt
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">    <span class="keyword">sizeof</span>(<a class="code" href="accessors_8h.html#abb2d76b300ad5e65345f94b6f7ff5283">DataRetrievalResultNames</a>) / <span class="keyword">sizeof</span>(DataRetrievalResultNames[0])</div>
-<div class="ttc" id="aaccessors_8h_html_abb2d76b300ad5e65345f94b6f7ff5283"><div class="ttname"><a href="accessors_8h.html#abb2d76b300ad5e65345f94b6f7ff5283">cpp2kdb::accessors::DataRetrievalResultNames</a></div><div class="ttdeci">constexpr const char * DataRetrievalResultNames[]</div><div class="ttdoc">Names for the enums....</div><div class="ttdef"><b>Definition:</b> accessors.h:83</div></div>
+<div class="ttc" id="aaccessors_8h_html_abb2d76b300ad5e65345f94b6f7ff5283"><div class="ttname"><a href="accessors_8h.html#abb2d76b300ad5e65345f94b6f7ff5283">cpp2kdb::accessors::DataRetrievalResultNames</a></div><div class="ttdeci">constexpr const char * DataRetrievalResultNames[]</div><div class="ttdoc">Names for the enums....</div><div class="ttdef"><b>Definition:</b> accessors.h:85</div></div>
 </div><!-- fragment -->
 <p>Number of data retrieval result names. </p>
 
