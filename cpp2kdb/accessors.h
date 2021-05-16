@@ -16,7 +16,10 @@
 // Including the types.
 #include "cpp2kdb/q_types.h"
 
-namespace cpp2kdb::accessors {
+/// Pure C++ to KDB
+namespace cpp2kdb {
+/// Convenient accessor functions for kdb using kdb_wrapper.h
+namespace accessors {
 /// Check if the value is error.
 ///
 /// In reality, this checks for if type_id == -128
@@ -181,5 +184,6 @@ DataRetrievalResult GetSimpleTable(
     std::size_t* number_of_columns,
     /// Output, number of rows.
     std::size_t* number_of_rows);
-}  // namespace cpp2kdb::accessors
+}  // namespace accessors
+}  // namespace cpp2kdb
 #endif  // CPP2KDB_ACCESSORS_H__
