@@ -7,6 +7,7 @@
 /// \file cpp2kdb/accessors.h
 /// Convenient accessor functions using kdb_wrappers.h
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -76,6 +77,33 @@ enum class DataRetrievalResult {
   /// input. The mixed input contains an element that is not a char vector.
   NotCharVectorInMixedVector
 };
+
+/// Names for the enums....
+/// There got to be a better way.
+constexpr const char* DataRetrievalResultNames[] = {
+    "Ok",
+    "NullInput",
+    "ValueError",
+    "NotTable",
+    "NotDictionary",
+    "NotKeyedTable",
+    "NotVector",
+    "NotNumericalVector",
+    "InvalidQTypeId",
+    "NotMixedVector",
+    "NotStringVector",
+    "NotCharVectorInMixedVector"};
+
+/// Number of data retrieval result names
+constexpr const std::size_t number_of_data_retrieval_result_names =
+    sizeof(DataRetrievalResultNames) / sizeof(DataRetrievalResultNames[0]);
+
+/// Get the name from a result
+const char* GetDataRetrievalResultName(DataRetrievalResult result);
+
+/// Overload << for reuslt type.
+std::ostream& operator<<(std::ostream& output_stream,
+                         DataRetrievalResult result);
 
 /// Check if the input is valid for retrieving data into a vector.
 /// This support symbol vector, mixed list if all the elements are vector of

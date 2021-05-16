@@ -76,6 +76,21 @@ bool IsTable(void* x) {
   return q_types::IsQTypeIdTable(kdb_wrapper::GetQTypeId(x));
 }
 
+const char* GetDataRetrievalResultName(DataRetrievalResult result) {
+  // Cast result to an int.
+  int temp_result = static_cast<int>(result);
+  // Make sure it's valid.
+  if (temp_result >= 0 && temp_result < number_of_data_retrieval_result_names) {
+    return DataRetrievalResultNames[temp_result];
+  } else {
+    return "Invalid";
+  }
+}
+
+std::ostream& operator<<(std::ostream& output, DataRetrievalResult result) {
+  return output << GetDataRetrievalResultName(result);
+}
+
 DataRetrievalResult CheckVectorForVectorDataRetrieval(void* input_vector) {
   // First, check if this pointer is null
   if (input_vector == nullptr) {

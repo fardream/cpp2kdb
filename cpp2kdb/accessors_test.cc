@@ -177,12 +177,22 @@ void TestString(int connection) {
   std::vector<std::string> values(
       cpp2kdb::kdb_wrapper::GetNumberOfVectorElements(result));
   auto d = cpp2kdb::accessors::RetrieveVectorData(result, values.data());
-  std::cout << "Retrieval result is " << static_cast<int>(d) << std::endl;
+  std::cout << "Retrieval result is " << d << std::endl;
   for (std::size_t i = 0; i < values.size(); i++) {
     std::cout << values[i] << "|";
   }
   std::cout << std::endl;
   cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result);
+
+  std::string query1 = "\"abc\"";
+  void* result1 =
+      cpp2kdb::kdb_wrapper::RunQueryOnConnection(connection, query1.c_str());
+  std::cout << "Type of query " << query1 << " is "
+            << cpp2kdb::kdb_wrapper::GetQTypeId(result1) << std::endl;
+  auto d1 = cpp2kdb::accessors::RetrieveVectorData(result1, values.data());
+  std::cout << "Retrieve result from query " << query1 << " is " << d1
+            << std::endl;
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCount(result1);
 }
 }  // namespace
 
