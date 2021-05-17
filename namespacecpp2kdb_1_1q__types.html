@@ -224,6 +224,16 @@ constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <tr class="memitem:a099d2a68fcc36684ddd19ed7d656ca62"><td class="memItemLeft" align="right" valign="top">constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a099d2a68fcc36684ddd19ed7d656ca62">IsQTypeIdMixedVector</a> (int input_q_type_id)</td></tr>
 <tr class="memdesc:a099d2a68fcc36684ddd19ed7d656ca62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the q type id is a mixed vector.  <a href="namespacecpp2kdb_1_1q__types.html#a099d2a68fcc36684ddd19ed7d656ca62">More...</a><br /></td></tr>
 <tr class="separator:a099d2a68fcc36684ddd19ed7d656ca62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b0c6b70ff30f1db80ec7869419e27d0"><td class="memTemplParams" colspan="2">template&lt;typename T , typename  = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a8b0c6b70ff30f1db80ec7869419e27d0"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a8b0c6b70ff30f1db80ec7869419e27d0">TryGetAtomicValue</a> (int input_q_type_id, void *data, T *output)</td></tr>
+<tr class="memdesc:a8b0c6b70ff30f1db80ec7869419e27d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Atomic Value indicated by q_type_id into a T*.  <a href="namespacecpp2kdb_1_1q__types.html#a8b0c6b70ff30f1db80ec7869419e27d0">More...</a><br /></td></tr>
+<tr class="separator:a8b0c6b70ff30f1db80ec7869419e27d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af247aa5d7543cf5ec8bccfbd45f612e9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#af247aa5d7543cf5ec8bccfbd45f612e9">TryGetAtomicValue</a> (int input_q_type_id, void *data, std::string *output)</td></tr>
+<tr class="memdesc:af247aa5d7543cf5ec8bccfbd45f612e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Atomic Value indicated by q_type_id into a std::string*.  <a href="namespacecpp2kdb_1_1q__types.html#af247aa5d7543cf5ec8bccfbd45f612e9">More...</a><br /></td></tr>
+<tr class="separator:af247aa5d7543cf5ec8bccfbd45f612e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d55ec471b7adcbe9475508ba4ea28d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#a0d55ec471b7adcbe9475508ba4ea28d0">TryGetAtomicValue</a> (int input_q_type_id, void *data, void **output)</td></tr>
+<tr class="memdesc:a0d55ec471b7adcbe9475508ba4ea28d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get Atomic Value indicated by q_type_id into a void**.  <a href="namespacecpp2kdb_1_1q__types.html#a0d55ec471b7adcbe9475508ba4ea28d0">More...</a><br /></td></tr>
+<tr class="separator:a0d55ec471b7adcbe9475508ba4ea28d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb0af782ceaa66065be7bc1877aaa456"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:adb0af782ceaa66065be7bc1877aaa456"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1q__types.html#adb0af782ceaa66065be7bc1877aaa456">TryCopyDataByQTypeIdAndType</a> (int input_q_type_id, std::size_t number_of_elements, void *input_data, T *output_data)</td></tr>
 <tr class="memdesc:adb0af782ceaa66065be7bc1877aaa456"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy from a void* indicated by q_type_id into a T*.  <a href="namespacecpp2kdb_1_1q__types.html#adb0af782ceaa66065be7bc1877aaa456">More...</a><br /></td></tr>
@@ -714,6 +724,165 @@ template&lt;typename T &gt; </div>
     <tr><td class="paramname">number_of_elements</td><td>Number of elements to copy. </td></tr>
     <tr><td class="paramname">input_data</td><td>Input data, which is the vector data from K, not the pointer to K itself. </td></tr>
     <tr><td class="paramname">output_data</td><td>Output data. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af247aa5d7543cf5ec8bccfbd45f612e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af247aa5d7543cf5ec8bccfbd45f612e9">&#9670;&nbsp;</a></span>TryGetAtomicValue() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cpp2kdb::q_types::TryGetAtomicValue </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>input_q_type_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string *&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get Atomic Value indicated by q_type_id into a std::string*. </p>
+<p>This is only valid for symbol atomic type (-11). </p><dl class="section return"><dt>Returns</dt><dd>A bool indicate if copy is performed. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_q_type_id</td><td>Q Type Id of void* </td></tr>
+    <tr><td class="paramname">data</td><td>input data, which is the atomic value pointer from K, not the pointer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output data. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8b0c6b70ff30f1db80ec7869419e27d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b0c6b70ff30f1db80ec7869419e27d0">&#9670;&nbsp;</a></span>TryGetAtomicValue() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename  = std::enable_if_t&lt;std::is_arithmetic_v&lt;T&gt;&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cpp2kdb::q_types::TryGetAtomicValue </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>input_q_type_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get Atomic Value indicated by q_type_id into a T*. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Desired type for output. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A bool indicate if copy is performed. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_q_type_id</td><td>Q Type Id of void* </td></tr>
+    <tr><td class="paramname">data</td><td>input data, which is the atomic value pointer from K, not the pointer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output data. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0d55ec471b7adcbe9475508ba4ea28d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d55ec471b7adcbe9475508ba4ea28d0">&#9670;&nbsp;</a></span>TryGetAtomicValue() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cpp2kdb::q_types::TryGetAtomicValue </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>input_q_type_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void **&#160;</td>
+          <td class="paramname"><em>output</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get Atomic Value indicated by q_type_id into a void**. </p>
+<p>This is only valid for table type (98). </p><dl class="section return"><dt>Returns</dt><dd>A bool indicate if copy is performed. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input_q_type_id</td><td>Q Type Id of void* </td></tr>
+    <tr><td class="paramname">data</td><td>input data, which is the atomic value pointer from K, not the pointer. </td></tr>
+    <tr><td class="paramname">output</td><td>Output data. </td></tr>
   </table>
   </dd>
 </dl>

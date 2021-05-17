@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['wrapper_20details_120',['Wrapper details',['../md_wrapper_details.html',1,'']]]
+  ['wrapper_20details_121',['Wrapper details',['../md_wrapper_details.html',1,'']]]
 ];

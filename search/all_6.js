@@ -10,5 +10,5 @@ var searchData=
   ['nottable_69',['NotTable',['../namespacecpp2kdb_1_1accessors.html#a19912001d4e3d1fdabd3cd7dee128caaa923b263a5b2a9356c8b386e7ec6d1dc5',1,'cpp2kdb::accessors']]],
   ['notvector_70',['NotVector',['../namespacecpp2kdb_1_1accessors.html#a19912001d4e3d1fdabd3cd7dee128caaa50b9d0b563ca70b1348e897e4a06881b',1,'cpp2kdb::accessors']]],
   ['nullinput_71',['NullInput',['../namespacecpp2kdb_1_1accessors.html#a19912001d4e3d1fdabd3cd7dee128caaafd2eb23e04baea79c5a461137eb6cd40',1,'cpp2kdb::accessors']]],
-  ['number_5fof_5fdata_5fretrieval_5fresult_5fnames_72',['number_of_data_retrieval_result_names',['../namespacecpp2kdb_1_1accessors.html#abe7cc3abcbd70691577200222163f7bc',1,'cpp2kdb::accessors']]]
+  ['number_5fof_5fdata_5fretrieval_5fresult_5fnames_72',['number_of_data_retrieval_result_names',['../namespacecpp2kdb_1_1accessors.html#ac4a562db38eb0757c82af30e20cf4bf3',1,'cpp2kdb::accessors']]]
 ];
