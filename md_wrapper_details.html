@@ -120,24 +120,82 @@ Result from KDB, &lt;tt&gt;K&lt;/tt&gt; object</h1>
 <div class="line">    };</div>
 <div class="line">  };</div>
 <div class="line">} * K;</div>
-</div><!-- fragment --><ol type="1">
+</div><!-- fragment --><ul>
 <li>It can be seen that <code>K</code> is a pointer to <code>struct k0</code> (why not <code>k</code>? remember it's already used by the function <code>k</code>).</li>
-</ol>
-<ol type="1">
 <li>The only data we need is in the union part of the object.<ul>
 <li>The pointer type <code>k0* k</code> indicates this <code>K</code> is containing another <code>K</code>, which only happens for table type.</li>
-<li>The struct with <code>n</code> and <code>G0</code> in it indicating a vector of sorts, which <code>n</code> indicates the number of elements contained by <code>G0</code>, and <code>G0</code> is a pointer pointing to that memory location. The type <code>G</code> is actually <code>unsigned char</code>, which is not directly convertible to other types (unlike <code>char*</code>);</li>
+<li>The struct with <code>n</code> and <code>G0</code> in it indicating a vector of sorts, which <code>n</code> indicates the number of elements contained by <code>G0</code>, and <code>G0</code> is a pointer pointing to that memory location. The type <code>G</code> is actually <code>unsigned char</code>, which is not directly convertible to other types (unlike <code>char*</code>).</li>
+<li>Also, notice that <code>G G0[1]</code> is an array of size 1 - which may seem absurd. However, also notice that <code>G0</code> is the last member of the <code>struct k0</code> and the enclosed union, and the memory locations right after <code>G0</code> is not part of <code>k0</code>, and can be used to store more data (on most of compilers).</li>
 </ul>
 </li>
-</ol>
-<ol type="1">
 <li>The type of the <code>K</code> object is indicated by <code>t</code>. The exact type is listed in <a href="https://code.kx.com/q/interfaces/c-client-for-q/#overview">KxSystems' documentation</a>. The only special case that needs to mention is <code>symbol</code>, which is actually a <code>char*</code> pointing to a null-terminated <code>char</code> array (like a proper <code>C</code> string), where as string in KDB sense is an array of <code>char</code> that is <b>NOT null-terminated</b>.</li>
-</ol>
+</ul>
 <h1><a class="anchor" id="autotoc_md9"></a>
 How to actually access the data from &lt;tt&gt;K&lt;/tt&gt;?</h1>
 <ul>
 <li>To get an <b>atomic</b> value from <code>K</code>, just use the corresponding accessor.</li>
-<li>To get the content of the vector, get the pointer <code>G0</code> and cast it to the type indicated by <code>t</code>. </li>
+<li>To get the content of a vector, get the pointer <code>G0</code> and cast it to the type indicated by <code>t</code>.</li>
+<li>To get the content of a table (type id is 98), get the atomic <code>K</code> pointer (member data <code>k</code>) which is a dict type 99.</li>
+<li>The content of a dict (type 99) is a <code>K</code> vector of size 2. The first <code>K</code> contains the keys, and the second <code>K</code> contains the values. Key <code>K</code> and value <code>K</code> contain the same number of elements.</li>
+<li>The content of a keyed table is a dict (therefore type 99), but the key and value <code>K</code>s are both table (type 98). Keyed tables can also be converted to a simple table (type 98) by calling <code>knd</code>.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md10"></a>
+How Wrappers Work</h1>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Use &lt;tt&gt;void*&lt;/tt&gt; as &lt;tt&gt;K&lt;/tt&gt;</h2>
+<p><code>void*</code> will be used in place of <code>K</code> in the wrapper.</p>
+<p>The wrapper contains 3 header files, and two of them with associated source files.</p>
+<ul>
+<li><a href="cpp2kdb/kdb_wrapper.h">**<code>kdb_wrapper.h</code>**</a> and <a href="cpp2kdb/kdb_wrapper.cc">**<code>kdb_wrapper.cc</code>**</a>:ß The only include is in the source, and it includes <code>k.h</code>. It provides the functions to many of the same functions defined <code>k.h</code>.</li>
+<li><a href="cpp2kdb/q_types.h">**<code>q_types.h</code>**</a>: This single header handles the mapping between a q type indicated by an integer and a c type. This generated from <a href="cpp2kdb/q_types.h.yml">q_types.h.yml</a> and <a href="cpp2kdb/q_types.h.template">q_types.h.template</a> with <a href="http://mustache.github.io">mustache templating</a>. It does <b>NOT</b> include <code><a class="el" href="kdb__wrapper_8h.html" title="Wrapping functions for k.h.">kdb_wrapper.h</a></code>.</li>
+<li><a href="cpp2kdb/accessors.h">**<code>accessors.h</code>**</a> and <a href="cpp2kdb/accessors.cc">**<code>accessors.cc</code>**</a>: This set of files include both <code><a class="el" href="kdb__wrapper_8h.html" title="Wrapping functions for k.h.">kdb_wrapper.h</a></code> and <code><a class="el" href="q__types_8h.html" title="Define mappings between q_type_id (an int) and c type.">q_types.h</a></code>, and provides convenient functions to getting data as different types.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md12"></a>
+&lt;tt&gt;kdb_wrapper&lt;/tt&gt; Wrapping &lt;tt&gt;k.h&lt;/tt&gt;</h1>
+<h2><a class="anchor" id="autotoc_md13"></a>
+Getting data</h2>
+<p>***In all the wrappers, <code>K</code> is replaced with <code>void*</code>**, so the access to type information <code>t</code>, the atomic values, and the vector data is lost. <code>kdb_wrapper</code> provides the following functions to get access to those fields:</p>
+<ul>
+<li><code>int GetQTypeId(void*)</code> gets the q type id for <code>void*</code>.</li>
+<li><code>void* GetValue(void*)</code> gets the pointer to atomic value from this <code>void*</code>. This relies on the fact that all members of a <code>C/C++</code> union have the same address in memory, so the atomic value's pointer can be obtained by getting address of any of the union members.</li>
+<li><code>long long GetNumberOfVectorElements(void*)</code> gets the number of elements in the vector (<code>n</code>).</li>
+<li><code>void* GetVector(void*)</code> gets the pointer to the first element of the vector (<code>G0</code>).</li>
+</ul>
+<p>Note all the <code>Get</code> functions have no type checks.</p>
+<h2><a class="anchor" id="autotoc_md14"></a>
+Call &lt;tt&gt;r0&lt;/tt&gt; when going out of scope</h2>
+<p>It is required to call <code>r0</code> after consuming the data in <code>K</code>. One way to guarantee that is to create a <code>class</code>, and call <code>r0</code> on the associated pointer in its destructor. <code>DecreaseReferenceCountGuard</code> is provided for this purpose.</p>
+<div class="fragment"><div class="line"> {C++}</div>
+<div class="line">{</div>
+<div class="line">  void* result = RunQueryOnConnection(connection, ....);</div>
+<div class="line">  DecreaseReferenceCountGuard guard(result);</div>
+<div class="line">  // do things.</div>
+<div class="line">  if(...) {</div>
+<div class="line">    // should call r0 here</div>
+<div class="line">    return;</div>
+<div class="line">  }</div>
+<div class="line">  // something else.</div>
+<div class="line">  // when the program exit this scope, the destructor will be called and r0 be called.</div>
+<div class="line">  // should call r0 here</div>
+<div class="line">  return;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p><code>DecreaseReferenceCountGuard</code> has only one constructor, accepting <code>void*</code> as its input. It has only one member function that is <code>void Unguard()</code>, which tells <code>DecreaseReferenceCountGuard</code> to forget about the <code>void*</code> and not do anything in destructor.</p>
+<h1><a class="anchor" id="autotoc_md15"></a>
+&lt;tt&gt;q_types&lt;/tt&gt; and mapping between &lt;tt&gt;C&lt;/tt&gt; type and q type id</h1>
+<p><code><a class="el" href="q__types_8h.html" title="Define mappings between q_type_id (an int) and c type.">q_types.h</a></code> provides the necessary mappings between <code>C</code> types and q type ids.</p>
+<ul>
+<li>From q type id <code>q_type_id</code>, the corresponding <code>C</code> type can be obtained by <code><a class="el" href="namespacecpp2kdb_1_1q__types.html#ad444a2ccd4cd4a67c13ac986b3ffcd0c" title="C Type for the corresponding Q Type Id.">cpp2kdb::q_types::CTypeForQTypeId</a>&lt;q_type_id&gt;</code>.</li>
+<li>For subset of <code>C</code> types <code>T</code>, q type id can be obtained by <code><a class="el" href="namespacecpp2kdb.html" title="Pure C++ to KDB.">cpp2kdb</a>;:q_types::q_type_id&lt;T&gt;</code></li>
+</ul>
+<p>There is <b>NOT</b> a type defined in <code>q_types</code> that can represent a <code>K</code> object.</p>
+<h1><a class="anchor" id="autotoc_md16"></a>
+Use &lt;tt&gt;accessors&lt;/tt&gt; to get data out from &lt;tt&gt;K&lt;/tt&gt;</h1>
+<p><code>accessors</code> provides the necessary functions to get data from <code>K</code> without worrying too much about the type stored.</p>
+<ul>
+<li>For atomic data, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#aa923ee3bb5c81d471a9b249684f9d3ea" title="Get the atomic value as type T The function first gets the pointer to the data union of this K,...">cpp2kdb::accessors::GetValue</a>&lt;T&gt;(void*)</code> to get the data. For arithmetic types, the result is <code>static_cast</code> from the type indicated from <code>K</code> to the <code>T</code> requested. <code>std::string</code> and <code>void*</code> are also supported.</li>
+<li>For vector data, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#a417c2acc8b0944febacb2ee6b86979e9" title="Retrieve Data Into Vector.">cpp2kdb::accessors::RetrieveVectorData(void* input, T* output)</a></code>. Arithmetic types, <code>std::string</code> and <code>void*</code> are the only supported types. <code>input</code> must be a vector (so cannot be dictionary, atomic or table). <code>output</code> is required to hold the number of elements in <code>K</code>.</li>
+<li>For dictionary, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#a9a325ccc2acff6439dc1e01e92027136" title="Get the vector value as type T* The function first gets the pointer to the vector in the data union o...">cpp2kdb::accessors::GetVector</a>&lt;void*&gt;(void* input)</code> to get the key list and value list, then use <code>RetrieveVectorData</code> to get the data.</li>
+<li>For simple table, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#ab7bbe7aa24d21e3b0e5a8ccf2c08c4ec" title="Get all the data a simple table.">cpp2kdb::accessors::GetSimpleTable(void* input, void** column_heading, void*** values, std::size_t *number_of_columns, std::size_t *number_of_rows)</a></code>. Note that <code>column_heading</code> and <code>values</code> will be set to propere <code>K</code>s in the <code>input</code>, so preallocating memory is not necessary. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
