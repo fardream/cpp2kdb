@@ -477,6 +477,171 @@ constexpr bool IsQTypeIdVector(int input_q_type_id) {
 constexpr bool IsQTypeIdMixedVector(int input_q_type_id) {
   return input_q_type_id == q_mixed_type_id;
 }
+
+/// Get Atomic Value indicated by q_type_id into a T*
+///
+/// \tparam T Desired type for output.
+/// \returns A bool indicate if copy is performed.
+template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+bool TryGetAtomicValue(
+    /// Q Type Id of void*
+    int input_q_type_id,
+    /// input data, which is the atomic value pointer from K, not the pointer.
+    void* data,
+    /// Output data.
+    T* output) {
+  // Switch case on input_q_type_id
+  switch (input_q_type_id) {
+    case -q_boolean_type_id: {
+      // boolean is mapped to bool
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_boolean_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_byte_type_id: {
+      // byte is mapped to std::int8_t
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_byte_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_short_type_id: {
+      // short is mapped to short
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_short_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_int_type_id: {
+      // int is mapped to int
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_int_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_long_type_id: {
+      // long is mapped to std::int64_t
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_long_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_real_type_id: {
+      // real is mapped to float
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_real_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_float_type_id: {
+      // float is mapped to double
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_float_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_char_type_id: {
+      // char is mapped to char
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_char_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_timestamp_type_id: {
+      // timestamp is mapped to std::int64_t
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_timestamp_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_month_type_id: {
+      // month is mapped to int
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_month_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_date_type_id: {
+      // date is mapped to int
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_date_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_datetime_type_id: {
+      // datetime is mapped to double
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_datetime_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_timespan_type_id: {
+      // timespan is mapped to std::int64_t
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_timespan_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_minute_type_id: {
+      // minute is mapped to int
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_minute_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_second_type_id: {
+      // second is mapped to int
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_second_type_id>*>(data)));
+      return true;
+    }
+
+    case -q_time_type_id: {
+      // time is mapped to int
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_time_type_id>*>(data)));
+      return true;
+    }
+    default:
+      return false;
+  }
+}
+
+/// Get Atomic Value indicated by q_type_id into a std::string*.
+/// This is only valid for symbol atomic type (-11).
+/// \returns A bool indicate if copy is performed.
+inline bool TryGetAtomicValue(
+    /// Q Type Id of void*
+    int input_q_type_id,
+    /// input data, which is the atomic value pointer from K, not the pointer.
+    void* data,
+    /// Output data.
+    std::string* output) {
+  if (input_q_type_id != -q_symbol_type_id) {
+    return false;
+  }
+  output->assign(*reinterpret_cast<char**>(data));
+  return true;
+}
+
+/// Get Atomic Value indicated by q_type_id into a void**.
+/// This is only valid for table type (98).
+/// \returns A bool indicate if copy is performed.
+inline bool TryGetAtomicValue(
+    /// Q Type Id of void*
+    int input_q_type_id,
+    /// input data, which is the atomic value pointer from K, not the pointer.
+    void* data,
+    /// Output data.
+    void** output) {
+  if (input_q_type_id != q_table_type_id) {
+    return false;
+  }
+  *output = *reinterpret_cast<void**>(data);
+  return true;
+}
+
 /***************************************************************************/
 /// Copy from a void* indicated by q_type_id into a T*.
 ///

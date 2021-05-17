@@ -218,6 +218,69 @@ constexpr bool IsQTypeIdVector(int input_q_type_id) {
 constexpr bool IsQTypeIdMixedVector(int input_q_type_id) {
   return input_q_type_id == q_mixed_type_id;
 }
+
+/// Get Atomic Value indicated by q_type_id into a T*
+///
+/// \tparam T Desired type for output.
+/// \returns A bool indicate if copy is performed.
+template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
+bool TryGetAtomicValue(
+    /// Q Type Id of void*
+    int input_q_type_id,
+    /// input data, which is the atomic value pointer from K, not the pointer.
+    void* data,
+    /// Output data.
+    T* output) {
+  // Switch case on input_q_type_id
+  switch (input_q_type_id) {
+{{#arithmetic_types}}  
+    case -q_{{q_type}}_type_id: {
+      // {{q_type}} is mapped to {{c_type}}{{mapped_c_type}}    
+      *output = static_cast<T>(
+          *(reinterpret_cast<CTypeForQTypeId<q_{{q_type}}_type_id>*>(data)));
+      return true;
+    }
+{{/arithmetic_types}}
+    default:
+      return false;
+  }
+}
+
+/// Get Atomic Value indicated by q_type_id into a std::string*.
+/// This is only valid for symbol atomic type (-11).
+/// \returns A bool indicate if copy is performed.
+inline bool TryGetAtomicValue(
+    /// Q Type Id of void*
+    int input_q_type_id,
+    /// input data, which is the atomic value pointer from K, not the pointer.
+    void* data,
+    /// Output data.
+    std::string* output) {
+  if (input_q_type_id != -q_symbol_type_id) {
+    return false;
+  }
+  output->assign(*reinterpret_cast<char**>(data));
+  return true;
+}
+
+/// Get Atomic Value indicated by q_type_id into a void**.
+/// This is only valid for table type (98).
+/// \returns A bool indicate if copy is performed.
+inline bool TryGetAtomicValue(
+    /// Q Type Id of void*
+    int input_q_type_id,
+    /// input data, which is the atomic value pointer from K, not the pointer.
+    void* data,
+    /// Output data.
+    void** output) {
+  if (input_q_type_id != q_table_type_id) {
+    return false;
+  }
+  *output = *reinterpret_cast<void**>(data);
+  return true;
+}
+
+
 /***************************************************************************/
 /// Copy from a void* indicated by q_type_id into a T*.
 ///

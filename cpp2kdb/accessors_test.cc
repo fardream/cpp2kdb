@@ -37,6 +37,16 @@ void TestTypes(int connection) {
   std::cout << "Type ID 11 is mapped to std::string? "
             << IsSameType<cpp2kdb::q_types::CTypeForQTypeId<11>, std::string>()
             << std::endl;
+
+  void* result = cpp2kdb::kdb_wrapper::RunQueryOnConnection(connection, "5");
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCountGuard guard(result);
+  std::cout << "Result of 5 is " << cpp2kdb::accessors::GetValue<int>(result)
+            << std::endl;
+  void* result1 =
+      cpp2kdb::kdb_wrapper::RunQueryOnConnection(connection, "`abc");
+  cpp2kdb::kdb_wrapper::DecreaseReferenceCountGuard guard1(result1);
+  std::cout << "Result of `abc is "
+            << cpp2kdb::accessors::GetValue<std::string>(result1) << std::endl;
 }
 
 void TestIsSame() {
@@ -113,8 +123,7 @@ void TestDictionary(int connection) {
   std::cout << "Size of the list is "
             << cpp2kdb::kdb_wrapper::GetNumberOfVectorElements(result)
             << std::endl;
-  void** key_value_list =
-      static_cast<void**>(cpp2kdb::kdb_wrapper::GetVector(result));
+  void** key_value_list = cpp2kdb::accessors::GetVector<void*>(result);
   std::cout << "Key's type is "
             << cpp2kdb::kdb_wrapper::GetQTypeId(key_value_list[0])
             << " and the count is "
@@ -132,7 +141,7 @@ void TestDictionary(int connection) {
   std::cout << "Retrieving Data Successful? "
             << SayYesOrNo(value_result ==
                           cpp2kdb::accessors::DataRetrievalResult::Ok)
-            << " " << static_cast<int>(value_result) << std::endl;
+            << " " << value_result << std::endl;
   for (std::size_t i = 0; i < values.size(); i++) {
     std::cout << values[i] << " ";
   }
@@ -141,8 +150,7 @@ void TestDictionary(int connection) {
   std::vector<void*> keys(3, nullptr);
   auto key_list_result =
       cpp2kdb::accessors::RetrieveVectorData(key_value_list[0], keys.data());
-  std::cout << "Getting keys result is " << static_cast<int>(key_list_result)
-            << std::endl;
+  std::cout << "Getting keys result is " << key_list_result << std::endl;
   std::cout << "Type of first key is "
             << cpp2kdb::kdb_wrapper::GetQTypeId(keys[0]) << std::endl;
   std::cout << "Size of first key is "
@@ -254,8 +262,7 @@ void TestKeyedTable(int connection) {
   std::cout << "Type of result is " << cpp2kdb::kdb_wrapper::GetQTypeId(result)
             << std::endl;
 
-  void** key_value_list =
-      reinterpret_cast<void**>(cpp2kdb::kdb_wrapper::GetVector(result));
+  void** key_value_list = cpp2kdb::accessors::GetVector<void*>(result);
   std::cout << "Type of the first k is "
             << cpp2kdb::kdb_wrapper::GetQTypeId(key_value_list[0])
             << " and the type of the second K is "

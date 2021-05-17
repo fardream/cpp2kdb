@@ -61,7 +61,13 @@ bool IsTable(void* x);
 /// \tparam T type desired.
 template <typename T>
 T GetValue(void* x) {
-  return *(reinterpret_cast<T*>(kdb_wrapper::GetValue(x)));
+  // Create a T
+  T result;
+  // Call the try get. Note there is no check.
+  q_types::TryGetAtomicValue(kdb_wrapper::GetQTypeId(x),
+                             kdb_wrapper::GetValue(x), &result);
+
+  return result;
 }
 
 /// Get the vector value as type T*
@@ -127,7 +133,7 @@ constexpr const char* DataRetrievalResultNames[] = {
     "NotSimpleTable"};
 
 /// Number of data retrieval result names
-constexpr const std::size_t number_of_data_retrieval_result_names =
+constexpr const int number_of_data_retrieval_result_names =
     sizeof(DataRetrievalResultNames) / sizeof(DataRetrievalResultNames[0]);
 
 /// Get the name from a result
