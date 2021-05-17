@@ -45,13 +45,77 @@ int OpenConnection(
 void CloseConnection(
     /// Handle to close.
     int connection);
-
 /// Run query on a connection.
 void* RunQueryOnConnection(
     /// Handle
     int connection,
     /// Query
     const char* query);
+
+/// Run query on a connection.
+void* RunQueryOnConnection(
+    /// Handle
+    int connection,
+    /// Query
+    const char* query,
+    /// Argument
+    void* arg);
+
+/// Run query on a connection.
+void* RunQueryOnConnection(
+    /// Handle
+    int connection,
+    /// Query
+    const char* query,
+    /// Argument 1
+    void* arg1,
+    /// Argument 2
+    void* arg2);
+
+/// Run query on a connection.
+void* RunQueryOnConnection(
+    /// Handle
+    int connection,
+    /// Query
+    const char* query,
+    /// Argument 1
+    void* arg1,
+    /// Argument 2
+    void* arg2,
+    /// Argument 3
+    void* arg3);
+
+/// Run query on a connection.
+void* RunQueryOnConnection(
+    /// Handle
+    int connection,
+    /// Query
+    const char* query,
+    /// Argument 1
+    void* arg1,
+    /// Argument 2
+    void* arg2,
+    /// Argument 3
+    void* arg3,
+    /// Argument 4
+    void* arg4);
+
+/// Run query on a connection.
+void* RunQueryOnConnection(
+    /// Handle
+    int connection,
+    /// Query
+    const char* query,
+    /// Argument 1
+    void* arg1,
+    /// Argument 2
+    void* arg2,
+    /// Argument 3
+    void* arg3,
+    /// Argument 4
+    void* arg4,
+    /// Argument 5
+    void* arg5);
 
 /// Obtain type id of this K pointer.
 ///

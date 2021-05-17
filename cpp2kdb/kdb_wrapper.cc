@@ -39,6 +39,36 @@ void* RunQueryOnConnection(int connection, const char* query) {
   return k(connection, ConvertToNonConst(query), 0);
 }
 
+void* RunQueryOnConnection(int connection, const char* query, void* arg) {
+  // Call k.
+  return k(connection, ConvertToNonConst(query), arg, 0);
+}
+
+void* RunQueryOnConnection(int connection, const char* query, void* arg1,
+                           void* arg2) {
+  // Call k.
+  return k(connection, ConvertToNonConst(query), arg1, arg2, 0);
+}
+
+void* RunQueryOnConnection(int connection, const char* query, void* arg1,
+                           void* arg2, void* arg3) {
+  // Call k.
+  return k(connection, ConvertToNonConst(query), arg1, arg2, arg3, 0);
+}
+
+void* RunQueryOnConnection(int connection, const char* query, void* arg1,
+                           void* arg2, void* arg3, void* arg4) {
+  // Call k.
+  return k(connection, ConvertToNonConst(query), arg1, arg2, arg3, arg4, 0);
+}
+
+void* RunQueryOnConnection(int connection, const char* query, void* arg1,
+                           void* arg2, void* arg3, void* arg4, void* arg5) {
+  // Call k.
+  return k(connection, ConvertToNonConst(query), arg1, arg2, arg3, arg4, arg5,
+           0);
+}
+
 int GetQTypeId(void* x) {
   // Get K.
   return GetK(x)->t;
