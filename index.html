@@ -65,15 +65,18 @@ $(function() {
 <div class="title"><a class="el" href="namespacecpp2kdb.html" title="Pure C++ to KDB.">cpp2kdb</a> </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a> Pure C++ Wrapper To KDB+. KDB+ is a time series database from KxSystems.</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> Pure C++ Wrapper To KDB+. KDB+ is a columnar/time series database from KxSystems.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Why a Pure C++ Wrapper to KDB+</h1>
-<p>Take a look at KxSystems' library for kdb (<a href="https://github.com/KxSystems/kdb/blob/39b957030bf6a4608f2508ff29894d7fac32a0c2/c/c/k.h">here</a> is the <code>C/C++</code> header) - this is taking terseness and being cryptic to an extreme. For example <a href="https://github.com/KxSystems/kdb/blob/39b957030bf6a4608f2508ff29894d7fac32a0c2/c/c/k.h#L3">line 3</a></p>
+<p>KxSystems, the company behind KDB, actually has a library for <code>C/C++</code>. So why reinvent the wheel?</p>
+<p>You may have heard that <a href="https://en.wikipedia.org/w/index.php?title=Q_(programming_language_from_Kx_Systems)&amp;oldid=967026133"><code>q</code></a>, the language used by KDB, is famous for its terseness and being cryptic. Now, take a look at <a href="https://github.com/KxSystems/kdb/blob/39b957030bf6a4608f2508ff29894d7fac32a0c2/c/c/k.h"><code>k.h</code></a>, the interface provided by KxSystems for <code>C/C++</code>.</p>
+<p>Now, take a look at <a href="https://github.com/KxSystems/kdb/blob/39b957030bf6a4608f2508ff29894d7fac32a0c2/c/c/k.h#L3">line 3</a></p>
 <div class="fragment"><div class="line"> {C++}</div>
 <div class="line">typedef char*S,C;typedef unsigned char G;typedef short H;typedef int I;typedef long long J;typedef float E;typedef double F;typedef void V;</div>
-</div><!-- fragment --><p>Why on one line? Why single upper case character defines? On smaller screens this needs scrolling and cannot be shown at the same time.</p>
-<p>The <b>most unfanthomable</b> ones are from <a href="https://github.com/KxSystems/kdb/blob/39b957030bf6a4608f2508ff29894d7fac32a0c2/c/c/k.h#L99-L106">line 99 to line 106</a></p>
+</div><!-- fragment --><p>First, notice that it's one line? Second, notice that it <code>typedef</code> all the common types to single character. It's not only terse and cryptic, it's almost obstructive.</p>
+<p>The <b>most unfanthomable</b> ones are from <a href="https://github.com/KxSystems/kdb/blob/39b957030bf6a4608f2508ff29894d7fac32a0c2/c/c/k.h#L98-L106">line 98 to line 106</a></p>
 <div class="fragment"><div class="line"> {C++}</div>
+<div class="line">// remove more clutter</div>
 <div class="line">#define O printf</div>
 <div class="line">#define R return</div>
 <div class="line">#define Z static</div>
@@ -82,20 +85,23 @@ Why a Pure C++ Wrapper to KDB+</h1>
 <div class="line">#define SW switch</div>
 <div class="line">#define CS(n,x) case n:x;break;</div>
 <div class="line">#define CD default</div>
-</div><!-- fragment --><p><b>The dealbreaker</b>: many templates use single upper case characters as <code>typename</code>, and including <code>k.h</code> will break everything - and see this issue <a href="https://github.com/KxSystems/kdb/issues/12">k.h is unusable in C++ programs</a>.</p>
+</div><!-- fragment --><p>The part <code>// remove more clutter</code> is from the code itself. It's horrible, and it is <b>the dealbreaker</b>: many templates use single upper case characters as <code>typename</code>, and including <code>k.h</code> will break everything (and see this issue raised two years ago that is still unaddressed: <a href="https://github.com/KxSystems/kdb/issues/12">k.h is unusable in C++ programs</a>).</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Wrapping &lt;tt&gt;k.h&lt;/tt&gt; without exposing &lt;tt&gt;k.h&lt;/tt&gt;</h1>
 <p>To prevent <code>k.h</code> from breaking other codes, this wrapper only includes <code>k.h</code> in one single file, <a href="cpp2kdb/kdb_wrapper.cc"><code>kdb_wrapper.cc</code></a>, and expose most of kdb's functionalities through functions with common types. <a href="cpp2kdb/kdb_wrapper.h"><code>kdb_wrapper.h</code></a> and <a href="cpp2kdb/kdb_wrapper.cc"><code>kdb_wrapper.cc</code></a> don't have any other includes, and the chance that <code>k.h</code> would break other code will be minimized.</p>
-<p>Most importantly, the <code>K</code> type, which is a pointer to <code>k0</code> struct, will be <code>void*</code>.</p>
-<p><a href="cpp2kdb/accessors.h"><code>accessors.h</code></a> provides convenient accessor functions by calling functions in <a href="cpp2kdb/kdb_wrapper.h"><code>kdb_wrapper.h</code></a>.</p>
+<p><b>This wrapper only focuses on getting data from KDB by a standalone <code>C++</code> application.</b> This is due to the limited experience that I had with KDB and the limited use cases that I encountered. If you need the support for more, just let me know.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
-Building the code</h1>
+Wrapper</h1>
+<p>The documentation can be generated by running Doxygen in the root folder of the directory, they are also hosted <a href="http://fardream.github.io/cpp2kdb">here on github pages</a>.</p>
+<p>For more details on how to use, see <a class="el" href="md_wrapper_details.html">wrapper_details.md</a>.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Verify the code</h1>
 <p><code>bazel</code> and <code>gcc&gt;8.0.0</code> are necessary to build the code. KDB+ libraries are pulled in by <code>bazel</code>.</p>
 <p>The example binary requires a running KDB+ instance on localhost at port 5000. After installing the binaries from KxSystems, run the following</p>
 <div class="fragment"><div class="line">q -p 5000</div>
 </div><!-- fragment --><p>Now the example can be run by</p>
 <div class="fragment"><div class="line">bazel run //cpp2kdb:kdb_wrapper_test</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
 Non-bazel build</h1>
 <p>KDB libraries can be downloaded from <a href="https://github.com/kxsystems/kdb">KxSystemx/kdb</a>. The code requires <code>k.h</code>, which is in folder <code>c/c</code>. Put the path to <code>c/c</code> in the include path. It looks like <code>-pthread</code> is required for linker, but I am not sure if this is specific to my installation. </p>
 </div></div><!-- PageDoc -->
