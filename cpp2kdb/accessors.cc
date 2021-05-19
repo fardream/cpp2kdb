@@ -154,6 +154,25 @@ DataRetrievalResult RetrieveVectorData(void* input_vector,
   return DataRetrievalResult::Ok;
 }
 
+DataRetrievalResult RetrieveVectorData(void* input_vector,
+                                       q_types::QGuid* output_vector) {
+  DataRetrievalResult check_result =
+      CheckVectorForVectorDataRetrieval(input_vector);
+  if (check_result != DataRetrievalResult::Ok) {
+    return check_result;
+  }
+  if (kdb_wrapper::GetQTypeId(input_vector) != q_types::q_guid_type_id) {
+    return DataRetrievalResult::NotGuidVector;
+  }
+
+  // Copy over.
+  std::copy_n(GetVector<q_types::QGuid>(input_vector),
+              kdb_wrapper::GetNumberOfVectorElements(input_vector),
+              output_vector);
+
+  return DataRetrievalResult::Ok;
+}
+
 DataRetrievalResult GetSimpleTable(void* simple_table, void** column_heading,
                                    void*** values,
                                    std::size_t* number_of_columns,

@@ -280,6 +280,22 @@ inline bool TryGetAtomicValue(
   return true;
 }
 
+/// Get Atomic Value indicated by q_type_id into a QGuid
+/// This is only valid for Guid (-1).
+/// \returns A bool indicate if copy is performed.
+inline bool TryGetAtomicValue(
+    /// Q Type Id of void*
+    int input_q_type_id,
+    /// input data, which is the atomic value pointer from K, not the pointer.
+    void* data,
+    /// Output data.
+    QGuid* output) {
+  if (input_q_type_id != -q_guid_type_id) {
+    return false;
+  }
+  *output = *reinterpret_cast<QGuid*>(data);
+  return true;
+}
 
 /***************************************************************************/
 /// Copy from a void* indicated by q_type_id into a T*.

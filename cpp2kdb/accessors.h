@@ -112,7 +112,9 @@ enum class DataRetrievalResult {
   /// input. The mixed input contains an element that is not a char vector.
   NotCharVectorInMixedVector,
   /// Not simple type (type is not 98)
-  NotSimpleTable
+  NotSimpleTable,
+  /// Not a guid vector (type is 1)
+  NotGuidVector
 };
 
 /// Names for the enums....
@@ -130,7 +132,8 @@ constexpr const char* DataRetrievalResultNames[] = {
     "NotMixedVector",
     "NotStringVector",
     "NotCharVectorInMixedVector",
-    "NotSimpleTable"};
+    "NotSimpleTable",
+    "NotGuidVector"};
 
 /// Number of data retrieval result names
 constexpr const int number_of_data_retrieval_result_names =
@@ -167,6 +170,11 @@ DataRetrievalResult RetrieveVectorData(void* input_vector,
 /// This is for mixed type vector (so the q type id should be 0).
 DataRetrievalResult RetrieveVectorData(void* input_vector,
                                        void** output_vector);
+
+/// Specialization for type QGuid of Retrieving Data into Vector.
+/// This is for mixed type vector (so the q type id should be 0).
+DataRetrievalResult RetrieveVectorData(void* input_vector,
+                                       q_types::QGuid* output_vector);
 
 /// Retrieve Data Into Vector.
 ///
