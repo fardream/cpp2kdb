@@ -142,7 +142,7 @@ constexpr const int number_of_data_retrieval_result_names =
 /// Get the name from a result
 const char* GetDataRetrievalResultName(DataRetrievalResult result);
 
-/// Overload << for reuslt type.
+/// Overload << for result type `DataRetrievalResult`.
 std::ostream& operator<<(std::ostream& output_stream,
                          DataRetrievalResult result);
 
@@ -163,18 +163,26 @@ std::string GetStringFromCharVector(void* input_char_vector);
 /// std::string can be either a vector of symbol (type 11), or a mixed vector
 /// with each element a vector of char (type 0, and then type 10 for all
 /// elements).
-DataRetrievalResult RetrieveVectorData(void* input_vector,
-                                       std::string* output_vector);
+DataRetrievalResult RetrieveVectorData(
+    /// [in] input vector.
+    void* input_vector,
+    /// [out] output location.
+    std::string* output_vector);
 
 /// Specialization for type void** of Retrieving Data into Vector.
 /// This is for mixed type vector (so the q type id should be 0).
-DataRetrievalResult RetrieveVectorData(void* input_vector,
-                                       void** output_vector);
+DataRetrievalResult RetrieveVectorData(
+    /// [in] input vector.
+    void* input_vector,
+    /// [out] output location.
+    void** output_vector);
 
 /// Specialization for type QGuid of Retrieving Data into Vector.
-/// This is for mixed type vector (so the q type id should be 0).
-DataRetrievalResult RetrieveVectorData(void* input_vector,
-                                       q_types::QGuid* output_vector);
+DataRetrievalResult RetrieveVectorData(
+    /// [in] input vector.
+    void* input_vector,
+    /// [out] output location.
+    q_types::QGuid* output_vector);
 
 /// Retrieve Data Into Vector.
 ///
@@ -182,7 +190,11 @@ DataRetrievalResult RetrieveVectorData(void* input_vector,
 /// therefore only arithmatic vectors should reach this - which is boolean,
 /// char, integers and float.
 template <typename T, typename = std::enable_if_t<std::is_arithmetic_v<T>>>
-DataRetrievalResult RetrieveVectorData(void* input_vector, T* output_vector) {
+DataRetrievalResult RetrieveVectorData(
+    /// [in] input vector.
+    void* input_vector,
+    /// [out] output location.
+    T* output_vector) {
   // Check the vector first.
   DataRetrievalResult check_vector_result =
       CheckVectorForVectorDataRetrieval(input_vector);
@@ -214,15 +226,15 @@ DataRetrievalResult RetrieveVectorData(void* input_vector, T* output_vector) {
 /// the values by column. The function will also get the number of columns and
 /// the rows.
 DataRetrievalResult GetSimpleTable(
-    /// Input simple table.
+    /// [in] Input simple table.
     void* simple_table,
-    /// Output, K object containing the column heading
+    /// [out] Will be set to the K object containing the column heading
     void** column_heading,
-    /// Output, an list of k object containing by column
+    /// [out] Will be set to the vector of k objects contained in the columns
     void*** values,
-    /// Output, number of columns.
+    /// [out] Will be set to number of columns.
     std::size_t* number_of_columns,
-    /// Output, number of rows.
+    /// [out] Will be set to number of rows.
     std::size_t* number_of_rows);
 }  // namespace accessors
 }  // namespace cpp2kdb
