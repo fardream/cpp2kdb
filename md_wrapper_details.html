@@ -145,7 +145,7 @@ Use &lt;tt&gt;void*&lt;/tt&gt; as &lt;tt&gt;K&lt;/tt&gt;</h2>
 <p><code>void*</code> will be used in place of <code>K</code> in the wrapper.</p>
 <p>The wrapper contains 3 header files, and two of them with associated source files.</p>
 <ul>
-<li><a href="cpp2kdb/kdb_wrapper.h">**<code>kdb_wrapper.h</code>**</a> and <a href="cpp2kdb/kdb_wrapper.cc">**<code>kdb_wrapper.cc</code>**</a>:ß The only include is in the source, and it includes <code>k.h</code>. It provides the functions to many of the same functions defined <code>k.h</code>.</li>
+<li><a href="cpp2kdb/kdb_wrapper.h">**<code>kdb_wrapper.h</code>**</a> and <a href="cpp2kdb/kdb_wrapper.cc">**<code>kdb_wrapper.cc</code>**</a>: The only <code>include</code> of <code>k.h</code> is in the source file <code>kdb_wrapper.cc</code>. It provides the functions to many of the same functions defined <code>k.h</code>.</li>
 <li><a href="cpp2kdb/q_types.h">**<code>q_types.h</code>**</a>: This single header handles the mapping between a q type indicated by an integer and a c type. This generated from <a href="cpp2kdb/q_types.h.yml">q_types.h.yml</a> and <a href="cpp2kdb/q_types.h.template">q_types.h.template</a> with <a href="http://mustache.github.io">mustache templating</a>. It does <b>NOT</b> include <code><a class="el" href="kdb__wrapper_8h.html" title="Wrapping functions for k.h.">kdb_wrapper.h</a></code>.</li>
 <li><a href="cpp2kdb/accessors.h">**<code>accessors.h</code>**</a> and <a href="cpp2kdb/accessors.cc">**<code>accessors.cc</code>**</a>: This set of files include both <code><a class="el" href="kdb__wrapper_8h.html" title="Wrapping functions for k.h.">kdb_wrapper.h</a></code> and <code><a class="el" href="q__types_8h.html" title="Define mappings between q_type_id (an int) and c type.">q_types.h</a></code>, and provides convenient functions to getting data as different types.</li>
 </ul>
@@ -153,7 +153,7 @@ Use &lt;tt&gt;void*&lt;/tt&gt; as &lt;tt&gt;K&lt;/tt&gt;</h2>
 &lt;tt&gt;kdb_wrapper&lt;/tt&gt; Wrapping &lt;tt&gt;k.h&lt;/tt&gt;</h1>
 <h2><a class="anchor" id="autotoc_md13"></a>
 Getting data</h2>
-<p>***In all the wrappers, <code>K</code> is replaced with <code>void*</code>**, so the access to type information <code>t</code>, the atomic values, and the vector data is lost. <code>kdb_wrapper</code> provides the following functions to get access to those fields:</p>
+<p><b>In all the wrappers, <code>K</code> is replaced with <code>void*</code></b>, so the access to type information <code>t</code>, the atomic values, and the vector data is lost, and <code>kdb_wrapper</code> provides the following functions to get access to those fields:</p>
 <ul>
 <li><code>int GetQTypeId(void*)</code> gets the q type id for <code>void*</code>.</li>
 <li><code>void* GetValue(void*)</code> gets the pointer to atomic value from this <code>void*</code>. This relies on the fact that all members of a <code>C/C++</code> union have the same address in memory, so the atomic value's pointer can be obtained by getting address of any of the union members.</li>
@@ -184,19 +184,34 @@ Call &lt;tt&gt;r0&lt;/tt&gt; when going out of scope</h2>
 <p><code><a class="el" href="q__types_8h.html" title="Define mappings between q_type_id (an int) and c type.">q_types.h</a></code> provides the necessary mappings between <code>C</code> types and q type ids.</p>
 <ul>
 <li>From q type id <code>q_type_id</code>, the corresponding <code>C</code> type can be obtained by <code><a class="el" href="namespacecpp2kdb_1_1q__types.html#ad444a2ccd4cd4a67c13ac986b3ffcd0c" title="C Type for the corresponding Q Type Id.">cpp2kdb::q_types::CTypeForQTypeId</a>&lt;q_type_id&gt;</code>.</li>
-<li>For subset of <code>C</code> types <code>T</code>, q type id can be obtained by <code><a class="el" href="namespacecpp2kdb.html" title="Pure C++ to KDB.">cpp2kdb</a>;:q_types::q_type_id&lt;T&gt;</code></li>
+<li>For subset of <code>C</code> types <code>T</code>, q type id can be obtained by <code><a class="el" href="namespacecpp2kdb_1_1q__types.html#ae5a03c0a28f89d4f40bb81edd410acaa" title="Helper variable for q_type_id.">cpp2kdb::q_types::q_type_id</a>&lt;T&gt;</code>.</li>
+<li>A type <code>QGuid</code> is defined to represent the GUID type in q.</li>
 </ul>
-<p>There is <b>NOT</b> a type defined in <code>q_types</code> that can represent a <code>K</code> object.</p>
+<div class="fragment"><div class="line"> {C++}</div>
+<div class="line">struct QGuid {</div>
+<div class="line">  /// Value of the GUID. 4 4-byte int&#39;s should be 16 bytes.</div>
+<div class="line">  int value[4];</div>
+<div class="line">};</div>
+</div><!-- fragment --><p>There is <b>NOT</b> a type defined in <code>q_types</code> that can represent a <code>K</code> object.</p>
 <h1><a class="anchor" id="autotoc_md16"></a>
 Use &lt;tt&gt;accessors&lt;/tt&gt; to get data out from &lt;tt&gt;K&lt;/tt&gt;</h1>
 <p><code>accessors</code> provides the necessary functions to get data from <code>K</code> without worrying too much about the type stored.</p>
 <ul>
-<li>For atomic data, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#aa923ee3bb5c81d471a9b249684f9d3ea" title="Get the atomic value as type T The function first gets the pointer to the data union of this K,...">cpp2kdb::accessors::GetValue</a>&lt;T&gt;(void*)</code> to get the data. For arithmetic types, the result is <code>static_cast</code> from the type indicated from <code>K</code> to the <code>T</code> requested. <code>std::string</code> and <code>void*</code> are also supported.</li>
-<li>For vector data, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#a417c2acc8b0944febacb2ee6b86979e9" title="Retrieve Data Into Vector.">cpp2kdb::accessors::RetrieveVectorData(void* input, T* output)</a></code>. Arithmetic types, <code>std::string</code> and <code>void*</code> are the only supported types. <code>input</code> must be a vector (so cannot be dictionary, atomic or table). <code>output</code> is required to hold the number of elements in <code>K</code>.</li>
+<li>For atomic data, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#aa923ee3bb5c81d471a9b249684f9d3ea" title="Get the atomic value as type T The function first gets the pointer to the data union of this K,...">cpp2kdb::accessors::GetValue</a>&lt;T&gt;(void*)</code> to get the data. For arithmetic types, the result is <code>static_cast</code> from the type indicated from <code>K</code> to the <code>T</code> requested. <code>std::string</code>, <code>QGuid</code>, and <code>void*</code> are also supported.</li>
+<li>For vector data, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#a417c2acc8b0944febacb2ee6b86979e9" title="Retrieve Data Into Vector.">cpp2kdb::accessors::RetrieveVectorData(void* input, T* output)</a></code>. Arithmetic types, <code>std::string</code>, <code>QGuid</code>, and <code>void*</code> are the only supported types. <code>input</code> must be a vector in q (so cannot be dictionary, atomic or table). <code>output</code> is required to hold the number of elements in <code>K</code> - so the memory must be pre-allocated.</li>
 <li>For dictionary, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#a9a325ccc2acff6439dc1e01e92027136" title="Get the vector value as type T* The function first gets the pointer to the vector in the data union o...">cpp2kdb::accessors::GetVector</a>&lt;void*&gt;(void* input)</code> to get the key list and value list, then use <code>RetrieveVectorData</code> to get the data.</li>
-<li>For simple table, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#ab7bbe7aa24d21e3b0e5a8ccf2c08c4ec" title="Get all the data a simple table.">cpp2kdb::accessors::GetSimpleTable(void* input, void** column_heading, void*** values, std::size_t *number_of_columns, std::size_t *number_of_rows)</a></code>. Note that <code>column_heading</code> and <code>values</code> will be set to propere <code>K</code>s in the <code>input</code>, so preallocating memory is not necessary.</li>
+<li>For simple table, use <code><a class="el" href="namespacecpp2kdb_1_1accessors.html#ab7bbe7aa24d21e3b0e5a8ccf2c08c4ec" title="Get all the data a simple table.">cpp2kdb::accessors::GetSimpleTable(void* input, void** column_heading, void*** values, std::size_t *number_of_columns, std::size_t *number_of_rows)</a></code> like below. Note that <code>column_heading</code> and <code>values</code> will be set to propere <code>K</code>s in the <code>input</code>, so preallocating memory is not necessary.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<div class="fragment"><div class="line">{C++}</div>
+<div class="line"> void* column_headings;</div>
+<div class="line"> void** values;</div>
+<div class="line"> std::size_t number_of_columns, number_of_rows</div>
+<div class="line"> cpp2kdb::accessors::DataRetrievalResult result = cpp2kdb::accessors::GetSimpleTable(k, </div>
+<div class="line">     &amp;column_heading,</div>
+<div class="line">     &amp;values, </div>
+<div class="line">     &amp;number_of_columns,</div>
+<div class="line">     &amp;number_of_rows);</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
 Unobstructive Wrapper</h1>
 <p>The goal of this wrapper is <b>unobstructive</b>, or any part of the library can be used indepedently of each other, and can mix with other tools or codes that target <code>kdb</code>. For example, a <code>K</code> can be obtained from another code base and it will work with any of functions defined in <code>accessors</code>. </p>
 </div></div><!-- contents -->
