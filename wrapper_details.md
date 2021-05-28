@@ -105,7 +105,7 @@ typedef struct k0 {
 
 The wrapper contains 3 header files, and two of them with associated source files.
 
-- [**`kdb_wrapper.h`**](cpp2kdb/kdb_wrapper.h) and [**`kdb_wrapper.cc`**](cpp2kdb/kdb_wrapper.cc):ß The only include is in the source, and it includes `k.h`. It provides the functions to many of the same functions defined `k.h`.
+- [**`kdb_wrapper.h`**](cpp2kdb/kdb_wrapper.h) and [**`kdb_wrapper.cc`**](cpp2kdb/kdb_wrapper.cc): The only `include` of `k.h` is in the source file `kdb_wrapper.cc`. It provides the functions to many of the same functions defined `k.h`.
 
 - [**`q_types.h`**](cpp2kdb/q_types.h): This single header handles the mapping between a q type indicated by an integer and a c type. This generated from [q_types.h.yml](cpp2kdb/q_types.h.yml) and [q_types.h.template](cpp2kdb/q_types.h.template) with [mustache templating](http://mustache.github.io). It does **NOT** include `kdb_wrapper.h`.
 
@@ -115,7 +115,7 @@ The wrapper contains 3 header files, and two of them with associated source file
 
 ### Getting data
 
-***In all the wrappers, `K` is replaced with `void*`**, so the access to type information `t`, the atomic values, and the vector data is lost. `kdb_wrapper` provides the following functions to get access to those fields:
+**In all the wrappers, `K` is replaced with `void*`**, so the access to type information `t`, the atomic values, and the vector data is lost, and `kdb_wrapper` provides the following functions to get access to those fields:
 
 - `int GetQTypeId(void*)` gets the q type id for `void*`.
 
@@ -155,7 +155,16 @@ It is required to call `r0` after consuming the data in `K`. One way to guarante
 
 - From q type id `q_type_id`, the corresponding `C` type can be obtained by `cpp2kdb::q_types::CTypeForQTypeId<q_type_id>`.
 
-- For subset of `C` types `T`, q type id can be obtained by `cpp2kdb;:q_types::q_type_id<T>`
+- For subset of `C` types `T`, q type id can be obtained by `cpp2kdb::q_types::q_type_id<T>`.
+
+- A type `QGuid` is defined to represent the GUID type in q.
+
+```C++
+struct QGuid {
+  /// Value of the GUID. 4 4-byte int's should be 16 bytes.
+  int value[4];
+};
+```
 
 There is **NOT** a type defined in `q_types` that can represent a `K` object.
 
@@ -163,12 +172,24 @@ There is **NOT** a type defined in `q_types` that can represent a `K` object.
 
 `accessors` provides the necessary functions to get data from `K` without worrying too much about the type stored.
 
-- For atomic data, use `cpp2kdb::accessors::GetValue<T>(void*)` to get the data. For arithmetic types, the result is `static_cast` from the type indicated from `K` to the `T` requested. `std::string` and `void*` are also supported.
+- For atomic data, use `cpp2kdb::accessors::GetValue<T>(void*)` to get the data. For arithmetic types, the result is `static_cast` from the type indicated from `K` to the `T` requested. `std::string`, `QGuid`, and `void*` are also supported.
 
-- For vector data, use `cpp2kdb::accessors::RetrieveVectorData(void* input, T* output)`. Arithmetic types, `std::string` and `void*` are the only supported types. `input` must be a vector (so cannot be dictionary, atomic or table). `output` is required to hold the number of elements in `K`.
+- For vector data, use `cpp2kdb::accessors::RetrieveVectorData(void* input, T* output)`. Arithmetic types, `std::string`, `QGuid`, and `void*` are the only supported types. `input` must be a vector in q (so cannot be dictionary, atomic or table). `output` is required to hold the number of elements in `K` - so the memory must be pre-allocated.
 
 - For dictionary, use `cpp2kdb::accessors::GetVector<void*>(void* input)` to get the key list and value list, then use `RetrieveVectorData` to get the data.
-- For simple table, use `cpp2kdb::accessors::GetSimpleTable(void* input, void** column_heading, void*** values, std::size_t *number_of_columns, std::size_t *number_of_rows)`. Note that `column_heading` and `values` will be set to propere `K`s in the `input`, so preallocating memory is not necessary.
+
+- For simple table, use `cpp2kdb::accessors::GetSimpleTable(void* input, void** column_heading, void*** values, std::size_t *number_of_columns, std::size_t *number_of_rows)` like below. Note that `column_heading` and `values` will be set to propere `K`s in the `input`, so preallocating memory is not necessary.
+
+  ```C++
+  void* column_headings;
+  void** values;
+  std::size_t number_of_columns, number_of_rows
+  cpp2kdb::accessors::DataRetrievalResult result = cpp2kdb::accessors::GetSimpleTable(k, 
+      &column_heading,
+      &values, 
+      &number_of_columns,
+      &number_of_rows);
+  ```
 
 ## Unobstructive Wrapper
 
