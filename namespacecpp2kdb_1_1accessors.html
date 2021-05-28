@@ -136,7 +136,7 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="separator:a793805c0081ade9acc6994ed08d30b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac305bef2a3d0a4138cc51998c9cfdc5e"><td class="memItemLeft" align="right" valign="top"><a id="ac305bef2a3d0a4138cc51998c9cfdc5e"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1accessors.html#ac305bef2a3d0a4138cc51998c9cfdc5e">operator&lt;&lt;</a> (std::ostream &amp;output_stream, <a class="el" href="namespacecpp2kdb_1_1accessors.html#a19912001d4e3d1fdabd3cd7dee128caa">DataRetrievalResult</a> result)</td></tr>
-<tr class="memdesc:ac305bef2a3d0a4138cc51998c9cfdc5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload &lt;&lt; for reuslt type. <br /></td></tr>
+<tr class="memdesc:ac305bef2a3d0a4138cc51998c9cfdc5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overload &lt;&lt; for result type <code>DataRetrievalResult</code>. <br /></td></tr>
 <tr class="separator:ac305bef2a3d0a4138cc51998c9cfdc5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3687d70420bcc3209b4242af256e4951"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacecpp2kdb_1_1accessors.html#a19912001d4e3d1fdabd3cd7dee128caa">DataRetrievalResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecpp2kdb_1_1accessors.html#a3687d70420bcc3209b4242af256e4951">CheckVectorForVectorDataRetrieval</a> (void *input_vector)</td></tr>
 <tr class="memdesc:a3687d70420bcc3209b4242af256e4951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the input is valid for retrieving data into a vector.  <a href="namespacecpp2kdb_1_1accessors.html#a3687d70420bcc3209b4242af256e4951">More...</a><br /></td></tr>
@@ -298,11 +298,11 @@ Variables</h2></td></tr>
 <p>A simple table is type 98 K. It contains an atomic K pointing to a dictionary. The dictionary's keys are the columns, and the values are all the values by column. The function will also get the number of columns and the rows. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">simple_table</td><td>Input simple table. </td></tr>
-    <tr><td class="paramname">column_heading</td><td>Output, K object containing the column heading </td></tr>
-    <tr><td class="paramname">values</td><td>Output, an list of k object containing by column </td></tr>
-    <tr><td class="paramname">number_of_columns</td><td>Output, number of columns. </td></tr>
-    <tr><td class="paramname">number_of_rows</td><td>Output, number of rows. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">simple_table</td><td>Input simple table. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">column_heading</td><td>Will be set to the K object containing the column heading </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">values</td><td>Will be set to the vector of k objects contained in the columns </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">number_of_columns</td><td>Will be set to number of columns. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">number_of_rows</td><td>Will be set to number of rows. </td></tr>
   </table>
   </dd>
 </dl>
@@ -542,7 +542,13 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Specialization for type QGuid of Retrieving Data into Vector. </p>
-<p>This is for mixed type vector (so the q type id should be 0). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">input_vector</td><td>input vector. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">output_vector</td><td>output location. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -574,6 +580,13 @@ template&lt;typename T &gt; </div>
 
 <p>Specialization for type std::string of Retrieving Data into Vector. </p>
 <p>std::string can be either a vector of symbol (type 11), or a mixed vector with each element a vector of char (type 0, and then type 10 for all elements). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">input_vector</td><td>input vector. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">output_vector</td><td>output location. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -607,6 +620,13 @@ template&lt;typename T , typename  = std::enable_if_t&lt;std::is_arithmetic_v&lt
 
 <p>Retrieve Data Into Vector. </p>
 <p>Note that std::string and void* (k) have corresponding overload and therefore only arithmatic vectors should reach this - which is boolean, char, integers and float. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">input_vector</td><td>input vector. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">output_vector</td><td>output location. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -638,6 +658,13 @@ template&lt;typename T , typename  = std::enable_if_t&lt;std::is_arithmetic_v&lt
 
 <p>Specialization for type void** of Retrieving Data into Vector. </p>
 <p>This is for mixed type vector (so the q type id should be 0). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">input_vector</td><td>input vector. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">output_vector</td><td>output location. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
